@@ -109,7 +109,7 @@
   var STARTERS = ["What is the difference between a GFCI and an AFCI?", "Draw how a P-trap stops sewer gas", "Explain the four elements of a contract simply", "Why does attic ventilation matter?"];
 
   PAGES.teacher = function () {
-    var back = T.back ? '<button class="quiet" style="align-self:flex-start" data-act="tBack">‹ Back to your questions</button>' : "";
+    var back = T.back ? '<div class="backbar"><button class="back" data-act="tBack"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Back to your questions</button></div>' : "";
     var head = back + '<header class="row"><div class="grow stack" style="gap:2px"><h1>Teacher</h1><span class="small muted">Ask anything from Volume 1 or 2. Ask for a picture if you want to see it.</span></div>' +
       (T.turns.length ? '<button class="quiet" data-act="tNew">New chat</button>' : "") + "</header>";
     if (!AI.ready) return '<div class="stack">' + head + '<section class="card muted">Connecting to the teacher…</section></div>';

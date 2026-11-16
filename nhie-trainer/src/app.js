@@ -195,11 +195,34 @@
   }
   var TABS = [["today", "Today"], ["study", "Study"], ["practice", "Practice"], ["exam", "Exam"], ["progress", "Progress"], ["teacher", "Teacher"]];
   var tab = "today", sub = null, session = null, timer = 0, confirmKey = "";
-  function go(t, s) { T.back = null; tab = t; sub = s || null; session = null; clearInterval(timer); confirmKey = ""; if (location.hash !== "#" + t) location.hash = t; render(); window.scrollTo(0, 0); }
+  // The address bar mirrors where you are (#study/plumbing/3), so the phone or browser Back button steps back one page.
+  // A running quiz or flashcard set adds "~", so Back closes it and returns to the page it was started from.
+  function route(t, s) { return t + (s && s.t ? "/" + s.t + (s.sec != null ? "/" + s.sec : "") : ""); }
+  function parseRoute(h) {
+    var p = h.replace(/~$/, "").split("/"), t = p[0];
+    if (!TABS.some(function (x) { return x[0] === t; })) return null;
+    var s = null;
+    if (t === "study" && TOPIC[p[1]]) { s = { t: p[1] }; if (p[2] != null && TOPIC[p[1]].ls[+p[2]]) s.sec = +p[2]; }
+    return { t: t, s: s };
+  }
+  function go(t, s) { T.back = null; tab = t; sub = s || null; session = null; clearInterval(timer); confirmKey = ""; var r = route(t, sub); if (location.hash !== "#" + r) location.hash = r; render(); window.scrollTo(0, 0); }
+  function sessionOpened() { var r = route(tab, sub) + "~"; if (location.hash !== "#" + r) location.hash = r; }
+  function closeSession() { session = null; clearInterval(timer); confirmKey = ""; var r = route(tab, sub); if (location.hash !== "#" + r) location.replace("#" + r); render(); window.scrollTo(0, 0); }
   window.addEventListener("hashchange", function () {
     var h = location.hash.slice(1);
-    if (h !== tab && TABS.some(function (x) { return x[0] === h; })) go(h);
+    if (session && h.slice(-1) !== "~") {
+      if (session.kind === "exam") { location.hash = route(tab, sub) + "~"; confirmKey = "finish"; render(); return; }
+      session = null; clearInterval(timer);
+    }
+    var r = parseRoute(h); if (!r) return;
+    if (route(r.t, r.s) !== route(tab, sub) || (!session && h.slice(-1) !== "~")) { var keep = session; go(r.t, r.s); if (keep && h.slice(-1) === "~") { session = keep; render(); } }
   });
+  // Top bar on inner pages: one big Back button plus a breadcrumb you can tap.
+  function backbar(crumbs, extra) {
+    var prev = crumbs[crumbs.length - 2];
+    return '<div class="backbar"><button class="back" data-act="' + prev[1] + '" data-arg="' + (prev[2] || "") + '"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>' + esc(prev[0]) + "</button>" +
+      '<nav class="crumbs" aria-label="You are here">' + crumbs.map(function (c, i) { return i === crumbs.length - 1 ? '<span aria-current="page">' + esc(c[0]) + "</span>" : '<button class="crumb" data-act="' + c[1] + '" data-arg="' + (c[2] || "") + '">' + esc(c[0]) + "</button><span aria-hidden=\"true\">›</span>"; }).join("") + "</nav>" + (extra || "") + "</div>";
+  }
   function render() {
     document.getElementById("tabs").innerHTML = TABS.map(function (t) {
       return '<button data-act="tab" data-arg="' + t[0] + '"' + (t[0] === tab ? ' aria-current="page"' : "") + '><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ICON[t[0]] + "</svg>" + t[1] + "</button>";
@@ -263,7 +286,7 @@
   };
   function topicPage() {
     var t = TOPIC[sub.t], st = topicStats(t), cards = cardsFor(t.id);
-    var html = '<div class="stack" style="--c:' + t.color + '"><button class="quiet" style="align-self:flex-start" data-act="tab" data-arg="study">‹ All chapters</button>' +
+    var html = '<div class="stack" style="--c:' + t.color + '">' + backbar([["All chapters", "tab", "study"], [t.title]]) +
       '<header class="hero stack" style="gap:8px;--c:' + t.color + '">' + ring(st.mastery, true) + '<span class="eyebrow" style="position:relative">' + VOLS[t.vol] + "</span><h1>" + t.title + "</h1></header>" +
       '<section class="card stack"><div class="row"><div class="grow"><div class="eyebrow">Mastery</div><div class="big">' + st.mastery + '%</div></div><div class="small muted num" style="text-align:right">' +
       st.seen + " of " + st.n + " questions tried<br>" + (st.right + st.wrong ? pct(st.right, st.right + st.wrong) + "% answered correctly" : "No answers yet") + "</div></div>" + tape(st.mastery, st.mastery >= 80 ? "good" : "") +
@@ -291,7 +314,7 @@
     });
     if (open) html += "</ul>";
     if (inSec) html += "</section>";
-    return '<div class="stack" style="--c:' + t.color + '"><button class="quiet" style="align-self:flex-start" data-act="topic" data-arg="' + t.id + '">‹ ' + t.title + "</button>" +
+    return '<div class="stack" style="--c:' + t.color + '">' + backbar([["Study", "tab", "study"], [t.title, "topic", t.id], ["Lesson " + (L.i + 1)]]) +
       '<header class="hero stack" style="gap:14px">' + ring(Math.round((L.i + 1) / t.ls.length * 100), true) + '<span class="eyebrow num" style="position:relative">' + VOLS[t.vol].split(" · ")[0] + " · lesson " + (L.i + 1) + " of " + t.ls.length + "</span><h1>" + esc(L.t) + "</h1>" +
       '<div class="row" style="position:relative"><span class="pill num">Book pages ' + L.p + '</span><span class="pill">' + t.title + "</span></div></header>" +
       '<p class="muted"><b style="color:var(--ink)">Goal:</b> ' + esc(L.goal) + ' Read the book pages before or after; this lesson is the same material in plain words.</p>' +
@@ -346,6 +369,7 @@
   var SESSION = {};
   function startQuiz(qs, title, doneKey) {
     if (!qs.length) return;
+    sessionOpened();
     session = { kind: "quiz", title: title, queue: qs.slice(), n: qs.length, i: 0, right: 0, wrong: [], cur: null, picked: -1, doneKey: doneKey, retried: {} };
     nextQ();
   }
@@ -377,29 +401,38 @@
         '<div class="row"><button class="primary" data-act="smart" data-arg="20">Another 20</button><button data-act="tab" data-arg="today">Done</button></div></section></div>';
     }
     var done = s.picked >= 0, ok = done && s.opts[s.picked] === 0;
-    return '<div class="stack"><div class="row"><span class="eyebrow grow">' + esc(s.title) + "</span>" + chip(TOPIC[q.t]) + '<button class="quiet" data-act="tab" data-arg="practice">End</button></div>' +
+    return '<div class="stack">' + sessionBar(s, chip(TOPIC[q.t])) +
       tape(pct(s.i - 1 + (done ? 1 : 0), s.i + s.queue.length)) +
       '<section class="card stack"><p class="qtext">' + esc(q.q) + "</p>" + optButtons(q, s.opts, s.picked, done, -1) + "</section>" +
       (done ? '<div class="why ' + (ok ? "ok" : "no") + '"><b>' + (ok ? "Correct." : "Not quite. The answer is: " + esc(q.a[0]) + ".") + "</b><p>" + esc(q.e) + '</p></div><div class="row"><button class="primary" data-act="next">' + (s.queue.length ? "Next question" : "See results") + "</button>" + (!ok && AI.sample ? '<button data-act="tWhy">Ask the teacher why</button>' : "") + "</div>" : "") + "</div>";
   };
 
+  function backLabel() {
+    if (sub && sub.sec != null) return "Lesson " + (sub.sec + 1);
+    if (sub && sub.t) return TOPIC[sub.t].title;
+    return TABS.filter(function (x) { return x[0] === tab; })[0][1];
+  }
+  function sessionBar(s, extra) {
+    return '<div class="backbar"><button class="back" data-act="close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>' + esc(backLabel()) + '</button><span class="row grow" style="justify-content:flex-end;gap:8px"><span class="eyebrow">' + esc(s.title) + "</span>" + (extra || "") + "</span></div>";
+  }
   function startCards(pool, title, lesson, doneKey) {
     var cs = lesson ? shuffle(pool) : pickCards(pool, 20); if (!cs.length) cs = shuffle(pool).slice(0, 20);
     if (!cs.length) return;
     session = { kind: "cards", title: title, queue: cs, n: cs.length, i: 0, known: 0, shown: false, lesson: lesson || null, doneKey: doneKey };
-    render(); window.scrollTo(0, 0);
+    sessionOpened(); render(); window.scrollTo(0, 0);
   }
   SESSION.cards = function () {
     var s = session, c = s.queue[s.i];
     if (!c && s.lesson) return '<div class="stack"><h1>Recall done</h1><section class="card stack"><div class="big">' + s.known + " / " + s.n + '</div><p class="muted">Now the check questions. You need 80% to pass the lesson.</p><div class="row"><button class="primary" data-act="lessonQuiz">Start the check</button></div></section></div>';
-    if (!c) return '<div class="stack"><h1>Flashcards finished</h1><section class="card stack"><div class="big">' + s.known + " / " + s.n + '</div><p class="muted">Cards you did not know come back tomorrow.</p><div class="row"><button class="primary" data-act="tab" data-arg="practice">Done</button></div></section></div>';
-    return '<div class="stack"><div class="row"><span class="eyebrow grow">' + esc(s.title) + ' · <span class="num">' + (s.i + 1) + "/" + s.n + "</span></span>" + chip(TOPIC[c.t]) + '<button class="quiet" data-act="tab" data-arg="practice">End</button></div>' +
+    if (!c) return '<div class="stack"><h1>Flashcards finished</h1><section class="card stack"><div class="big">' + s.known + " / " + s.n + '</div><p class="muted">Cards you did not know come back tomorrow.</p><div class="row"><button class="primary" data-act="close">Done</button></div></section></div>';
+    return '<div class="stack">' + sessionBar(s, chip(TOPIC[c.t]) + ' <span class="small muted num">' + (s.i + 1) + "/" + s.n + "</span>") +
       '<section class="card flash"><div class="term">' + esc(c.f) + "</div>" + (s.shown ? '<div class="lesson" style="margin:0 auto">' + esc(c.b) + "</div>" : '<p class="muted">Say the meaning out loud, then check.</p>') + "</section>" +
       (s.shown ? '<div class="row"><button class="grow" data-act="card" data-arg="0">Did not know</button><button class="primary grow" data-act="card" data-arg="1">Knew it</button></div>' : '<button class="primary" data-act="flip">Show answer</button>') + "</div>";
   };
 
   function startExam(n) {
     var qs = pickExam(n);
+    sessionOpened();
     session = { kind: "exam", qs: qs, opts: qs.map(function (q) { return shuffle(q.a.map(function (_, i) { return i; })); }), ans: qs.map(function () { return -1; }), flag: {}, i: 0, t0: Date.now(), limit: qs.length * SECONDS_PER_QUESTION, done: false };
     clearInterval(timer);
     timer = setInterval(function () {
@@ -443,12 +476,13 @@
       '<div class="row"><button data-act="jump" data-arg="' + (s.i - 1) + '"' + (s.i ? "" : " disabled") + '>Back</button><button data-act="flagq">' + (s.flag[s.i] ? "Remove mark" : "Mark for review") + '</button><button class="primary grow" data-act="jump" data-arg="' + (s.i + 1) + '"' + (s.i < s.qs.length - 1 ? "" : " disabled") + ">Next</button></div>" +
       '<details class="card"' + (s.gridOpen ? " open" : "") + ' data-toggle="grid"><summary class="num">All questions · ' + answered + " answered</summary><div class=\"grid\" style=\"margin-top:12px\">" + grid + "</div></details>" +
       (confirmKey === "finish" ? '<div class="card row"><b class="grow">Finish and grade? ' + (s.qs.length - answered ? (s.qs.length - answered) + " not answered." : "") + '</b><button class="primary" data-act="finishYes">Grade it</button><button data-act="finishNo">Keep going</button></div>'
-        : '<div class="row"><button data-act="finish">Finish exam</button><button class="quiet danger" data-act="tab" data-arg="exam">Quit without grading</button></div>') + "</div>";
+        : '<div class="row"><button data-act="finish">Finish exam</button><button class="quiet danger" data-act="close">Quit without grading</button></div>') + "</div>";
   };
 
   // ---------- actions ----------
   var ACT = {
     tab: function (a) { go(a); },
+    close: function () { closeSession(); },
     vol: function (a) { volSel = +a; render(); var el = document.getElementById("vol" + a); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); },
     topic: function (a) { go("study", { t: a }); },
     lesson: function (a) { var x = a.split("|"); go("study", { t: x[0], sec: +x[1] }); },
@@ -493,8 +527,8 @@
     if (e.target.getAttribute && e.target.getAttribute("data-toggle") === "grid" && session) session.gridOpen = e.target.open;
   }, true);
 
-  var h = location.hash.slice(1);
-  if (TABS.some(function (x) { return x[0] === h; })) tab = h;
+  var start = parseRoute(location.hash.slice(1));
+  if (start) { tab = start.t; sub = start.s; if (location.hash.slice(-1) === "~") location.replace("#" + route(tab, sub)); }
   render();
   cloudInit();
   aiInit();

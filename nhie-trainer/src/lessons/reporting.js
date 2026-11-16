@@ -1,0 +1,217 @@
+// Lessons written from NHIE Volume 2, chapter 7 (Analysis and Reporting). Page numbers are approximate.
+NHIE.lessons("reporting", [
+{ t: "Scope, limitations and standards of practice", p: "363–366",
+  goal: "Know what a home inspection is, what it is not, and how the SOP drives it.",
+  teach: [
+    "# Scope",
+    "- A home inspection is an observation of certain systems and components to give the client information about their condition at the time of the inspection.",
+    "- Mainly sight, also hearing, smell and touch. The inspector operates some components (HVAC, plumbing fixtures) with normal controls and uses simple tools (thermometer, receptacle tester).",
+    "- Complex instruments (circuit analyzers, gas detectors, CO detectors, infrared cameras) go beyond a visual inspection and add liability.",
+    "- Only items in the SOP are included. Inspecting more is allowed but raises risk; add a limitation statement that the scope is not expanded and other defects may exist.",
+    "- Reports cover conditions during the inspection only. Conditions can change within minutes; tell the client, verbally and in writing.",
+    "# Limitations",
+    "- Not technically exhaustive: the inspector is a generalist, even if licensed in a trade. No finding causes, no trade tools, no calculations of other professions.",
+    "- Concealed deficiencies (in walls, under insulation, floor coverings, soil, behind belongings) and latent ones (exist but show no evidence) cannot be reported. Say so in the agreement, at the inspection and in the report.",
+    "- Areas not readily accessible (blocked, or unsafe to enter) need not be inspected. Remove panel covers; you may open items meant for owner maintenance; otherwise no dismantling.",
+    "- Cosmetic deficiencies are not reported unless they affect function (worn interior paint vs peeling exterior paint; worn carpet vs a trip hazard).",
+    "# Standards of practice",
+    "- The SOP defines what is inspected and what is reported. Never inspect without naming one SOP, in the agreement and the report. Use only one per inspection.",
+    "- Published by licensing authorities and associations (ASHI, CAPHI, CREIA, InterNACHI).",
+    "- Choosing: use the licensing authority's SOP; if licensed in several places, the one where the house is; if unlicensed, your association's; with several or no memberships, pick one and use it always.",
+    "# Three questions",
+    "- What do I look at? (SOP lists it.) What do I look for? (SOP gives general categories; knowledge fills the rest.) Why is it deficient? (Explain implications not obvious to an ordinary person.)",
+    "! Visual, at the time, generalist, not technically exhaustive, one SOP named in agreement and report."
+  ],
+  cards: [
+    ["Home inspection definition", "Observation of specified systems and components to report their condition at the time of the inspection."],
+    ["Technically exhaustive", "Specialist-level testing, measuring and calculating; a home inspection is not this."],
+    ["Concealed vs latent deficiency", "Concealed: hidden behind or under something. Latent: exists but shows no evidence."],
+    ["Readily accessible", "Can be reached and seen without moving obstructions, and safely."],
+    ["Items the inspector may open", "Electrical panel covers, and components meant to be removed by the occupant for maintenance."],
+    ["Where must the SOP be named?", "In the inspection agreement and in the report; only one SOP per inspection."],
+    ["Which SOP if licensed in two states?", "The one required where the house is located."],
+    ["Three questions of an inspection", "What do I look at? What do I look for? Why is it deficient?"]
+  ],
+  qs: [
+    ["Which tool is generally considered beyond a visual home inspection?", ["Infrared camera", "Flashlight", "Thermometer", "Receptacle tester"], "Complex instruments add liability."],
+    ["A defect exists but there is no visible sign of it during the inspection. It is:", ["Latent", "Cosmetic", "Readily accessible", "Material"], "Latent defects cannot be reported."],
+    ["An inspector is not licensed and belongs to two associations. Which SOP should be used?", ["Choose one and use it consistently on every inspection", "Both at once", "Neither", "Whichever is easier each time"], "One SOP per inspection, consistently."],
+    ["Exterior paint is peeling down to bare wood. Is it cosmetic?", ["No; it exposes the siding to damage", "Yes", "Only on the front", "Only if green"], "Severity and consequence decide."]
+  ] },
+
+{ t: "Communication and report formats", p: "366–367",
+  goal: "Know why communication matters and the pros and cons of report formats.",
+  teach: [
+    "- Two tasks: gather accurate information and communicate it so the client can understand and act. A good report cannot fix a bad inspection, and a bad report wastes a good one.",
+    "- Inspectors are in the communication business.",
+    "- Be consistent: verbal statements must not contradict the report, and significant verbal statements must be in the report.",
+    "- Write for an ordinary and reasonable person: simple words; avoid or define jargon, abbreviations and acronyms.",
+    "- Keep a businesslike manner in words, tone, face and body language.",
+    "# Formats",
+    "- Checklist: pre-printed or software checklists with space for comments. Fast, can be delivered on site. Weakness: often fails SOP reporting requirements, especially explaining implications.",
+    "- Narrative: built from a library of written narratives. More likely to comply. Slower; next-day delivery can stress clients and agents on tight deadlines.",
+    "- Hybrids exist.",
+    "- Vendor comment libraries are a starting point only. The inspector, not the software company, is responsible for the report and must edit for local defects and the local SOP.",
+    "! Say it, write it. Never contradict yourself. Plain words."
+  ],
+  cards: [
+    ["Consistency rule", "Verbal statements must not contradict the written report, and significant verbal statements must appear in it."],
+    ["Report audience", "An ordinary and reasonable person: simple words, define jargon and acronyms."],
+    ["Checklist report weakness", "Often fails to explain the implications of deficiencies as SOPs require."],
+    ["Narrative report weakness", "Takes longer; often delivered the next day or later."],
+    ["Who is responsible for canned comments in software?", "The home inspector, not the software vendor."]
+  ],
+  qs: [
+    ["At the inspection the inspector told the buyer the roof leaks, but the report says the roof is in good condition. What rule is broken?", ["Verbal and written communication must be consistent", "No rule", "The cosmetic rule", "The latent defect rule"], "Contradictions create confusion and liability."],
+    ["Which report format is more likely to meet SOP requirements when properly written?", ["Narrative", "Checklist", "Verbal only", "Photo only"], "Narratives can explain implications."],
+    ["The report uses 'GFCI', 'AFUE' and 'OPD' with no explanation. What is the problem?", ["Acronyms should be avoided or defined for an ordinary reader", "Nothing", "They should be in red", "They are required"], "Write in plain language."]
+  ] },
+
+{ t: "Writing deficiency statements", p: "367–371",
+  goal: "Write a deficiency statement with description, implication, recommendation and the right contractor.",
+  teach: [
+    "Deficiency statements are the most important part of the report. Many clients read only these.",
+    "# 1. Describe it precisely",
+    "- Bad: 'We observed a crack in the bricks on the front of the house.' (Structural brick or veneer? Through the brick or the mortar? How big?)",
+    "- Good: 'We observed a thin crack in the brick veneer mortar on the front of the house.'",
+    "# 2. Explain the implication",
+    "- Short, clear, not alarming. Example: 'This is an electrical shock and fire ignition hazard.'",
+    "- Structural: say what you did and did not see, without predicting: 'We did not observe current deformation; however, deformation or failure could occur under certain conditions. We cannot predict whether it may occur.'",
+    "# 3. Recommend an action (the SOP's three options)",
+    "- Repair or replace: the default for unsafe or not functioning items. Leave the choice to the specialist. Never design the repair.",
+    "- Evaluate: when the cause or current state is unknown (moisture stains), when confirming needs out-of-scope procedures (low temperature drop), or when the item is outside your knowledge. Do not use it to push all risk back to the client.",
+    "- Monitor: for items working but near end of life, or not yet defects. Say what to watch for and what to do. Never use it to play down a real defect. Example: 'Monitor the crack; have a foundation contractor evaluate if it widens, shows horizontal displacement or admits water.'",
+    "# 4. Name the right kind of contractor",
+    "- Plumber, electrician, roofer and so on. Never a specific person or company (conflict of interest).",
+    "- Contractor when a common prescriptive repair exists (sistering a drilled joist). Engineer when there is no standard fix (an altered truss, foundation failure).",
+    "# 5. Location and pictures (optional but helpful)",
+    "- Define directions ('left and right as you face the house from the street'). Photos document conditions at the time.",
+    "! Describe, explain, recommend, refer. Never design the fix."
+  ],
+  cards: [
+    ["Parts of a deficiency statement", "Description, implication, recommended action, appropriate type of contractor (location and photo help)."],
+    ["Three recommendation options", "Repair or replace; evaluate by a specialist; monitor."],
+    ["When to recommend evaluation", "Cause or state unknown, confirmation needs out-of-scope procedures, or beyond your knowledge."],
+    ["What a monitor recommendation must include", "What to watch for and what to do if it changes."],
+    ["Contractor vs engineer", "Contractor when a common prescriptive repair exists; engineer when there is no standard fix (e.g., altered truss)."],
+    ["Can the inspector name a specific company?", "No; recommend a type of professional only."],
+    ["Implication statement for a notched beam with no deformation", "Note no deformation seen now, that failure could occur under some conditions, and that you cannot predict it."]
+  ],
+  qs: [
+    ["Moisture stains are on a ceiling and the source is unknown. Which recommendation fits?", ["Evaluation by a qualified specialist", "Monitor", "Repair the ceiling", "No action"], "Cause is undetermined."],
+    ["A truss has had a web removed. Who should design the repair?", ["An engineer", "A carpenter", "The inspector", "A roofer"], "No prescriptive repair exists for trusses."],
+    ["Which statement best describes a defect?", ["Thin crack in the brick veneer mortar at the front left corner", "The bricks look bad", "Some issues at the front", "Brick: see contractor"], "Material, location and size."],
+    ["A furnace works but is 25 years old. Which recommendation fits?", ["Monitor and plan for replacement; note it is near end of life", "Immediate replacement as unsafe", "Nothing", "Engineer evaluation"], "Monitor is for working items near end of life."]
+  ] },
+
+{ t: "Deficient conditions and imminent threats", p: "371–374",
+  goal: "Classify conditions as not functioning, significantly deficient, unsafe or end of life.",
+  teach: [
+    "- You must understand what each SOP term means. Meanings can vary by jurisdiction and are set by regulators and courts.",
+    "# Not functioning properly (as intended)",
+    "- Fails to do its job during the inspection, or shows evidence it has failed. Major (active leaks, deformed structure) or minor (sticking doors, dripping faucets).",
+    "# Significantly deficient",
+    "- May work now but is likely to fail, or fail under certain conditions: not installed per instructions or standards, damaged, deteriorated. Examples: evidence of leaks with unknown current activity, structure that is overspanned. Some take years or decades to cause failure (pyrolysis from poor clearances).",
+    "# Unsafe",
+    "- A judgment: a significant risk of injury during normal, intended use. The definition broadens over time (risers differing over 3/8 inch, ungraspable handrails, wide baluster spacing).",
+    "- New houses and serious risks: report as unsafe with repair. Older houses and lower risks: you may report as a safety upgrade.",
+    "# Near or at end of service life",
+    "- Some SOPs require reporting it. Near end is not a defect by itself; at or beyond end may be. Never estimate remaining life in years. Life charts exist (for example the Residential Reserve Study).",
+    "# Habitability",
+    "- A few SOPs use 'adversely affect habitability'.",
+    "# Imminent threats",
+    "- Normally the report goes only to the client. Exception: imminent threats to people or property (major gas or oil leaks, active water leaks, sparking or energized equipment, carbon monoxide). Notify, try to notify, or watch someone notify the owner or occupant right away.",
+    "! Not functioning = failing now. Significantly deficient = likely to fail. Unsafe = injury risk in normal use."
+  ],
+  cards: [
+    ["Not functioning properly", "Fails to perform during the inspection, or shows evidence it has failed (e.g., active leak, dripping faucet)."],
+    ["Significantly deficient", "May function now but likely to fail because of improper installation, damage or deterioration."],
+    ["Unsafe", "A significant risk of injury during normal intended use; the inspector's judgment."],
+    ["Near end of service life", "Not a defect by itself; report if the SOP requires; never estimate remaining years."],
+    ["Imminent threat exception", "Notify the owner or occupant right away of major gas leaks, active water leaks, energized equipment and similar threats."],
+    ["Reporting an unsafe condition in an older house", "May be reported as a recommended safety upgrade, especially when risk is lower."]
+  ],
+  qs: [
+    ["A water heater works but its gas vent connector has no clearance to wood. Which category fits best?", ["Significantly deficient / unsafe", "Not functioning", "Cosmetic", "Latent"], "It works but is installed wrong and risky."],
+    ["A client asks how many years the roof has left. What should the inspector do?", ["Not estimate remaining life; describe condition and whether it is near end of life", "Give a number", "Say 10 years", "Refuse to discuss the roof"], "Life estimates create liability."],
+    ["The inspector finds a natural gas leak while the sellers are away. What should happen?", ["Notify or attempt to notify the owner or occupant right away", "Put it in the report only", "Fix it", "Ignore it"], "Imminent threats are an exception to confidentiality."],
+    ["A door sticks against its frame. Which category is it?", ["Not functioning properly", "Unsafe", "Significantly deficient", "Latent"], "Minor items can be not functioning."]
+  ] },
+
+{ t: "Required descriptions and inspection methods", p: "374–380",
+  goal: "Know what must be described and how to report inspection methods and limits.",
+  teach: [
+    "- Describe systems accurately and in enough detail to tell similar items apart. If unsure, say so and recommend evaluation.",
+    "# What to describe",
+    "- Structure: foundation type and materials (slab, crawl space, basement; poured, block, wood), floor, wall, ceiling and roof structure materials (lumber, I-joists, trusses; plywood, OSB). Sizes optional.",
+    "- Exterior wall coverings (EIFS vs stucco, artificial vs natural stone).",
+    "- Roof coverings.",
+    "- Plumbing: water supply and distribution materials, DWV materials, water heater type and fuel, location of main water and fuel shutoffs.",
+    "- Electrical: service amperage and voltage, service entrance conductors, main disconnect location, panels and subpanels, branch wiring method, presence of smoke and CO alarms.",
+    "- Heating and cooling: type and energy source (gas forced air furnace, heat pump, boiler); package units.",
+    "- Insulation and vapor retarders in unfinished spaces.",
+    "- Fireplaces (masonry or prefab, wood), inserts, stoves, decorative gas units, chimneys (masonry or metal), gas log lighters.",
+    "# Methods",
+    "- Attic: entered, viewed from the hatch, or not inspected and why.",
+    "- Crawl space: entered fully or partly, head-and-shoulders view, or not inspected.",
+    "- Roof: walked, from a ladder at the eaves, from the ground with binoculars, by drone, from windows. Report every method and any part not seen.",
+    "# Limitations to report",
+    "- Access and visibility: belongings, locked areas, unsafe areas, dangerous panels.",
+    "- Shutdown: utilities or systems off; disclaim all affected parts. Ask about utilities when scheduling.",
+    "- Out-of-scope items: specifically disclaim those you did not inspect; commenting on them can be seen as expanding scope.",
+    "- Environmental hazards (air and water quality, mold, radon, asbestos, lead): out of scope; disclaim.",
+    "! Report how the roof, attic and crawl space were inspected, and what you could not see."
+  ],
+  cards: [
+    ["Required electrical descriptions", "Service amperage and voltage, service conductors, main disconnect location, panels, branch wiring method, smoke and CO alarm presence."],
+    ["Required plumbing descriptions", "Supply and distribution materials, DWV materials, water heater type and fuel, main water and fuel shutoff locations."],
+    ["Roof inspection methods", "Walked, ladder at eaves, ground with binoculars, drone, windows; report each method used."],
+    ["Shutdown limitation", "Report utilities or systems shut off and disclaim all affected components."],
+    ["Environmental hazards", "Air and water quality, mold, radon, asbestos, lead: out of scope; disclaim."],
+    ["If unsure what a material is", "Say so in the report and recommend evaluation."]
+  ],
+  qs: [
+    ["Gas service was shut off on inspection day. What should the report include?", ["That gas was off and the affected appliances were not inspected", "That the furnace works", "Nothing", "A guess"], "Disclaim all affected parts."],
+    ["The inspector viewed the roof only from a ladder at the eaves. What must the report say?", ["The method used and that parts were not fully seen", "That the roof was walked", "Nothing", "That the roof is perfect"], "Methods and limits must be reported."],
+    ["Which item must usually be described in the electrical section?", ["Service amperage and voltage", "The brand of every outlet", "Wire color in walls", "The utility company name"], "Plus wiring method and panel locations."]
+  ] },
+
+{ t: "Report contents, tools and the inspection routine", p: "380–393",
+  goal: "Know what every report should contain and what common tools can and cannot tell you.",
+  teach: [
+    "# Required report information",
+    "- Full legal name of the company; inspector's name and license number.",
+    "- All known client names; full property address.",
+    "- Inspection date with start and end times; who was present.",
+    "- The SOP used (only one).",
+    "- A section that sets expectations (scope and limits).",
+    "- A statement that the company owns the report.",
+    "- Advice to read the whole report and act on all recommendations.",
+    "- Optional: weather, general comments about houses of that age and area.",
+    "# Tools",
+    "- Three-light receptacle tester: misses some errors (bootleg grounds, multiple faults). Report a receptacle as having tested incorrectly and recommend an electrician; do not state the exact miswiring.",
+    "- Voltage sniffer (non-contact tester): common; not required.",
+    "- Multimeter / clamp ammeter: not required.",
+    "- Moisture meter: pin type reads about 5/16 inch deep; pinless 1/2 to 1 inch. Use it to confirm a suspected problem, not to scan routinely.",
+    "- Infrared thermometer and camera: readings affected by emissivity; not required. Cameras are a confirming tool or an added service.",
+    "- Probe thermometer: temperature drop and water temperature.",
+    "- Combustible gas and CO detectors: not required; confirming tools. Using them to find cracked heat exchangers is unreliable.",
+    "- Advanced tools are often offered under a separate agreement and fee.",
+    "# A typical routine (not on the exam outline)",
+    "- Note the neighborhood; meet and greet and take charge; walk around; exterior (grade, drainage, gutters, vents, cracks, roof); garage; attic; interior top floor down (watch ceilings below bathrooms); basement or crawl space; wrap-up with the client present; collect payment; leave everything as found (appliances, water, thermostats, lights, doors).",
+    "! A 3-light tester can be fooled. Moisture meters and IR cameras confirm; they do not scan."
+  ],
+  cards: [
+    ["Required report information", "Company name, inspector and license, clients, address, date and times, people present, SOP used, expectations, ownership, advice to act on recommendations."],
+    ["Three-light tester limitation", "Cannot detect multiple wiring errors or bootleg grounds; report 'tested as incorrectly wired' and refer to an electrician."],
+    ["Pin vs pinless moisture meter depth", "Pin: about the pin length (5/16 inch). Pinless: about 1/2 to 1 inch."],
+    ["Proper use of a moisture meter or IR camera", "As a confirming tool for suspected problems, not as a routine scanning tool."],
+    ["Can a CO or gas detector find a cracked heat exchanger?", "Not reliably; not recommended."],
+    ["Who owns the inspection report?", "The home inspection company (state it in the report)."]
+  ],
+  qs: [
+    ["A three-light tester shows 'hot/neutral reversed'. How should it be reported?", ["The receptacle tested as incorrectly wired; recommend an electrician", "Hot and neutral are definitely swapped at the panel", "Nothing", "The house has no ground"], "Testers can be wrong."],
+    ["Which item should appear in every report?", ["The SOP used for the inspection", "The seller's mortgage balance", "The listing price", "The agent's commission"], "Plus names, address, date and times."],
+    ["Why should an IR camera not be used to scan every wall routinely?", ["It can create an expectation of finding hidden defects beyond the scope", "It is illegal", "It shows only colors", "It needs water"], "Use it to confirm suspected issues or as a separate service."]
+  ] }
+]);

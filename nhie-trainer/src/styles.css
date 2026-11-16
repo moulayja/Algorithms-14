@@ -127,6 +127,7 @@ button.chip { font-weight: 600; font-size: .88rem; padding: 7px 14px; min-height
 /* panels */
 .hero { position: relative; overflow: hidden; border-radius: 22px; padding: 22px; color: #FFFFFF;
   background: linear-gradient(150deg, #0F3A31 0%, #1E5A4B 100%); }
+.hero[style*="--c"], [style*="--c"] > .hero { background: linear-gradient(150deg, var(--c) 0%, color-mix(in srgb, var(--c) 78%, #000) 100%); }
 .hero .eyebrow, .hero .muted { color: #E4EEE9; } .hero h1 { color: #FFFFFF; position: relative; max-width: 80%; }
 .hero .ring { position: absolute; right: -24px; top: 34px; width: 200px; height: 200px; pointer-events: none; }
 .hero .ring.faint { right: -40px; top: auto; bottom: -46px; width: 160px; height: 160px; opacity: .35; }
@@ -142,3 +143,29 @@ button.chip { font-weight: 600; font-size: .88rem; padding: 7px 14px; min-height
 .seg { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; padding: 4px; border-radius: 99px; background: var(--soft); }
 .seg button { border: 0; background: transparent; color: var(--muted); }
 .seg button:hover { background: var(--surface); color: var(--ink); }
+
+/* chapter colors */
+.ctag { display: inline-block; font: 700 .72rem/1.2 var(--display); letter-spacing: .04em; padding: 4px 9px; border-radius: 99px; white-space: nowrap;
+  color: var(--c); background: color-mix(in srgb, var(--c) 12%, #FFFFFF); }
+.cdot { display: inline-block; width: 10px; height: 10px; border-radius: 3px; background: var(--c); margin-right: 8px; vertical-align: 0; }
+.item.chap { grid-template-columns: auto 1fr auto; column-gap: 12px; }
+.item.chap .cnum { grid-row: 1 / span 3; align-self: start; width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center;
+  font: 800 .95rem var(--display); color: #FFFFFF; background: var(--c); }
+.item.chap b { color: var(--ink); }
+.item.chap .pill { color: var(--c); background: color-mix(in srgb, var(--c) 12%, #FFFFFF); }
+.item.chap .tape { grid-column: 2 / -1; }
+[style*="--c"] .tape > i { background: var(--c); }
+[style*="--c"] .lesson h4 { color: var(--c); }
+.lsec { margin: 12px 0; padding: 4px 14px 6px; border-radius: 14px; background: color-mix(in srgb, var(--c, #0F3A31) 7%, #FFFFFF); }
+.lsec:nth-of-type(even) { background: color-mix(in srgb, var(--c, #0F3A31) 4%, #F6F4EE); }
+.lsec h4 { display: flex; align-items: center; gap: 10px; margin-top: .9em; }
+.snum { flex: none; width: 24px; height: 24px; border-radius: 7px; display: grid; place-items: center; font: 800 .78rem var(--display); color: #FFFFFF; background: var(--c, #0F3A31); letter-spacing: 0; }
+.lsec li::before { background: var(--c, #B7812B); }
+
+/* volumes: Volume 1 gold, Volume 2 green */
+.seg button[aria-pressed="true"] { background: var(--v); color: #FFFFFF; }
+.seg button[aria-pressed="true"]:hover { background: var(--v); color: #FFFFFF; }
+.volcard { padding-top: 0; overflow: hidden; }
+.volband { margin: 0 -16px 6px; padding: 10px 16px; background: var(--v); color: #FFFFFF;
+  font: 700 .74rem/1.3 var(--display); letter-spacing: .1em; text-transform: uppercase; }
+.volcard.on { border: 2px solid var(--v); }

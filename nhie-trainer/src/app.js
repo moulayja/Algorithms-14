@@ -5,21 +5,22 @@
   // Subjects, the manual volume they are filed under, and their NHIE exam domain
   // (1 = Property and Building Inspection, 2 = Analysis and Reporting, 3 = Professional Responsibilities).
   var TOPICS = [
-    { id: "electrical", title: "Electrical System", vol: 1, dom: 1 },
-    { id: "cooling", title: "Cooling System", vol: 1, dom: 1 },
-    { id: "heating", title: "Heating System", vol: 1, dom: 1 },
-    { id: "plumbing", title: "Plumbing System", vol: 1, dom: 1 },
-    { id: "fireplaces", title: "Fireplaces & Chimneys", vol: 1, dom: 1 },
-    { id: "kitchen", title: "Kitchen Appliances", vol: 1, dom: 1 },
-    { id: "site", title: "Site Conditions", vol: 2, dom: 1 },
-    { id: "exterior", title: "Exterior Components", vol: 2, dom: 1 },
-    { id: "roof", title: "Roof Components", vol: 2, dom: 1 },
-    { id: "structure", title: "Structural Components", vol: 2, dom: 1 },
-    { id: "insulation", title: "Insulation & Ventilation", vol: 2, dom: 1 },
-    { id: "interior", title: "The House Interior", vol: 2, dom: 1 },
-    { id: "reporting", title: "Analysis & Reporting", vol: 2, dom: 2 },
-    { id: "professional", title: "Professional Responsibilities", vol: 2, dom: 3 }
+    { id: "electrical", color: "#B45309", title: "Electrical System", vol: 1, dom: 1 },
+    { id: "cooling", color: "#0369A1", title: "Cooling System", vol: 1, dom: 1 },
+    { id: "heating", color: "#B91C1C", title: "Heating System", vol: 1, dom: 1 },
+    { id: "plumbing", color: "#1D4ED8", title: "Plumbing System", vol: 1, dom: 1 },
+    { id: "fireplaces", color: "#9A3412", title: "Fireplaces & Chimneys", vol: 1, dom: 1 },
+    { id: "kitchen", color: "#7C3AED", title: "Kitchen Appliances", vol: 1, dom: 1 },
+    { id: "site", color: "#4D7C0F", title: "Site Conditions", vol: 2, dom: 1 },
+    { id: "exterior", color: "#0F766E", title: "Exterior Components", vol: 2, dom: 1 },
+    { id: "roof", color: "#78350F", title: "Roof Components", vol: 2, dom: 1 },
+    { id: "structure", color: "#475569", title: "Structural Components", vol: 2, dom: 1 },
+    { id: "insulation", color: "#A21CAF", title: "Insulation & Ventilation", vol: 2, dom: 1 },
+    { id: "interior", color: "#BE185D", title: "The House Interior", vol: 2, dom: 1 },
+    { id: "reporting", color: "#0F3A31", title: "Analysis & Reporting", vol: 2, dom: 2 },
+    { id: "professional", color: "#8A5F1C", title: "Professional Responsibilities", vol: 2, dom: 3 }
   ];
+  var VOLCOLOR = { 1: "#8A5F1C", 2: "#0F3A31" }, volSel = 0;
   var VOLS = { 1: "Volume 1 · Mechanical Systems", 2: "Volume 2 · Structural Systems and Business" };
   var DOM_WEIGHT = { 1: 0.63, 2: 0.25, 3: 0.12 };
   var INTERVAL = [0, 1, 3, 7, 16, 35]; // days until the next review, by box
@@ -183,6 +184,8 @@
     teacher: '<path d="M4 5h16v11H9l-5 4z"/>'
   };
   // The ring motif: a thick white arc showing p percent around a small four-part pie.
+  // Chapter color helpers: each chapter has its own color so sections are easy to tell apart.
+  function chip(t) { return '<span class="ctag" style="--c:' + t.color + '">' + t.title + "</span>"; }
   function ring(p, faint) {
     var c = 2 * Math.PI * 74, a = Math.max(0, Math.min(100, p)) / 100 * c;
     return '<svg class="ring' + (faint ? " faint" : "") + '" viewBox="0 0 200 200" aria-hidden="true">' +
@@ -228,7 +231,7 @@
       '<section class="card"><h2 style="margin-bottom:12px">Today\'s class</h2><div class="plan">' +
       step("review", "Warm-up: questions from earlier lessons", due ? due + " questions are due again today." : "Nothing is due yet.", "review", "", due ? "Start" : "None due") +
       step("cards", "Flashcards from earlier lessons", cdue ? cdue + " cards are due again today." : "Nothing is due yet.", "cardsDue", "", cdue ? "Start" : "None due") +
-      (nl ? step("lesson", "Today's lesson: " + esc(nl.t), TOPIC[nl.topic].title + " · lesson " + (nl.i + 1) + " of " + TOPIC[nl.topic].ls.length + " · book pages " + nl.p, "lesson", nl.topic + "|" + nl.i, "Begin")
+      (nl ? step("lesson", "Today's lesson: " + esc(nl.t), chip(TOPIC[nl.topic]) + " lesson " + (nl.i + 1) + " of " + TOPIC[nl.topic].ls.length + " · book pages " + nl.p, "lesson", nl.topic + "|" + nl.i, "Begin")
           : step("lesson", "No new lesson waiting", "You have passed every lesson built so far. Practice the chapters while the next ones are written.", "tab", "practice", "Practice")) +
       "</div></section>" +
       '<section class="card stack"><details><summary>How to read an NHIE question</summary><div class="lesson"><ul>' +
@@ -246,13 +249,13 @@
     if (sub) return topicPage();
     var html = '<div class="stack"><h1>Study</h1><div class="tiles"><div class="tile" style="background:linear-gradient(150deg,#0F3A31,#1E5A4B)"><b class="num" style="color:#FFFFFF">' + TOPICS.length + '</b><span style="color:#E4EEE9">Chapters</span></div><div class="tile dark"><b class="num">' + ALL_LESSONS.length + '</b><span>Lessons</span></div></div>' +
       '<p class="small muted">Both books are below. Jump to a volume:</p><div class="seg">' +
-      [1, 2].map(function (v) { var n = TOPICS.filter(function (t) { return t.vol === v; }); return '<button data-act="vol" data-arg="' + v + '">Volume ' + v + ' · <span class="num">' + n.length + "</span></button>"; }).join("") + "</div>";
+      [1, 2].map(function (v) { var n = TOPICS.filter(function (t) { return t.vol === v; }); return '<button style="--v:' + VOLCOLOR[v] + '" data-act="vol" data-arg="' + v + '"' + (volSel === v ? ' aria-pressed="true"' : ' aria-pressed="false"') + '>Volume ' + v + ' · <span class="num">' + n.length + " chapters</span></button>"; }).join("") + "</div>";
     [1, 2].forEach(function (v) {
-      html += '<section class="card" id="vol' + v + '"><div class="eyebrow">' + VOLS[v] + " · " + TOPICS.filter(function (t) { return t.vol === v; }).length + ' chapters</div><div class="list">';
+      html += '<section class="card volcard' + (volSel === v ? " on" : "") + '" style="--v:' + VOLCOLOR[v] + '" id="vol' + v + '"><div class="volband">' + VOLS[v] + " · " + TOPICS.filter(function (t) { return t.vol === v; }).length + ' chapters</div><div class="list">';
       TOPICS.filter(function (t) { return t.vol === v; }).forEach(function (t) {
         var st = topicStats(t), nread = t.ls.filter(passed).length;
-        html += '<button class="item" data-act="topic" data-arg="' + t.id + '"><b>' + t.title + '</b><span class="pill num">' + st.mastery + '%</span>' +
-          '<span class="small muted num" style="grid-column:1/-1">' + (t.ls.length ? nread + " of " + t.ls.length + " lessons passed · " : "Lessons not built yet · ") + st.seen + " of " + st.n + " questions tried</span>" + tape(st.mastery, st.mastery >= 80 ? "good" : "") + "</button>";
+        html += '<button class="item chap" style="--c:' + t.color + '" data-act="topic" data-arg="' + t.id + '"><span class="cnum num">' + (TOPICS.indexOf(t) + 1) + "</span><b>" + t.title + '</b><span class="pill num">' + st.mastery + '%</span>' +
+          '<span class="small muted num" style="grid-column:2/-1">' + (t.ls.length ? nread + " of " + t.ls.length + " lessons passed · " : "Lessons not built yet · ") + st.seen + " of " + st.n + " questions tried</span>" + tape(st.mastery) + "</button>";
       });
       html += "</div></section>";
     });
@@ -260,8 +263,8 @@
   };
   function topicPage() {
     var t = TOPIC[sub.t], st = topicStats(t), cards = cardsFor(t.id);
-    var html = '<div class="stack"><button class="quiet" style="align-self:flex-start" data-act="tab" data-arg="study">‹ All chapters</button>' +
-      '<header class="stack" style="gap:6px"><span class="eyebrow">' + VOLS[t.vol] + "</span><h1>" + t.title + "</h1></header>" +
+    var html = '<div class="stack" style="--c:' + t.color + '"><button class="quiet" style="align-self:flex-start" data-act="tab" data-arg="study">‹ All chapters</button>' +
+      '<header class="hero stack" style="gap:8px;--c:' + t.color + '">' + ring(st.mastery, true) + '<span class="eyebrow" style="position:relative">' + VOLS[t.vol] + "</span><h1>" + t.title + "</h1></header>" +
       '<section class="card stack"><div class="row"><div class="grow"><div class="eyebrow">Mastery</div><div class="big">' + st.mastery + '%</div></div><div class="small muted num" style="text-align:right">' +
       st.seen + " of " + st.n + " questions tried<br>" + (st.right + st.wrong ? pct(st.right, st.right + st.wrong) + "% answered correctly" : "No answers yet") + "</div></div>" + tape(st.mastery, st.mastery >= 80 ? "good" : "") +
       '<div class="row"><button class="primary" data-act="practiceTopic" data-arg="' + t.id + '">Practice 15 questions</button>' +
@@ -277,15 +280,18 @@
     return html + "</div>";
   }
   function lessonPage() {
-    var t = TOPIC[sub.t], L = t.ls[sub.sec], html = "", open = false;
+    var t = TOPIC[sub.t], L = t.ls[sub.sec], html = "", open = false, sec = 0, inSec = false;
     L.teach.forEach(function (x) {
       var k = x.slice(0, 2), body = esc(x.slice(2));
       if (k === "- ") { if (!open) { html += "<ul>"; open = true; } html += "<li>" + body.replace(/^([^:]{2,60}):/, "<b>$1:</b>") + "</li>"; return; }
       if (open) { html += "</ul>"; open = false; }
-      html += k === "# " ? "<h4>" + body + "</h4>" : k === "! " ? '<p class="why"><b>Remember</b> ' + body + "</p>" : "<p>" + esc(x) + "</p>";
+      if (k === "# ") { if (inSec) html += "</section>"; sec++; inSec = true; html += '<section class="lsec"><h4><span class="snum num">' + sec + "</span>" + body + "</h4>"; return; }
+      if (k === "! ") { if (inSec) { html += "</section>"; inSec = false; } html += '<p class="why"><b>Remember</b> ' + body + "</p>"; return; }
+      html += "<p>" + esc(x) + "</p>";
     });
     if (open) html += "</ul>";
-    return '<div class="stack"><button class="quiet" style="align-self:flex-start" data-act="topic" data-arg="' + t.id + '">‹ ' + t.title + "</button>" +
+    if (inSec) html += "</section>";
+    return '<div class="stack" style="--c:' + t.color + '"><button class="quiet" style="align-self:flex-start" data-act="topic" data-arg="' + t.id + '">‹ ' + t.title + "</button>" +
       '<header class="hero stack" style="gap:14px">' + ring(Math.round((L.i + 1) / t.ls.length * 100), true) + '<span class="eyebrow num" style="position:relative">' + VOLS[t.vol].split(" · ")[0] + " · lesson " + (L.i + 1) + " of " + t.ls.length + "</span><h1>" + esc(L.t) + "</h1>" +
       '<div class="row" style="position:relative"><span class="pill num">Book pages ' + L.p + '</span><span class="pill">' + t.title + "</span></div></header>" +
       '<p class="muted"><b style="color:var(--ink)">Goal:</b> ' + esc(L.goal) + ' Read the book pages before or after; this lesson is the same material in plain words.</p>' +
@@ -325,7 +331,7 @@
   PAGES.progress = function () {
     var rows = TOPICS.map(function (t) {
       var s = topicStats(t), acc = s.right + s.wrong ? pct(s.right, s.right + s.wrong) + "%" : "–";
-      return "<tr><td>" + t.title + '</td><td class="r">' + s.seen + "/" + s.n + '</td><td class="r">' + acc + '</td><td class="r"><span class="pill ' + (s.mastery >= 80 ? "good" : s.mastery >= 40 ? "warn" : s.seen ? "bad" : "") + '">' + s.mastery + "%</span></td></tr>";
+      return '<tr><td><span class="cdot" style="--c:' + t.color + '"></span>' + t.title + '</td><td class="r">' + s.seen + "/" + s.n + '</td><td class="r">' + acc + '</td><td class="r"><span class="pill ' + (s.mastery >= 80 ? "good" : s.mastery >= 40 ? "warn" : s.seen ? "bad" : "") + '">' + s.mastery + "%</span></td></tr>";
     }).join("");
     var cards = cardsFor(), known = cards.filter(function (c) { return S.c[c.id] && S.c[c.id][0] >= 2; }).length;
     return '<div class="stack"><h1>Progress</h1><section class="card stack"><div class="row"><div class="grow"><div class="eyebrow">Exam readiness</div><div class="big">' + readiness() + "%</div></div>" +
@@ -371,7 +377,7 @@
         '<div class="row"><button class="primary" data-act="smart" data-arg="20">Another 20</button><button data-act="tab" data-arg="today">Done</button></div></section></div>';
     }
     var done = s.picked >= 0, ok = done && s.opts[s.picked] === 0;
-    return '<div class="stack"><div class="row"><span class="eyebrow grow">' + esc(s.title) + " · " + TOPIC[q.t].title + '</span><button class="quiet" data-act="tab" data-arg="practice">End</button></div>' +
+    return '<div class="stack"><div class="row"><span class="eyebrow grow">' + esc(s.title) + "</span>" + chip(TOPIC[q.t]) + '<button class="quiet" data-act="tab" data-arg="practice">End</button></div>' +
       tape(pct(s.i - 1 + (done ? 1 : 0), s.i + s.queue.length)) +
       '<section class="card stack"><p class="qtext">' + esc(q.q) + "</p>" + optButtons(q, s.opts, s.picked, done, -1) + "</section>" +
       (done ? '<div class="why ' + (ok ? "ok" : "no") + '"><b>' + (ok ? "Correct." : "Not quite. The answer is: " + esc(q.a[0]) + ".") + "</b><p>" + esc(q.e) + '</p></div><div class="row"><button class="primary" data-act="next">' + (s.queue.length ? "Next question" : "See results") + "</button>" + (!ok && AI.sample ? '<button data-act="tWhy">Ask the teacher why</button>' : "") + "</div>" : "") + "</div>";
@@ -387,7 +393,7 @@
     var s = session, c = s.queue[s.i];
     if (!c && s.lesson) return '<div class="stack"><h1>Recall done</h1><section class="card stack"><div class="big">' + s.known + " / " + s.n + '</div><p class="muted">Now the check questions. You need 80% to pass the lesson.</p><div class="row"><button class="primary" data-act="lessonQuiz">Start the check</button></div></section></div>';
     if (!c) return '<div class="stack"><h1>Flashcards finished</h1><section class="card stack"><div class="big">' + s.known + " / " + s.n + '</div><p class="muted">Cards you did not know come back tomorrow.</p><div class="row"><button class="primary" data-act="tab" data-arg="practice">Done</button></div></section></div>';
-    return '<div class="stack"><div class="row"><span class="eyebrow grow">' + esc(s.title) + " · " + TOPIC[c.t].title + ' · <span class="num">' + (s.i + 1) + "/" + s.n + '</span></span><button class="quiet" data-act="tab" data-arg="practice">End</button></div>' +
+    return '<div class="stack"><div class="row"><span class="eyebrow grow">' + esc(s.title) + ' · <span class="num">' + (s.i + 1) + "/" + s.n + "</span></span>" + chip(TOPIC[c.t]) + '<button class="quiet" data-act="tab" data-arg="practice">End</button></div>' +
       '<section class="card flash"><div class="term">' + esc(c.f) + "</div>" + (s.shown ? '<div class="lesson" style="margin:0 auto">' + esc(c.b) + "</div>" : '<p class="muted">Say the meaning out loud, then check.</p>') + "</section>" +
       (s.shown ? '<div class="row"><button class="grow" data-act="card" data-arg="0">Did not know</button><button class="primary grow" data-act="card" data-arg="1">Knew it</button></div>' : '<button class="primary" data-act="flip">Show answer</button>') + "</div>";
   };
@@ -421,7 +427,7 @@
       var rows = TOPICS.filter(function (t) { return s.by[t.id]; }).map(function (t) { var b = s.by[t.id], x = pct(b[0], b[1]); return "<tr><td>" + t.title + '</td><td class="r">' + b[0] + "/" + b[1] + '</td><td class="r"><span class="pill ' + (x >= 80 ? "good" : x >= 60 ? "warn" : "bad") + '">' + x + "%</span></td></tr>"; }).join("");
       var misses = s.qs.map(function (q, i) {
         if (s.ans[i] >= 0 && s.opts[i][s.ans[i]] === 0) return "";
-        return '<div class="stack" style="gap:6px;padding:12px 0;border-top:1px solid var(--line)"><span class="eyebrow">' + TOPIC[q.t].title + "</span><b>" + esc(q.q) + '</b><span class="small"><span class="pill bad">Your answer</span> ' + (s.ans[i] < 0 ? "Not answered" : esc(q.a[s.opts[i][s.ans[i]]])) + '</span><span class="small"><span class="pill good">Correct</span> ' + esc(q.a[0]) + '</span><span class="small muted">' + esc(q.e) + "</span></div>";
+        return '<div class="stack" style="gap:6px;padding:12px 0;border-top:1px solid var(--line)">' + chip(TOPIC[q.t]) + "<b>" + esc(q.q) + '</b><span class="small"><span class="pill bad">Your answer</span> ' + (s.ans[i] < 0 ? "Not answered" : esc(q.a[s.opts[i][s.ans[i]]])) + '</span><span class="small"><span class="pill good">Correct</span> ' + esc(q.a[0]) + '</span><span class="small muted">' + esc(q.e) + "</span></div>";
       }).join("");
       return '<div class="stack"><h1>Exam result</h1><section class="card stack"><div class="row"><div class="grow"><div class="big">' + p + '%</div></div><div class="small muted num" style="text-align:right">' + s.right + " of " + s.qs.length + " correct<br>" + clock(s.secs) + " used of " + clock(s.limit) + "</div></div>" + tape(p, p >= 80 ? "good" : "") +
         '<p class="muted">' + (p >= 80 ? "At or above the 80% target. Keep the due reviews going so it stays there." : "Below the 80% target. The subjects marked red below are where the points are.") + "</p></section>" +
@@ -443,7 +449,7 @@
   // ---------- actions ----------
   var ACT = {
     tab: function (a) { go(a); },
-    vol: function (a) { var el = document.getElementById("vol" + a); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); },
+    vol: function (a) { volSel = +a; render(); var el = document.getElementById("vol" + a); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); },
     topic: function (a) { go("study", { t: a }); },
     lesson: function (a) { var x = a.split("|"); go("study", { t: x[0], sec: +x[1] }); },
     lessonGo: function () { var L = TOPIC[sub.t].ls[sub.sec]; startCards(L.cards, "Lesson recall", L); },

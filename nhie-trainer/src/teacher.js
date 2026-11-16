@@ -115,7 +115,7 @@
     if (!AI.ready) return '<div class="stack">' + head + '<section class="card muted">Connecting to the teacher…</section></div>';
     if (!AI.sample) return '<div class="stack">' + head + '<section class="card stack"><b>The teacher is not available here</b><p class="muted">The teacher uses Claude, so it only works when this page is opened in Claude (claude.ai or the Claude app) while you are signed in. Everything else in the app still works.</p></section></div>';
     if (AI.off === "denied") return '<div class="stack">' + head + '<section class="card stack"><b>The teacher is turned off</b><p class="muted">You chose not to let this page use Claude. To turn it on, open this artifact\'s Permissions menu, allow Claude, then reload the page.</p></section></div>';
-    var ctx = T.ctx ? '<div class="row card" style="padding:10px 14px"><span class="small grow">Talking about: <b>' + esc(T.ctx.t) + '</b> <span class="muted">(' + TOPIC[T.ctx.topic].title + ')</span></span><button class="quiet" data-act="tCtxOff" aria-label="Stop focusing on this lesson">✕</button></div>' : "";
+    var ctx = T.ctx ? '<div class="row card" style="padding:10px 14px"><span class="small grow">Talking about: <b>' + esc(T.ctx.t) + "</b> " + chip(TOPIC[T.ctx.topic]) + '</span><button class="quiet" data-act="tCtxOff" aria-label="Stop focusing on this lesson">✕</button></div>' : "";
     var msgs = T.turns.map(function (t, i) {
       if (t.role === "user") return '<div class="msg me">' + esc(t.show || t.content) + "</div>";
       return '<div class="msg bot"><div class="lesson" id="tb' + i + '">' + answerHtml(t.content, false) + "</div>" +

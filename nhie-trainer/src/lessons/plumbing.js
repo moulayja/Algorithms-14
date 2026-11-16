@@ -371,7 +371,7 @@ NHIE.lessons("plumbing", [
     ["Saddle fitting or hole drilled in a drain", "Not allowed (except listed saddles for small discharge tubes)."]
   ],
   qs: [
-    ["A sanitary tee is laid flat to join two horizontal drains. What is reported?", ["Improper fitting orientation", "Correct", "Too much slope", "Missing vent only"], "Sanitary tees only take horizontal flow into a vertical pipe."],
+    ["A sanitary tee is laid flat to join two horizontal drains. What is reported?", ["Improper fitting orientation", "Acceptable as installed", "Too much slope", "Missing vent only"], "Sanitary tees only take horizontal flow into a vertical pipe."],
     ["A 1 1/2 inch kitchen drain slopes 1/8 inch per foot. Is this enough?", ["No. Pipes under 3 inches need 1/4 inch per foot", "Yes", "It needs 1 inch per foot", "Slope does not matter"], "Smaller pipes need more slope."],
     ["Boxes are stacked against the main cleanout. What is reported?", ["Access to the cleanout is blocked", "Nothing", "Missing vent", "Improper slope"], "18 inches clear is needed."],
     ["A drain pipe sags between supports and holds water. What is the concern?", ["Improper slope and support can cause clogs and leaks", "Better flow", "Nothing", "Sewer gas only"], "Uniform slope is required."]
@@ -419,7 +419,7 @@ NHIE.lessons("plumbing", [
     ["A sink trap is 34 inches horizontally from the sink outlet. What is the concern?", ["It exceeds the 30 inch limit", "Nothing", "It is too close", "The seal is too deep"], "Long tailpiece runs drain poorly and dry the seal."],
     ["A toilet flush makes the bathtub drain gurgle. What may this indicate?", ["A venting problem", "High water pressure", "A bad flapper", "Normal"], "Air is being pulled through a trap."],
     ["A plumbing vent ends 4 feet from an operable window at the same height. What is reported?", ["The vent should be 10 feet away or 3 feet above the window", "Nothing", "The vent is too tall", "The vent is too large"], "Sewer gas could enter."],
-    ["An AAV is installed lying sideways under a sink. What is reported?", ["It must be within 15 degrees of vertical", "Correct", "It needs to be buried", "It must be in the attic"], "Tilted AAVs may not work."]
+    ["An AAV is installed lying sideways under a sink. What is reported?", ["It must be within 15 degrees of vertical", "Acceptable as installed", "It needs to be buried", "It must be in the attic"], "Tilted AAVs may not work."]
   ] },
 
 { t: "Septic systems, ejectors and sump pumps", p: "338–347",

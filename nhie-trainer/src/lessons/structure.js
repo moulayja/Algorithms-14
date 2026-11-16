@@ -65,7 +65,7 @@ NHIE.lessons("structure", [
     ["Temporary telescoping jack used as a permanent column", "Not acceptable; report it."]
   ],
   qs: [
-    ["A basement beam rests on a telescoping temporary jack post. What is reported?", ["Temporary support used as a permanent column", "Correct", "Cosmetic", "Nothing"], "Use a listed permanent column on a footing."],
+    ["A basement beam rests on a telescoping temporary jack post. What is reported?", ["Temporary support used as a permanent column", "Monitor; no action needed", "Cosmetic", "Nothing"], "Use a listed permanent column on a footing."],
     ["Crawl space piers are concrete blocks stacked without mortar. What is reported?", ["Dry-stacked piers are not acceptable", "Normal", "Better drainage", "Nothing"], "They can shift."],
     ["A wood column is bowed 1 1/4 inches over 8 feet. What should be recommended?", ["Evaluation; it exceeds the common 3/4 inch guideline", "Nothing", "Painting", "Sanding"], "Report and refer."]
   ] },
@@ -106,7 +106,7 @@ NHIE.lessons("structure", [
   qs: [
     ["A block basement wall has a horizontal crack at mid height and bulges in 1 1/2 inches. What should be recommended?", ["Evaluation by a structural engineer or foundation specialist", "Patching with caulk", "Painting", "Nothing"], "Lateral pressure failure is serious."],
     ["A vertical crack in a poured wall is the same width top to bottom, 1/16 inch wide. What is the likely cause?", ["Shrinkage", "Footing failure", "Frost heave", "Earthquake"], "Report and suggest monitoring."],
-    ["A crawl space beam rests 6 inches above the soil and is not treated. What is reported?", ["Too close to soil; untreated beams need 12 inches", "Correct", "Too high", "Nothing"], "Moisture and insects attack wood near soil."],
+    ["A crawl space beam rests 6 inches above the soil and is not treated. What is reported?", ["Too close to soil; untreated beams need 12 inches", "Cosmetic only", "Too high", "Nothing"], "Moisture and insects attack wood near soil."],
     ["What is the purpose of a foundation drain?", ["Carry ground water away from the footing", "Vent radon", "Carry sewage", "Support the wall"], "It relieves water pressure."]
   ] },
 
@@ -270,7 +270,7 @@ NHIE.lessons("structure", [
     ["Truss gusset plate gap limit", "More than 1/16 inch is not acceptable."]
   ],
   qs: [
-    ["Purlin braces in the attic land on the middle of the ceiling joists, not on a wall. What is reported?", ["Purlin braces must bear on a load-bearing wall", "Correct", "They need to be 1x4", "Nothing"], "Ceiling joists are not built for roof loads."],
+    ["Purlin braces in the attic land on the middle of the ceiling joists, not on a wall. What is reported?", ["Purlin braces must bear on a load-bearing wall", "Cosmetic only", "They need to be 1x4", "Nothing"], "Ceiling joists are not built for roof loads."],
     ["The ridge sags and the exterior walls lean out at the top. Ceiling joists run perpendicular to the rafters with no ties. What is the likely cause?", ["Rafter thrust with no rafter ties", "Too many collar ties", "Heavy gutters", "Too much ventilation"], "Rafter feet push the walls apart."],
     ["A roof sheathing piece is 16 inches wide between two full sheets. What is reported?", ["Pieces under 24 inches wide are too weak", "Normal", "Cosmetic", "Required"], "Small pieces cannot carry design loads."],
     ["Truss gusset plates have lifted 1/4 inch from the wood. What is recommended?", ["Evaluation by an engineer", "Hammer them back", "Nothing", "Paint them"], "Plates cannot be repaired by hammering."]
@@ -303,7 +303,7 @@ NHIE.lessons("structure", [
     ["Pull-down attic stair fasteners", "As the maker specifies (often 16d nails or lag screws through every bracket hole); not drywall screws."]
   ],
   qs: [
-    ["Pull-down attic stairs are attached with drywall screws only. What is reported?", ["Improper fasteners; follow the maker's instructions", "Correct", "Cosmetic", "Too strong"], "The stairs can pull loose under load."],
+    ["Pull-down attic stairs are attached with drywall screws only. What is reported?", ["Improper fasteners; follow the maker's instructions", "Acceptable as installed", "Cosmetic", "Too strong"], "The stairs can pull loose under load."],
     ["The legs of a folding attic stair stop 3 inches above the floor. What is the concern?", ["The stairs are cut wrong and may break under load", "Nothing", "Better ventilation", "Fire separation"], "Legs must rest on the floor."],
     ["An attic furnace is reached only through a closet with fixed shelving blocking the hatch. What is reported?", ["Inadequate access for service and replacement", "Nothing", "A fire hazard only", "Good security"], "Appliances must be removable without damaging construction."]
   ] }

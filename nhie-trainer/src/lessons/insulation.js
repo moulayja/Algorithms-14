@@ -160,7 +160,7 @@ NHIE.lessons("insulation", [
     ["Screen opening size for intake and exhaust openings", "Between 1/4 and 1/2 inch (no screen on dryer exhausts)."]
   ],
   qs: [
-    ["An HRV fresh air intake is 4 feet from the furnace exhaust pipe at the same height. What is reported?", ["Intake too close; 10 feet horizontally or 3 feet below is required", "Correct", "Too far", "Nothing"], "Exhaust could be drawn back in."],
+    ["An HRV fresh air intake is 4 feet from the furnace exhaust pipe at the same height. What is reported?", ["Intake too close; 10 feet horizontally or 3 feet below is required", "Cosmetic only", "Too far", "Nothing"], "Exhaust could be drawn back in."],
     ["A whole-house fan runs with all windows closed and a gas water heater in the basement. What is the danger?", ["Backdrafting of combustion gases", "Too much fresh air", "None", "Frozen pipes"], "The fan depressurizes the house."],
     ["What does an ERV transfer that an HRV does not?", ["Moisture", "Electricity", "Refrigerant", "Smoke"], "Both transfer heat."]
   ] },
@@ -237,6 +237,6 @@ NHIE.lessons("insulation", [
     ["A 1,500 sq ft attic has balanced ridge and eave vents. Roughly how much net free vent area is needed?", ["5 square feet", "10 square feet", "1 square foot", "15 square feet"], "1:300 = 5 sq ft."],
     ["A crawl space of 1,500 sq ft has a sealed Class I ground cover. How much vent area is needed?", ["About 1 square foot", "10 square feet", "15 square feet", "None"], "1:1,500."],
     ["A ridge vent was added but the soffits have no intake vents. What is the concern?", ["Exhaust without intake can pull air from the house", "Perfect balance", "Too much ventilation", "Nothing"], "Ventilation needs low intake and high exhaust."],
-    ["Spray foam covers the crawl space walls with no covering. What may be reported?", ["Foam needs an ignition or thermal barrier", "Correct", "Too much R-value", "Nothing"], "Exposed foam is a fire concern."]
+    ["Spray foam covers the crawl space walls with no covering. What may be reported?", ["Foam needs an ignition or thermal barrier", "Cosmetic only", "Too much R-value", "Nothing"], "Exposed foam is a fire concern."]
   ] }
 ]);

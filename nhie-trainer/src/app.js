@@ -174,6 +174,22 @@
   }
 
   // ---------- navigation ----------
+  var ICON = {
+    today: '<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+    study: '<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5"/>',
+    practice: '<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 12l2 2 4-4"/>',
+    exam: '<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/>',
+    progress: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+    teacher: '<path d="M4 5h16v11H9l-5 4z"/>'
+  };
+  // The ring motif: a thick white arc showing p percent around a small four-part pie.
+  function ring(p, faint) {
+    var c = 2 * Math.PI * 74, a = Math.max(0, Math.min(100, p)) / 100 * c;
+    return '<svg class="ring' + (faint ? " faint" : "") + '" viewBox="0 0 200 200" aria-hidden="true">' +
+      '<circle cx="100" cy="100" r="74" fill="none" stroke="#FFFFFF" stroke-opacity=".16" stroke-width="40"/>' +
+      '<circle cx="100" cy="100" r="74" fill="none" stroke="#FFFFFF" stroke-width="40" stroke-dasharray="' + a.toFixed(1) + " " + c.toFixed(1) + '" transform="rotate(-90 100 100)"/>' +
+      (faint ? "" : '<path d="M100 100 L100 46 A54 54 0 0 1 154 100 Z" fill="#2E6B5A"/><path d="M100 100 L154 100 A54 54 0 0 1 100 154 Z" fill="#4A8473"/><path d="M100 100 L100 154 A54 54 0 0 1 46 100 Z" fill="#1E5A4B"/><path d="M100 100 L46 100 A54 54 0 0 1 100 46 Z" fill="#B7812B"/>') + "</svg>";
+  }
   var TABS = [["today", "Today"], ["study", "Study"], ["practice", "Practice"], ["exam", "Exam"], ["progress", "Progress"], ["teacher", "Teacher"]];
   var tab = "today", sub = null, session = null, timer = 0, confirmKey = "";
   function go(t, s) { T.back = null; tab = t; sub = s || null; session = null; clearInterval(timer); confirmKey = ""; if (location.hash !== "#" + t) location.hash = t; render(); window.scrollTo(0, 0); }
@@ -183,7 +199,7 @@
   });
   function render() {
     document.getElementById("tabs").innerHTML = TABS.map(function (t) {
-      return '<button data-act="tab" data-arg="' + t[0] + '"' + (t[0] === tab ? ' aria-current="page"' : "") + ">" + t[1] + "</button>";
+      return '<button data-act="tab" data-arg="' + t[0] + '"' + (t[0] === tab ? ' aria-current="page"' : "") + '><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ICON[t[0]] + "</svg>" + t[1] + "</button>";
     }).join("");
     view.innerHTML = session ? SESSION[session.kind]() : PAGES[tab]();
   }
@@ -201,12 +217,14 @@
       return '<div class="step' + (done[k] ? " done" : "") + '"><div><b>' + title + '</b><div class="muted small">' + text + '</div></div><button class="' + (done[k] ? "" : "primary") + '" data-act="' + act + '" data-arg="' + (arg || "") + '">' + label + "</button></div>";
     }
     return '<div class="stack">' +
-      '<header class="stack" style="gap:4px"><span class="eyebrow">National Home Inspector Examination</span><h1>NHIE School</h1></header>' +
-      '<section class="card stack"><div class="row"><div class="grow"><div class="eyebrow">Exam readiness</div><div class="big">' + r + '%</div></div>' +
-      '<div class="small muted" style="text-align:right"><div class="num">' + seenN + " of " + total + ' questions tried</div><div class="num">' + (sN ? sN + "-day study streak" : "No streak yet") + "</div>" + (days ? "<div>" + days + "</div>" : "") + "</div></div>" +
-      tape(r, r >= 80 ? "good" : "") +
-      '<p class="small muted">Readiness counts a question only after you answer it correctly on separate days. Aim for 80% before you book the exam.</p>' +
-      '<div class="row"><label class="small muted" for="examdate">Exam date</label><input type="date" id="examdate" data-change="examdate" value="' + esc(S.meta.exam || "") + '"></div></section>' +
+      '<header class="row" style="justify-content:space-between"><span class="row" style="gap:8px"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 1-9 9h4.5A4.5 4.5 0 1 0 12 7.5z" fill="var(--gold)"/></svg><b style="font:800 .95rem var(--display);letter-spacing:.1em">NHIE SCHOOL</b></span><span class="small muted">' + new Date().toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" }) + "</span></header>" +
+      '<section class="hero stack" style="min-height:300px;justify-content:space-between">' + ring(r) +
+      '<div class="eyebrow" style="position:relative">Exam readiness</div>' +
+      '<div class="stack" style="gap:4px;position:relative"><span class="bignum num">' + r + '%</span><span class="cap num">' + seenN + " of " + total + " questions tried</span>" +
+      '<p class="small" style="color:#E4EEE9;max-width:30ch;margin-top:6px">A question counts once you answer it right on separate days. Aim for 80% before you book.</p></div></section>' +
+      '<div class="tiles"><div class="tile dark"><b class="num">' + (S.meta.exam ? Math.max(0, Math.ceil((new Date(S.meta.exam + "T00:00:00") - new Date()) / 864e5)) : "–") + '</b><span>Days to exam</span>' +
+      '<input type="date" id="examdate" data-change="examdate" aria-label="Exam date" value="' + esc(S.meta.exam || "") + '" style="margin-top:8px;min-height:36px;padding:4px 8px;font-size:.8rem;background:transparent;color:#FFFFFF;border-color:rgba(255,255,255,.3);color-scheme:dark"></div>' +
+      '<div class="tile"><b class="num">' + sN + "</b><span>Day streak</span></div></div>" +
       '<section class="card"><h2 style="margin-bottom:12px">Today\'s class</h2><div class="plan">' +
       step("review", "Warm-up: questions from earlier lessons", due ? due + " questions are due again today." : "Nothing is due yet.", "review", "", due ? "Start" : "None due") +
       step("cards", "Flashcards from earlier lessons", cdue ? cdue + " cards are due again today." : "Nothing is due yet.", "cardsDue", "", cdue ? "Start" : "None due") +
@@ -226,8 +244,9 @@
   PAGES.study = function () {
     if (sub && sub.sec != null) return lessonPage();
     if (sub) return topicPage();
-    var html = '<div class="stack"><h1>Study</h1><p class="muted" style="margin:0">' + TOPICS.length + " chapters · " + ALL_LESSONS.length + ' lessons from both books. Scroll down for Volume 2, or jump:</p><div class="row">' +
-      [1, 2].map(function (v) { var n = TOPICS.filter(function (t) { return t.vol === v; }); return '<button class="grow" data-act="vol" data-arg="' + v + '">Volume ' + v + ' · <span class="num">' + n.length + " chapters</span></button>"; }).join("") + "</div>";
+    var html = '<div class="stack"><h1>Study</h1><div class="tiles"><div class="tile" style="background:linear-gradient(150deg,#0F3A31,#1E5A4B)"><b class="num" style="color:#FFFFFF">' + TOPICS.length + '</b><span style="color:#E4EEE9">Chapters</span></div><div class="tile dark"><b class="num">' + ALL_LESSONS.length + '</b><span>Lessons</span></div></div>' +
+      '<p class="small muted">Both books are below. Jump to a volume:</p><div class="seg">' +
+      [1, 2].map(function (v) { var n = TOPICS.filter(function (t) { return t.vol === v; }); return '<button data-act="vol" data-arg="' + v + '">Volume ' + v + ' · <span class="num">' + n.length + "</span></button>"; }).join("") + "</div>";
     [1, 2].forEach(function (v) {
       html += '<section class="card" id="vol' + v + '"><div class="eyebrow">' + VOLS[v] + " · " + TOPICS.filter(function (t) { return t.vol === v; }).length + ' chapters</div><div class="list">';
       TOPICS.filter(function (t) { return t.vol === v; }).forEach(function (t) {
@@ -263,13 +282,13 @@
       var k = x.slice(0, 2), body = esc(x.slice(2));
       if (k === "- ") { if (!open) { html += "<ul>"; open = true; } html += "<li>" + body.replace(/^([^:]{2,60}):/, "<b>$1:</b>") + "</li>"; return; }
       if (open) { html += "</ul>"; open = false; }
-      html += k === "# " ? "<h4>" + body + "</h4>" : k === "! " ? '<p class="why"><b>Remember:</b> ' + body + "</p>" : "<p>" + esc(x) + "</p>";
+      html += k === "# " ? "<h4>" + body + "</h4>" : k === "! " ? '<p class="why"><b>Remember</b> ' + body + "</p>" : "<p>" + esc(x) + "</p>";
     });
     if (open) html += "</ul>";
     return '<div class="stack"><button class="quiet" style="align-self:flex-start" data-act="topic" data-arg="' + t.id + '">‹ ' + t.title + "</button>" +
-      '<header class="stack" style="gap:6px"><span class="eyebrow num">' + VOLS[t.vol].split(" · ")[0] + " · " + t.title + " · lesson " + (L.i + 1) + " of " + t.ls.length + "</span><h1>" + esc(L.t) + "</h1>" +
-      '<p class="muted">' + esc(L.goal) + "</p></header>" +
-      '<div class="card row"><span class="pill num">Book pages ' + L.p + '</span><span class="small muted grow">Read these pages in the book first or after. This lesson is the same material in plain words.</span></div>' +
+      '<header class="hero stack" style="gap:14px">' + ring(Math.round((L.i + 1) / t.ls.length * 100), true) + '<span class="eyebrow num" style="position:relative">' + VOLS[t.vol].split(" · ")[0] + " · lesson " + (L.i + 1) + " of " + t.ls.length + "</span><h1>" + esc(L.t) + "</h1>" +
+      '<div class="row" style="position:relative"><span class="pill num">Book pages ' + L.p + '</span><span class="pill">' + t.title + "</span></div></header>" +
+      '<p class="muted"><b style="color:var(--ink)">Goal:</b> ' + esc(L.goal) + ' Read the book pages before or after; this lesson is the same material in plain words.</p>' +
       '<article class="card lesson">' + html + "</article>" +
       (AI.sample || AI.tts ? '<div class="card stack"><b>Did not get it?</b><div class="chips">' +
         (AI.sample ? '<button class="chip" data-act="tLesson" data-arg="' + t.id + "|" + L.i + '|simple">Explain it simpler</button><button class="chip" data-act="tLesson" data-arg="' + t.id + "|" + L.i + '|draw">Draw me a picture</button><button class="chip" data-act="tLesson" data-arg="' + t.id + "|" + L.i + '|ask">Ask the teacher</button>' : "") +

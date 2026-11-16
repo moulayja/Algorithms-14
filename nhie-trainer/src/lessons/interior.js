@@ -114,10 +114,10 @@ NHIE.lessons("interior", [
   ],
   qs: [
     ["Basement stair risers are 8 1/2 inches in a 1940 house. How might they be reported?", ["Taller than current standards; a fall risk worth noting", "Ideal", "Too short", "Not reportable ever"], "Older standards allowed taller risers, but safety still matters."],
-    ["Stair guard balusters are 5 inches apart. What is reported?", ["Openings too wide: stair guards must stop a 4 3/8 inch sphere", "Correct", "Too close", "Cosmetic"], "Children can slip through."],
-    ["A handrail is 32 inches above the nosings. What is reported?", ["Too low; 34 to 38 inches is required", "Correct", "Too high", "Nothing"], "Height matters for a secure grip."],
-    ["A stair has winders whose narrow ends are 3 inches deep. What is reported?", ["Winders must be at least 6 inches at any point", "Correct", "Too deep", "Nothing"], "Narrow winders cause falls."],
-    ["Stairs with eight risers have a light switch only at the top. What is reported?", ["Switches needed at top and bottom with six or more risers", "Correct", "Too many switches", "Nothing"], "People need light before they climb."]
+    ["Stair guard balusters are 5 inches apart. What is reported?", ["Openings too wide: stair guards must stop a 4 3/8 inch sphere", "Acceptable as installed", "Too close", "Cosmetic"], "Children can slip through."],
+    ["A handrail is 32 inches above the nosings. What is reported?", ["Too low; 34 to 38 inches is required", "Cosmetic only", "Too high", "Nothing"], "Height matters for a secure grip."],
+    ["A stair has winders whose narrow ends are 3 inches deep. What is reported?", ["Winders must be at least 6 inches at any point", "Cosmetic only", "Too deep", "Nothing"], "Narrow winders cause falls."],
+    ["Stairs with eight risers have a light switch only at the top. What is reported?", ["Switches needed at top and bottom with six or more risers", "Cosmetic only", "Too many switches", "Nothing"], "People need light before they climb."]
   ] },
 
 { t: "Cabinets, countertops and smart homes", p: "355–360",
@@ -144,7 +144,7 @@ NHIE.lessons("interior", [
     ["Bathroom vanity size", "18 to 22 inches deep; 31 to 36 inches high."]
   ],
   qs: [
-    ["Upper cabinets are held up with drywall anchors only. What is reported?", ["Improper fastening; cabinets should be screwed into framing", "Correct", "Cosmetic", "Nothing"], "Loaded cabinets can fall."],
+    ["Upper cabinets are held up with drywall anchors only. What is reported?", ["Improper fastening; cabinets should be screwed into framing", "Monitor; no action needed", "Cosmetic", "Nothing"], "Loaded cabinets can fall."],
     ["The cabinet drawer next to the range hits the oven handle when opened. Is this reportable?", ["Yes; it is a functional defect", "No", "Only if new", "Only with gas ranges"], "Report items that do not work as intended."],
     ["The buyer asks if the smart lighting system works. What is the inspector's position?", ["Smart home systems are out of scope; disclaim and suggest a specialist", "Test every scene", "Guarantee it", "Ignore the question"], "Normal controls only."]
   ] }

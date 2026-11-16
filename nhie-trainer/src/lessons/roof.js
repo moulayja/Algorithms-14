@@ -288,7 +288,7 @@ NHIE.lessons("roof", [
   ],
   qs: [
     ["Rot is found in the siding below where a lower roof edge meets a two-story wall. What is most likely missing?", ["Kickout flashing", "A ridge vent", "A storm collar", "Drip edge at the rake"], "Without a kickout, roof water runs behind the siding."],
-    ["Counterflashing on a brick chimney is held on only by roofing cement along its top edge. How is this reported?", ["Deficient: it should be set into a mortar groove and secured", "Correct", "Cosmetic", "Not visible"], "Cement needs constant upkeep."],
+    ["Counterflashing on a brick chimney is held on only by roofing cement along its top edge. How is this reported?", ["Deficient: it should be set into a mortar groove and secured", "Acceptable as installed", "Cosmetic", "Not visible"], "Cement needs constant upkeep."],
     ["A gas water heater vent passes through the roof boot with no ring above it. What is missing?", ["A storm collar", "A cricket", "A kickout", "A scupper"], "The collar sheds water away from the boot opening."],
     ["The rubber boot around a plumbing vent is cracked from the sun. What is the typical life of this boot type?", ["10 to 20 years", "1 year", "50 years", "100 years"], "Lead boots last 30 years or more."]
   ] },

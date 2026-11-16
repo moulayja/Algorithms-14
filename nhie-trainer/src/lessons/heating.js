@@ -301,7 +301,7 @@ NHIE.lessons("heating", [
   qs: [
     ["An oil burner flame is dark orange with smoky tips touching the chamber walls. What is reported?", ["Improper combustion; recommend service", "Normal", "Very efficient", "A gas leak"], "Modern oil flames are white."],
     ["Soot covers the area around the barometric damper and the occupant heard a bang. What occurred?", ["A puffback", "Normal start", "A refrigerant leak", "A blown fuse"], "Unburned oil ignited."],
-    ["An oil furnace is vented with Type B pipe. What is reported?", ["Improper vent material; oil needs Type L or a chimney", "Correct", "Too much clearance", "Missing PVC"], "Type B is for gas only."],
+    ["An oil furnace is vented with Type B pipe. What is reported?", ["Improper vent material; oil needs Type L or a chimney", "Acceptable as installed", "Too much clearance", "Missing PVC"], "Type B is for gas only."],
     ["A single-wall oil vent connector is 4 inches from wood. What clearance is required?", ["9 inches", "1 inch", "3 inches", "18 inches"], "Type L: 3 inches. Single-wall: 9 inches."]
   ] },
 

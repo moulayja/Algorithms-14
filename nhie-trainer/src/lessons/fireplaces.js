@@ -149,7 +149,7 @@ NHIE.lessons("fireplaces", [
   qs: [
     ["A chimney ends 18 inches below a neighbor's taller roof 6 feet away. What is the concern?", ["It must be 2 feet above anything within 10 feet", "Nothing; it is a different property", "It is too tall", "Only the color"], "Obstructions on other property count."],
     ["A fireplace opening is 720 square inches. What is the minimum area of a rectangular flue?", ["72 square inches", "60 square inches", "720 square inches", "36 square inches"], "Rectangular: 1/10."],
-    ["A furnace vent connector enters the same flue as the fireplace. What is reported?", ["A fireplace may not share its flue with another appliance", "Correct", "More efficient", "Nothing"], "Each fireplace needs its own flue."],
+    ["A furnace vent connector enters the same flue as the fireplace. What is reported?", ["A fireplace may not share its flue with another appliance", "Cosmetic only", "More efficient", "Nothing"], "Each fireplace needs its own flue."],
     ["A mortar-only crown is cracked and water stains the chimney inside. What should be recommended?", ["Repair by a qualified chimney contractor; a proper crown has an overhang and drip edge", "Paint it", "Nothing", "Remove the liner"], "Mortar crowns fail quickly."]
   ] },
 
@@ -233,7 +233,7 @@ NHIE.lessons("fireplaces", [
   ],
   qs: [
     ["An old wood stove with no label sits 20 inches from a paneled wall. What is reported?", ["Inadequate clearance; assume 36 inches for an unlisted stove", "Acceptable", "Too far", "Nothing"], "Without a listing, use 36 inches."],
-    ["Single-wall stove pipe passes through the ceiling into the attic. What is reported?", ["Not allowed; a listed chimney and thimble are required", "Correct", "It needs paint", "Too much clearance"], "Single-wall pipe may not pass through ceilings."],
+    ["Single-wall stove pipe passes through the ceiling into the attic. What is reported?", ["Not allowed; a listed chimney and thimble are required", "Acceptable as installed", "It needs paint", "Too much clearance"], "Single-wall pipe may not pass through ceilings."],
     ["A fireplace insert vents into a large masonry flue with no visible liner at the top. What should be recommended?", ["Evaluation; many makers require a stainless liner to the top", "Nothing", "A bigger flue", "Closing the damper"], "Oversized flues draft poorly and build creosote."],
     ["A spark arrestor screen has 1 inch openings. Is it effective?", ["No; it should block 1/2 inch spheres", "Yes", "It should be solid", "It should have 2 inch openings"], "Embers pass through large openings."]
   ] }

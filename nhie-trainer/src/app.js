@@ -199,7 +199,7 @@
   // A running quiz or flashcard set adds "~", so Back closes it and returns to the page it was started from.
   function route(t, s) { return t + (s && s.t ? "/" + s.t + (s.sec != null ? "/" + s.sec : "") : ""); }
   function parseRoute(h) {
-    var p = h.replace(/~$/, "").split("/"), t = p[0];
+    var p = h.replace(/[~!]+$/, "").split("/"), t = p[0];
     if (!TABS.some(function (x) { return x[0] === t; })) return null;
     var s = null;
     if (t === "study" && TOPIC[p[1]]) { s = { t: p[1] }; if (p[2] != null && TOPIC[p[1]].ls[+p[2]]) s.sec = +p[2]; }
@@ -210,12 +210,17 @@
   function closeSession() { session = null; clearInterval(timer); confirmKey = ""; var r = route(tab, sub); if (location.hash !== "#" + r) location.replace("#" + r); render(); window.scrollTo(0, 0); }
   window.addEventListener("hashchange", function () {
     var h = location.hash.slice(1);
+    if (h.slice(-1) === "!") return;          // the teacher panel just opened over this page
+    if (T.sheet) { closeSheet(); return; }    // Back while the teacher is open: close it, stay on this page
+    if (T.skipHash) { T.skipHash = false; return; }   // the teacher panel just closed; nothing else changes
+    var closed = false;
     if (session && h.slice(-1) !== "~") {
       if (session.kind === "exam") { location.hash = route(tab, sub) + "~"; confirmKey = "finish"; render(); return; }
-      session = null; clearInterval(timer);
+      session = null; clearInterval(timer); closed = true;
     }
     var r = parseRoute(h); if (!r) return;
-    if (route(r.t, r.s) !== route(tab, sub) || (!session && h.slice(-1) !== "~")) { var keep = session; go(r.t, r.s); if (keep && h.slice(-1) === "~") { session = keep; render(); } }
+    if (route(r.t, r.s) !== route(tab, sub)) { var keep = session; go(r.t, r.s); if (keep && h.slice(-1) === "~") { session = keep; render(); } }
+    else if (closed) { render(); window.scrollTo(0, 0); }
   });
   // Top bar on inner pages: one big Back button plus a breadcrumb you can tap.
   function backbar(crumbs, extra) {
@@ -228,6 +233,7 @@
       return '<button data-act="tab" data-arg="' + t[0] + '"' + (t[0] === tab ? ' aria-current="page"' : "") + '><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ICON[t[0]] + "</svg>" + t[1] + "</button>";
     }).join("");
     view.innerHTML = session ? SESSION[session.kind]() : PAGES[tab]();
+    teacherChrome();
   }
 
   // ---------- pages ----------
@@ -528,7 +534,7 @@
   }, true);
 
   var start = parseRoute(location.hash.slice(1));
-  if (start) { tab = start.t; sub = start.s; if (location.hash.slice(-1) === "~") location.replace("#" + route(tab, sub)); }
+  if (start) { tab = start.t; sub = start.s; if (/[~!]$/.test(location.hash)) location.replace("#" + route(tab, sub)); }
   render();
   cloudInit();
   aiInit();

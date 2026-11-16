@@ -1,13 +1,13 @@
   // ---------- teacher (asks Claude through the page's sample capability) ----------
   // Inserted into app.js by tools/build.js; shares its scope (TOPIC, esc, go, render, view, session).
   var AI = { sample: null, tts: null, ready: false, off: "" };
-  var T = { turns: [], busy: false, ctl: null, ctx: null, err: "", speaking: -1, back: null };
+  var T = { turns: [], busy: false, ctl: null, ctx: null, topic: null, err: "", speaking: -1, back: null, sheet: false };
   try { var saved = JSON.parse(localStorage.getItem("nhie-teacher") || "null"); if (saved && saved.turns) { T.turns = saved.turns.slice(-20); } } catch (e) {}
   function saveChat() { try { localStorage.setItem("nhie-teacher", JSON.stringify({ turns: T.turns.slice(-20) })); } catch (e) {} }
 
   function aiInit() {
     if (!window.claude || !window.claude.use) { AI.ready = true; AI.off = "nowhere"; return; }
-    window.claude.use("sample").then(function (s) { AI.sample = s; AI.ready = true; if (!s) AI.off = "nowhere"; if (tab === "teacher" && !session) render(); });
+    window.claude.use("sample").then(function (s) { AI.sample = s; AI.ready = true; if (!s) AI.off = "nowhere"; if (tab === "teacher" && !session) render(); teacherChrome(); });
     window.claude.use("tts").then(function (t) { AI.tts = t; if (t && t.onState) t.onState(function (st) { if (st.state === "idle") { T.speaking = -1; paintSpeak(); } }); });
   }
 
@@ -57,6 +57,7 @@
     related(last, T.ctx).forEach(function (L) { notes.push(L); });
     var ctxText = notes.length ? "\n\nLesson notes from the app (written from the NHIE manuals):\n\n" + notes.map(lessonText).join("\n\n").slice(0, 9000) : "";
     if (T.ctx) ctxText += "\n\nThe student is currently studying: " + T.ctx.t + ".";
+    else if (T.topic && TOPIC[T.topic]) ctxText += "\n\nThe student is currently studying the chapter: " + TOPIC[T.topic].title + ".";
     var turns = T.turns.slice(-12);
     while (turns.length && turns[0].role !== "user") turns.shift();
     return [{ role: "user", content: RULES + ctxText }].concat(turns.map(function (t) { return { role: t.role, content: t.content }; }));
@@ -108,14 +109,26 @@
   var QUICK = [["Simpler please", "Explain that again even more simply, like I am new to houses."], ["Draw it", "Draw me a picture that shows this."], ["Real example", "Give me a real example from a house inspection."], ["Memory trick", "Give me a memory trick to remember this for the exam."], ["Quiz me", "Ask me 3 exam-style multiple choice questions on this, one at a time, and wait for my answer."]];
   var STARTERS = ["What is the difference between a GFCI and an AFCI?", "Draw how a P-trap stops sewer gas", "Explain the four elements of a contract simply", "Why does attic ventilation matter?"];
 
+  function starters() {
+    var name = T.ctx ? "the lesson \"" + T.ctx.t + "\"" : T.topic && TOPIC[T.topic] ? "the chapter " + TOPIC[T.topic].title : "";
+    if (!name) return STARTERS.map(function (x) { return [x, x]; });
+    return [["Explain this lesson simply", "Teach me " + name + " in very simple words, step by step."],
+      ["Draw me a picture of it", "Draw a picture that explains the main idea of " + name + "."],
+      ["Give me a memory trick", "Give me memory tricks for the numbers and rules in " + name + "."],
+      ["Quiz me on this", "Ask me 3 exam-style multiple choice questions on " + name + ", one at a time, and wait for my answer."]];
+  }
   PAGES.teacher = function () {
     var back = T.back ? '<div class="backbar"><button class="back" data-act="tBack"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Back to your questions</button></div>' : "";
     var head = back + '<header class="row"><div class="grow stack" style="gap:2px"><h1>Teacher</h1><span class="small muted">Ask anything from Volume 1 or 2. Ask for a picture if you want to see it.</span></div>' +
       (T.turns.length ? '<button class="quiet" data-act="tNew">New chat</button>' : "") + "</header>";
-    if (!AI.ready) return '<div class="stack">' + head + '<section class="card muted">Connecting to the teacher…</section></div>';
-    if (!AI.sample) return '<div class="stack">' + head + '<section class="card stack"><b>The teacher is not available here</b><p class="muted">The teacher uses Claude, so it only works when this page is opened in Claude (claude.ai or the Claude app) while you are signed in. Everything else in the app still works.</p></section></div>';
-    if (AI.off === "denied") return '<div class="stack">' + head + '<section class="card stack"><b>The teacher is turned off</b><p class="muted">You chose not to let this page use Claude. To turn it on, open this artifact\'s Permissions menu, allow Claude, then reload the page.</p></section></div>';
-    var ctx = T.ctx ? '<div class="row card" style="padding:10px 14px"><span class="small grow">Talking about: <b>' + esc(T.ctx.t) + "</b> " + chip(TOPIC[T.ctx.topic]) + '</span><button class="quiet" data-act="tCtxOff" aria-label="Stop focusing on this lesson">✕</button></div>' : "";
+    return '<div class="stack">' + head + chatBody() + "</div>";
+  };
+  function chatBody() {
+    if (!AI.ready) return '<section class="card muted">Connecting to the teacher…</section>';
+    if (!AI.sample) return '<section class="card stack"><b>The teacher is not available here</b><p class="muted">The teacher uses Claude, so it only works when this page is opened in Claude (claude.ai or the Claude app) while you are signed in. Everything else in the app still works.</p></section>';
+    if (AI.off === "denied") return '<section class="card stack"><b>The teacher is turned off</b><p class="muted">You chose not to let this page use Claude. To turn it on, open this artifact\'s Permissions menu, allow Claude, then reload the page.</p></section>';
+    var ctx = T.ctx ? '<div class="row card" style="padding:10px 14px"><span class="small grow">Talking about: <b>' + esc(T.ctx.t) + "</b> " + chip(TOPIC[T.ctx.topic]) + '</span><button class="quiet" data-act="tCtxOff" aria-label="Stop focusing on this lesson">✕</button></div>'
+      : T.topic && TOPIC[T.topic] ? '<div class="row card" style="padding:10px 14px"><span class="small grow">Talking about: ' + chip(TOPIC[T.topic]) + '</span><button class="quiet" data-act="tCtxOff" aria-label="Stop focusing on this chapter">✕</button></div>' : "";
     var msgs = T.turns.map(function (t, i) {
       if (t.role === "user") return '<div class="msg me">' + esc(t.show || t.content) + "</div>";
       return '<div class="msg bot"><div class="lesson" id="tb' + i + '">' + answerHtml(t.content, false) + "</div>" +
@@ -123,22 +136,75 @@
     }).join("");
     if (T.busy) msgs += '<div class="msg bot"><div class="lesson" id="tlive"><p class="muted">Thinking…</p></div></div>';
     var empty = !T.turns.length && !T.busy ? '<section class="card stack"><p>Hi! I am your NHIE teacher. Ask me about anything you did not understand, in your own words. I can explain it more simply, give examples and memory tricks, quiz you, and draw diagrams.</p><div class="chips">' +
-      STARTERS.map(function (s) { return '<button class="chip" data-act="tAsk" data-arg="' + esc(s) + '">' + esc(s) + "</button>"; }).join("") + "</div></section>" : "";
+      starters().map(function (s) { return '<button class="chip" data-act="tAsk" data-arg="' + esc(s[1]) + '">' + esc(s[0]) + "</button>"; }).join("") + "</div></section>" : "";
     var quick = T.turns.length && !T.busy ? '<div class="chips">' + QUICK.map(function (q) { return '<button class="chip" data-act="tAsk" data-arg="' + esc(q[1]) + '">' + q[0] + "</button>"; }).join("") + "</div>" : "";
     var err = T.err ? '<p class="why no small">' + esc(T.err) + "</p>" : "";
     var box = '<form class="composer" data-form="teacher"><textarea id="tin" rows="2" placeholder="Type your question…" aria-label="Your question"' + (T.busy ? " disabled" : "") + "></textarea>" +
       (T.busy ? '<button type="button" data-act="tStop">Stop</button>' : '<button class="primary" type="submit">Ask</button>') + "</form>";
-    return '<div class="stack">' + head + ctx + empty + '<div class="chat">' + msgs + "</div>" + err + quick + box + "</div>";
-  };
+    return ctx + empty + '<div class="chat">' + msgs + "</div>" + err + quick + box;
+  }
 
-  function scrollChat() { var el = document.getElementById("tlive") || view.querySelector(".msg:last-child"); if (el) el.scrollIntoView({ block: "end", behavior: "smooth" }); }
+  // ---- the teacher as a panel over any subject page: closing it leaves you exactly where you were ----
+  var sheetEl = document.createElement("div"), fabEl = document.createElement("button");
+  sheetEl.id = "tsheet"; sheetEl.hidden = true; document.body.appendChild(sheetEl);
+  fabEl.id = "tfab"; fabEl.type = "button"; fabEl.hidden = true; fabEl.setAttribute("data-act", "tOpen");
+  fabEl.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8.5 9.5h7M8.5 12.5h4"/></svg>Ask the teacher';
+  document.body.appendChild(fabEl);
+  function subjectHere() {
+    if (session && session.kind === "exam") return null;
+    if (session && session.kind === "quiz" && session.cur) return { t: session.cur.t, l: session.cur.l };
+    if (session && session.kind === "cards" && session.queue[session.i]) return { t: session.queue[session.i].t, l: session.queue[session.i].l };
+    if (session && session.lesson) return { t: session.lesson.topic, l: session.lesson.i };
+    if (!session && tab === "study" && sub && sub.t) return { t: sub.t, l: sub.sec != null ? sub.sec : null };
+    return null;
+  }
+  function teacherChrome() { fabEl.hidden = !(AI.sample && AI.off !== "denied" && !T.sheet && tab !== "teacher" && subjectHere()); }
+  function renderSheet() {
+    sheetEl.hidden = !T.sheet;
+    if (!T.sheet) { sheetEl.innerHTML = ""; return; }
+    var keep = document.getElementById("tin"), draft = keep ? keep.value : "";
+    sheetEl.innerHTML = '<div class="sheet-bg" data-act="tClose"></div><section class="sheet" role="dialog" aria-modal="true" aria-label="Teacher">' +
+      '<header class="sheet-head"><span class="grip" aria-hidden="true"></span><b class="grow">Teacher</b>' + (T.turns.length ? '<button class="quiet" data-act="tNew">New chat</button>' : "") +
+      '<button class="sheet-x" data-act="tClose" aria-label="Close the teacher and go back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></header>' +
+      '<div class="sheet-body stack" id="tbody">' + chatBody() + "</div></section>";
+    var tin = document.getElementById("tin"); if (tin && draft) tin.value = draft;
+  }
+  function openSheet() {
+    if (T.sheet) return renderSheet();
+    var here = subjectHere();
+    if (here) { T.topic = here.t; T.ctx = here.l != null && TOPIC[here.t].ls[here.l] ? TOPIC[here.t].ls[here.l] : null; }
+    T.sheet = true; T.opener = document.activeElement;
+    if (location.hash.slice(-1) !== "!") location.hash = location.hash.slice(1) + "!";
+    document.body.style.overflow = "hidden";
+    renderSheet(); teacherChrome(); scrollChat();
+    var tin = document.getElementById("tin"); if (tin && !T.busy) tin.focus({ preventScroll: true });
+  }
+  function closeSheet() {
+    if (!T.sheet) return;
+    T.sheet = false; document.body.style.overflow = "";
+    renderSheet(); teacherChrome();
+    if (location.hash.slice(-1) === "!") {
+      var y = window.scrollY, h = "#" + location.hash.slice(1, -1);
+      try { history.replaceState(history.state, "", h); } catch (e) { T.skipHash = true; location.replace(h); }
+      window.scrollTo(0, y);
+    }
+    var o = T.opener; T.opener = null; if (o && o.focus && document.body.contains(o)) o.focus({ preventScroll: true });
+  }
+  function rerender() { if (T.sheet) renderSheet(); else render(); }
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && T.sheet) { e.preventDefault(); closeSheet(); } });
+
+  function scrollChat() {
+    var box = T.sheet && document.getElementById("tbody");
+    if (box) { box.scrollTop = box.scrollHeight; return; }
+    var el = document.getElementById("tlive") || view.querySelector(".msg:last-child"); if (el) el.scrollIntoView({ block: "end", behavior: "smooth" });
+  }
   var ERR = { rate_limited: "The teacher needs a short break (usage limit reached). Try again in a few minutes.", session_expired: "Please sign in to Claude again, then ask again.", refused: "The teacher could not answer that one. Try asking it a different way.", empty_completion: "No answer came back. Try asking in a shorter way.", prompt_too_large: "That was too long. Start a new chat and ask again.", upstream_error: "The connection dropped. Press Ask to try again." };
   function ask(text, show) {
     text = String(text || "").trim();
     if (!text || T.busy || !AI.sample) return;
     T.turns.push({ role: "user", content: text, show: show || null });
     T.busy = true; T.err = ""; T.ctl = new AbortController();
-    if (tab !== "teacher" || session) go("teacher", null, true); else render();
+    if (T.sheet) renderSheet(); else if (tab !== "teacher" || session) openSheet(); else render();
     scrollChat();
     AI.sample(buildInput(), { cache: false, signal: T.ctl.signal, onText: function (u) {
       var el = document.getElementById("tlive"); if (el) el.innerHTML = answerHtml(u.text, true);
@@ -151,12 +217,12 @@
       else if (code !== "cancelled") T.err = ERR[code] || ERR.upstream_error;
     }).then(function () {
       T.busy = false; T.ctl = null; saveChat();
-      if (tab === "teacher" && !session) { render(); scrollChat(); }
+      if (T.sheet) { renderSheet(); scrollChat(); } else if (tab === "teacher" && !session) { render(); scrollChat(); }
     });
   }
   function paintSpeak() {
-    view.querySelectorAll("[data-act=tSpeak]").forEach(function (b) { b.textContent = +b.getAttribute("data-arg") === T.speaking ? "■ Stop" : "🔊 Listen"; });
-    view.querySelectorAll("[data-act=tLessonSpeak]").forEach(function (b) { b.textContent = T.speaking === "lesson" ? "■ Stop reading" : "🔊 Read it to me"; });
+    document.querySelectorAll("[data-act=tSpeak]").forEach(function (b) { b.textContent = +b.getAttribute("data-arg") === T.speaking ? "■ Stop" : "🔊 Listen"; });
+    document.querySelectorAll("[data-act=tLessonSpeak]").forEach(function (b) { b.textContent = T.speaking === "lesson" ? "■ Stop reading" : "🔊 Read it to me"; });
   }
   function speakText(s, i) {
     if (!AI.tts) return;
@@ -173,14 +239,16 @@
     tAsk: function (a) { ask(a); },
     tBack: function () { var b = T.back; T.back = null; if (!b) return; tab = b.tab; sub = b.sub; session = b.session; if (location.hash !== "#" + tab) location.hash = tab; render(); window.scrollTo(0, 0); },
     tStop: function () { if (T.ctl) T.ctl.abort(); },
-    tNew: function () { if (T.ctl) T.ctl.abort(); T.turns = []; T.err = ""; T.back = null; saveChat(); render(); },
-    tCtxOff: function () { T.ctx = null; render(); },
+    tNew: function () { if (T.ctl) T.ctl.abort(); T.turns = []; T.err = ""; T.back = null; saveChat(); rerender(); },
+    tCtxOff: function () { T.ctx = null; T.topic = null; rerender(); },
+    tOpen: function () { openSheet(); },
+    tClose: function () { closeSheet(); },
     tSpeak: function (a) { var t = T.turns[+a]; if (t) speakText(plainForSpeech(t.content), +a); },
     tLesson: function (a) {
       var x = a.split("|"), L = lessonById(x[0] + "|" + x[1]); if (!L) return;
       T.ctx = L;
       var asks = { simple: ["Teach me this lesson again in very simple words, step by step: " + L.t, "Explain this lesson more simply: " + L.t], draw: ["Draw a picture that explains the main idea of this lesson: " + L.t, "Draw a picture of: " + L.t] };
-      if (asks[x[2]]) ask(asks[x[2]][0], asks[x[2]][1]); else go("teacher", null, true);
+      if (asks[x[2]]) ask(asks[x[2]][0], asks[x[2]][1]); else openSheet();
     },
     tWhy: function () {
       var s = session, q = s && s.cur; if (!q) return;
@@ -189,8 +257,7 @@
       var mine = s.picked >= 0 ? q.a[s.opts[s.picked]] : "";
       var txt = "I got this exam question wrong.\nQuestion: " + q.q + "\nI chose: " + mine + "\nCorrect answer: " + q.a[0] + "\nOther choices: " + q.a.slice(1).filter(function (x) { return x !== mine; }).join("; ") +
         "\nBook explanation: " + q.e + "\nExplain simply why the correct answer is right and why my choice is wrong, and give me a way to remember it.";
-      T.back = { tab: tab, sub: sub, session: session };
-      session = null; tab = "teacher"; sub = null; ask(txt, "Why is \"" + q.a[0] + "\" the answer to: " + q.q);
+      ask(txt, "Why is \"" + q.a[0] + "\" the answer to: " + q.q);
     },
     tLessonSpeak: function () {
       var L = TOPIC[sub.t].ls[sub.sec];

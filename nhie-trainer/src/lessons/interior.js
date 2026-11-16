@@ -1,0 +1,151 @@
+// Lessons written from NHIE Volume 2, chapter 6 (The House Interior). Page numbers are approximate.
+NHIE.lessons("interior", [
+{ t: "Interior scope, walls and ceilings", p: "324–331",
+  goal: "Know what is inspected inside and how wall and ceiling finishes fail.",
+  teach: [
+    "# Scope",
+    "- A house is a system: walls include siding, framing, insulation and interior finish. Interior defects often point to problems elsewhere (roof leaks, structural movement).",
+    "- In scope: wall and ceiling finishes, floors, stairs and their railings, a representative number of doors and windows, cabinets and countertops, and garage doors and openers (in some standards).",
+    "- Out of scope: low voltage devices and wiring (security, intercom, data, smart home). Disclaim them and recommend a specialist.",
+    "# Drywall (gypsum board, plasterboard; brand Sheetrock)",
+    "- Since the 1910s, widely used from the late 1940s. Sheets 4 feet wide, 8 to 16 feet long; 1/2 inch and 5/8 inch common.",
+    "- Fastened with nails or screws at set spacing (nails about 7 inches apart on ceilings, 8 on walls; 3/8 to 1/2 inch from edges).",
+    "- Popcorn and other textures from before the 1970s may contain asbestos; recommend testing if disturbed.",
+    "# Plaster",
+    "- Common before the 1950s, on wood, metal or gypsum (rock) lath. Three coats (scratch, brown, finish), about 7/8 inch thick. Old plaster can lose its keys and sag.",
+    "# Suspended (drop) ceilings",
+    "- Modern version from the early 1960s; metal grid on wire hangers. Some tiles from the 1950s to 1970s may contain asbestos. Lift a tile or two to look above if safe.",
+    "# Report these",
+    "- Cracks; water stains or damage; serious damage; walls rotated, bowed or uneven; uneven ceilings; signs of recent repair or paint that may hide a problem; loose or sagging plaster; nail pops.",
+    "- A dry stain is still reported: say the source was not determined and recommend evaluation.",
+    "! Low voltage systems: disclaim. Fresh paint over one spot: ask why."
+  ],
+  cards: [
+    ["Interior items in scope", "Wall and ceiling finishes, floors, stairs and railings, representative doors and windows, cabinets and countertops."],
+    ["Low voltage systems (security, intercom, data)", "Out of scope; disclaim and recommend a specialist."],
+    ["Drywall sizes", "4 feet wide, 8 to 16 feet long; 1/2 inch and 5/8 inch thick."],
+    ["Plaster", "Three coats (scratch, brown, finish) on lath, about 7/8 inch; common before the 1950s."],
+    ["Asbestos concern in interior finishes", "Popcorn and textures before the 1970s, some ceiling tiles 1950s to 1970s, vinyl and linoleum before the 1970s."],
+    ["Recent paint or repair on one area", "Could conceal a problem; report it."]
+  ],
+  qs: [
+    ["A ceiling stain is dry when tested. How should it be reported?", ["As a stain from an undetermined source; recommend evaluation", "Not at all", "As fixed", "As cosmetic"], "Dry today does not mean repaired."],
+    ["Is the alarm system keypad and its wiring inspected?", ["No; low voltage systems are out of scope and should be disclaimed", "Yes", "Only the keypad", "Only in new houses"], "Recommend a specialist."],
+    ["A freshly painted patch on a ceiling below a bathroom is the only new paint in the house. What should the inspector do?", ["Report it as possibly concealing a problem", "Ignore it", "Compliment it", "Remove the paint"], "Fresh paint can hide a leak stain."]
+  ] },
+
+{ t: "Interior doors and floor coverings", p: "331–343",
+  goal: "Know door defects and the floor covering types and their problems.",
+  teach: [
+    "# Interior doors",
+    "- Hinged, usually 80 inches tall, 12 to 36 inches wide in 2 inch steps, two or three hinges. Also bifold, bypass (sliding) and pocket doors.",
+    "- Nailed through shims with 16d casing nails. Privacy locks on bedrooms and baths; passage sets elsewhere.",
+    "- Report: will not latch, rubs, warped, loose hinges, damaged, not sealed on all edges; doors badly out of plumb (possible movement); pocket and bifold doors off track.",
+    "- Operate a representative number.",
+    "# Floor coverings",
+    "- Distinguish floor coverings (carpet, tile, wood) from the floor structure.",
+    "- Carpet: rolls usually 12 feet wide. Worn or stained carpet is cosmetic; loose, rippled or torn carpet that trips people is reportable. Carpet in damp areas can grow mold.",
+    "- Laminate (photo layer) and engineered wood (real wood plies at 90 degrees, real wood top) float over underlayment; let them acclimate; expansion gaps at walls.",
+    "- Linoleum (linseed oil, jute backing) differs from vinyl (petrochemical). Both may contain asbestos if made before the 1970s.",
+    "- Ceramic tile and stone: cracked or loose tiles, cracked grout. Cracks in a line often follow a crack or joint below.",
+    "- Solid wood: installed over #15 felt, blind nailed. Cupping = moisture from below.",
+    "# Report these (all types)",
+    "- Damage that creates trip hazards; buckling; gaps; loose pieces; missing or bad transition strips between floor types.",
+    "- Dirty, faded and worn surfaces are cosmetic unless a safety issue.",
+    "! Worn carpet = cosmetic. Torn or rippled carpet = trip hazard."
+  ],
+  cards: [
+    ["Interior door size", "Usually 80 inches tall; 12 to 36 inches wide in 2 inch steps."],
+    ["Doors badly out of plumb in several rooms", "A possible sign of structural movement."],
+    ["Laminate vs engineered wood", "Laminate has a photo layer; engineered wood has real wood plies at 90 degrees with a real wood top."],
+    ["Linoleum vs vinyl", "Linoleum: linseed oil, wood and resin on jute. Vinyl: petrochemical, usually on fiberglass backing."],
+    ["Cupped wood flooring", "Moisture from below."],
+    ["Cracked tiles in a straight line", "Often a crack or joint in the subfloor or slab below."]
+  ],
+  qs: [
+    ["Carpet in the hall has a large ripple that catches feet. How is it reported?", ["As a trip hazard", "As cosmetic", "Not at all", "As a structural defect"], "Safety makes it reportable."],
+    ["Pre-1970s vinyl tiles are cracked and loose. What may the inspector advise?", ["They may contain asbestos; recommend testing before disturbing", "Sand them down", "Nothing", "They are linoleum"], "Do not test; inform."],
+    ["Several doors in the house have uneven gaps and will not latch. What could this indicate?", ["Structural movement", "New hinges", "Low humidity only", "Nothing"], "One door is minor; many suggest movement."]
+  ] },
+
+{ t: "Stairs, handrails and guards", p: "343–355",
+  goal: "Know every interior stair, handrail and guard dimension.",
+  teach: [
+    "# Construction",
+    "- Stringers usually 2x10 or 2x12; at least 5 inches of solid wood under the cuts. Two or three stringers; stairs much wider than 36 inches need at least three.",
+    "- Treads: 2 inch lumber clear spans about 36 inches; 5/4 lumber about 18 inches.",
+    "- The stair should feel firm.",
+    "# Risers and treads",
+    "- Riser at most 7 3/4 inches (older homes 8 to 9 were once acceptable). No minimum.",
+    "- Tread at least 10 inches with a nosing; 11 inches with no nosing. Nosing 3/4 to 1 1/4 inch.",
+    "- In one flight, risers and treads may differ by no more than 3/8 inch.",
+    "- Open risers: a 4 inch sphere must not pass.",
+    "- Treads and landings slope no more than 2% (about 1/4 inch front to back).",
+    "- Winders: at least 10 inches measured 12 inches from the narrow side, at least 6 inches anywhere.",
+    "- Spiral: tread 7 1/2 inches at 12 inches from the narrow side; riser up to 9 1/2 inches; 26 inches wide.",
+    "# Width, headroom and landings",
+    "- Width at least 36 inches above the handrail. Headroom at least 80 inches from the sloped line of the nosings.",
+    "- A flight may rise no more than 151 inches (12 feet 7 inches) without a landing.",
+    "- Landings at top and bottom (and between), at least as wide as the stair and 36 inches deep. A door at the top may swing over the stair if it swings away from it.",
+    "- Ramps: 1 in 12 at the egress door; 1 in 8 elsewhere.",
+    "# Handrails",
+    "- On stairs with four or more risers, at least one side, 34 to 38 inches above the nosings, continuous, ends returned or on posts.",
+    "- Graspable: round 1 1/4 to 2 inches across, or a shaped rail with a finger recess. At least 1 1/2 inches from the wall.",
+    "# Guards",
+    "- Where the walking surface is more than 30 inches above the surface within 36 inches horizontally.",
+    "- At least 36 inches high on level surfaces (42 in some areas). Stair guards may be at handrail height.",
+    "- Openings: 4 inch sphere on level surfaces; 4 3/8 inch on stairs; 6 inch at the triangle under the bottom rail.",
+    "- Top must resist 200 pounds; infill 50 pounds. Push on them to check firmness.",
+    "# Report these",
+    "- Weak or detached stringers, deflection, squeaks, too-tall risers, shallow treads, uneven steps, low headroom, small landings, narrow stairs, loose carpet on treads, poor lighting or no switch at top and bottom with six or more risers, missing or loose rails and guards, wrong heights, wide openings.",
+    "! 7 3/4 riser, 10 tread, 3/8 variation, 80 headroom, 36 wide, rails 34 to 38, guards over 30 inches."
+  ],
+  cards: [
+    ["Maximum riser and minimum tread", "Riser 7 3/4 inches; tread 10 inches (11 inches with no nosing)."],
+    ["Maximum riser and tread variation in a flight", "3/8 inch."],
+    ["Stair width and headroom", "At least 36 inches wide above the handrail; at least 80 inches headroom."],
+    ["Maximum rise without a landing", "151 inches (12 feet 7 inches)."],
+    ["Handrail height and trigger", "34 to 38 inches above the nosings; required with four or more risers."],
+    ["Graspable round handrail", "1 1/4 to 2 inches in diameter; at least 1 1/2 inches from the wall."],
+    ["Guard openings", "4 inches level surfaces; 4 3/8 inches on stairs; 6 inches at the bottom rail triangle."],
+    ["Guard strength", "Top resists 200 pounds; infill resists 50 pounds."],
+    ["Winder tread depth", "At least 10 inches measured 12 inches from the narrow side; at least 6 inches anywhere."],
+    ["Ramp slopes", "1 in 12 at the egress door; 1 in 8 elsewhere."]
+  ],
+  qs: [
+    ["Basement stair risers are 8 1/2 inches in a 1940 house. How might they be reported?", ["Taller than current standards; a fall risk worth noting", "Ideal", "Too short", "Not reportable ever"], "Older standards allowed taller risers, but safety still matters."],
+    ["Stair guard balusters are 5 inches apart. What is reported?", ["Openings too wide: stair guards must stop a 4 3/8 inch sphere", "Correct", "Too close", "Cosmetic"], "Children can slip through."],
+    ["A handrail is 32 inches above the nosings. What is reported?", ["Too low; 34 to 38 inches is required", "Correct", "Too high", "Nothing"], "Height matters for a secure grip."],
+    ["A stair has winders whose narrow ends are 3 inches deep. What is reported?", ["Winders must be at least 6 inches at any point", "Correct", "Too deep", "Nothing"], "Narrow winders cause falls."],
+    ["Stairs with eight risers have a light switch only at the top. What is reported?", ["Switches needed at top and bottom with six or more risers", "Correct", "Too many switches", "Nothing"], "People need light before they climb."]
+  ] },
+
+{ t: "Cabinets, countertops and smart homes", p: "355–360",
+  goal: "Know cabinet sizes and installation, countertop defects, and smart home scope.",
+  teach: [
+    "# Cabinets",
+    "- Kitchen base cabinets 24 inches deep, counter about 36 inches high. Wall cabinets 12 inches deep, about 18 inches above the counter. Vanities 18 to 22 inches deep, 31 to 36 inches high.",
+    "- Refrigerator openings at least 36 inches wide for modern units.",
+    "- Fastened into solid framing with #8 x 2 1/2 inch screws (or larger) through the back rail, with washers or button caps. Not nails or drywall anchors.",
+    "- Report: worn or water-damaged cabinets (especially sink bases), wrong fasteners, loose cabinets, not level, drawers or doors that bind or hit appliances (a drawer hitting the range handle).",
+    "# Countertops",
+    "- Laminate, solid surface, stone, tile, wood, concrete.",
+    "- Report: damage (especially swollen particleboard under laminate), loose or not level tops, laminate peeling at seams, seams near the sink, unsealed gaps at walls and sinks, worn tile grout, poorly supported overhangs, sharp edges.",
+    "# Smart homes",
+    "- Reliable broadband (at least 25 Mbps download) and structured wiring (since about 2010: coax RG-6, Cat 5e or better, run to a central box with a receptacle).",
+    "- Inspecting smart devices and wiring is out of scope. Operate the thermostat and similar items only by their normal controls; disclaim the rest.",
+    "! Cabinets: screws into framing, not nails. Smart home: disclaim."
+  ],
+  cards: [
+    ["Kitchen cabinet dimensions", "Base 24 inches deep with counter about 36 inches high; wall cabinets 12 inches deep, about 18 inches above the counter."],
+    ["Cabinet fastening", "#8 x 2 1/2 inch screws (or larger) into framing through the back rail, with washers or button caps."],
+    ["Common countertop defect", "Water-swollen particleboard under laminate, especially at the sink."],
+    ["Smart home devices and structured wiring", "Out of scope; disclaim."],
+    ["Bathroom vanity size", "18 to 22 inches deep; 31 to 36 inches high."]
+  ],
+  qs: [
+    ["Upper cabinets are held up with drywall anchors only. What is reported?", ["Improper fastening; cabinets should be screwed into framing", "Correct", "Cosmetic", "Nothing"], "Loaded cabinets can fall."],
+    ["The cabinet drawer next to the range hits the oven handle when opened. Is this reportable?", ["Yes; it is a functional defect", "No", "Only if new", "Only with gas ranges"], "Report items that do not work as intended."],
+    ["The buyer asks if the smart lighting system works. What is the inspector's position?", ["Smart home systems are out of scope; disclaim and suggest a specialist", "Test every scene", "Guarantee it", "Ignore the question"], "Normal controls only."]
+  ] }
+]);

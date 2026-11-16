@@ -1,0 +1,226 @@
+// Lessons written from NHIE Volume 2, chapter 8 (Professional Responsibilities). Page numbers are approximate.
+NHIE.lessons("professional", [
+{ t: "Dissatisfied clients, claims and the court process", p: "395–398",
+  goal: "Know how complaints start, how an E&O claim works, and the steps of civil litigation.",
+  teach: [
+    "# How trouble starts",
+    "- Rarely: a monetary demand letter or a lawsuit is the first notice.",
+    "- Usually: the client calls or emails about a problem found after moving in.",
+    "- If you carry E&O insurance, report the incident to the insurer as the policy requires. Reporting an incident usually does not affect cost or renewal. Trying to settle it yourself can make things worse and may break policy terms.",
+    "# The E&O claim process",
+    "- The insurer opens a claim, may assign an investigator to decide if it is covered, and often settles regardless of fault because settling can cost less than defending.",
+    "# Civil litigation",
+    "- Most cases involving home inspectors are in state court, rarely federal court.",
+    "- Complaint: filed by the plaintiff; it starts the pleadings.",
+    "- Summons: the court notifies the defendant and gives a deadline.",
+    "- Answer (or motion to dismiss): must be filed on time. No answer can lead to a default judgment.",
+    "- Cross-claim: one defendant against another, often to shift liability. Counterclaim: defendant against the plaintiff.",
+    "- Discovery: compulsory sharing of information (documents, interrogatories, depositions).",
+    "- Many cases end before trial in settlement, mediation or arbitration (the court may order mediation).",
+    "- Trial: bench trial (judge decides facts and law) or jury trial (jury decides facts).",
+    "- Winning a judgment does not mean you get paid; collecting can be hard.",
+    "# Small claims court",
+    "- For smaller amounts; informal; lawyers not required and sometimes not allowed. Learn the forms and filing rules.",
+    "! Complaint → summons → answer → discovery → settlement/ADR or trial → judgment."
+  ],
+  cards: [
+    ["Most common first notice of a dissatisfied client", "The client contacts the inspector about a problem."],
+    ["Does reporting an incident to the E&O insurer usually raise the premium?", "Usually no."],
+    ["Complaint", "The plaintiff's filing that starts a civil lawsuit."],
+    ["Default judgment", "A judgment against a defendant who fails to answer the complaint on time."],
+    ["Cross-claim vs counterclaim", "Cross-claim: defendant vs another defendant. Counterclaim: defendant vs plaintiff."],
+    ["Discovery", "Compulsory disclosure of information relevant to the case (documents, depositions)."],
+    ["Bench trial", "A judge, not a jury, decides the facts and the law."],
+    ["Small claims court", "Informal court for small disputes; lawyers not required and may not be allowed."]
+  ],
+  qs: [
+    ["An inspector receives a summons and ignores it. What can happen?", ["A default judgment against the inspector", "The case is dismissed", "Nothing", "The client must refile"], "An answer or motion is required by the deadline."],
+    ["Two defendants are sued, and one files a claim against the other to shift liability. This is a:", ["Cross-claim", "Counterclaim", "Complaint", "Summons"], "Defendant against defendant."],
+    ["Why might an E&O insurer settle a claim even when the inspector did nothing wrong?", ["Settling may cost less than defending", "It must by law", "It always admits fault", "To punish the inspector"], "Cost of defense drives it."],
+    ["The stage where parties must exchange documents and give depositions is:", ["Discovery", "Pleadings", "Judgment", "Collection"], "Compulsory disclosure."]
+  ] },
+
+{ t: "Types of liability: contract, negligence, fraud", p: "398–401",
+  goal: "Tell breach of contract, negligence, fraud and negligent misrepresentation apart.",
+  teach: [
+    "# Breach of contract",
+    "- A party fails to do what it promised (for example, the inspection did not follow the SOP named in the agreement).",
+    "- Usual remedy: monetary damages that the claimant must prove. Since most claims are about money, contract should be the typical basis of claims against inspectors.",
+    "- Nearly every claim says: 'I would not have bought the house had I known.'",
+    "# Negligence (a tort)",
+    "- Four elements: (1) a duty to the plaintiff, (2) breach of that duty (not a competent inspection), (3) the breach caused the harm, (4) actual damages.",
+    "- The duty comes from the professional relationship and from the standard of care: what a reasonable, prudent inspector would do in similar circumstances. The SOP helps define it but courts decide.",
+    "- Originally a way to recover for personal injury. Gross negligence (reckless disregard) can bring punitive damages and attorney's fees.",
+    "# Fraud",
+    "- Common law fraud elements: a material fact was false, the defendant knew it or spoke recklessly, intended the plaintiff to rely on it, the plaintiff did rely on it, and was harmed.",
+    "- Courts usually require proof with more specificity and a higher burden. Punitive damages are possible. Statutory fraud (consumer protection laws) may differ.",
+    "# Negligent misrepresentation",
+    "- A newer tort between negligence and fraud: people in the business of providing information must take reasonable care that it is accurate. No intent needed.",
+    "! Contract = broken promise. Negligence = careless breach of duty. Fraud = knowing falsehood. Negligent misrepresentation = careless false information."
+  ],
+  cards: [
+    ["Breach of contract", "Failure to perform a promise in the contract; remedy usually monetary damages."],
+    ["Four elements of negligence", "Duty, breach, causation, damages."],
+    ["Standard of care", "What a reasonable and prudent inspector would do in similar circumstances."],
+    ["Gross negligence remedies", "May include punitive damages and attorney's fees."],
+    ["Key difference of fraud", "The defendant knew the statement was false (or was reckless) and intended reliance."],
+    ["Negligent misrepresentation", "Failure to use reasonable care in providing information others rely on; no intent required."]
+  ],
+  qs: [
+    ["Which is NOT an element of negligence?", ["Intent to deceive", "Duty", "Breach", "Damages"], "Intent belongs to fraud."],
+    ["An inspector knowingly writes that a roof has no leaks to keep an agent happy. This is most likely:", ["Fraud", "Breach of warranty only", "Small claim only", "Not actionable"], "A knowing false statement intended to be relied on."],
+    ["'What a reasonable and prudent inspector would do in similar circumstances' defines:", ["The standard of care", "The SOP", "Consideration", "Mutual assent"], "Courts apply it in negligence claims."],
+    ["The usual remedy for breach of contract is:", ["Monetary damages", "Jail", "License revocation", "Punitive damages always"], "Proven money damages."]
+  ] },
+
+{ t: "Pre-inspection agreements: contract basics", p: "401–403",
+  goal: "Know the elements of a contract, who may sign, and how to avoid an adhesion contract.",
+  teach: [
+    "- No inspection service should start without a written, signed agreement. Use a separate agreement for each service (radon, mold, pool, wood-destroying insects).",
+    "- Contracts are governed by state statutes and case law; have a local attorney review yours.",
+    "- The written paper is evidence of the contract, not the contract itself, but writing proves the terms.",
+    "# Four elements (all required)",
+    "- Offer: a promise to do something under certain conditions (a posted fee for a house up to a certain size).",
+    "- Acceptance of the offer as offered. Changing the terms is a counteroffer, not acceptance.",
+    "- Consideration: something of value exchanged (the fee for the inspection and report).",
+    "- Mutual assent: both agree. Best proven by signatures of all parties.",
+    "- Parties must also have capacity (adult, sound mind) and a legal purpose.",
+    "# Agency",
+    "- An agent acts for a principal in a fiduciary relationship. A real estate agent may bind the buyer only if the buyer authorized it, often in writing; otherwise the agreement may not bind the client. Get the client's own signature.",
+    "# Adhesion contracts",
+    "- 'An offer you cannot refuse': no real chance to read, negotiate or decline. Classic case: the agreement is handed over at the house, right before the inspection, with no time to review.",
+    "- Avoid it: send the agreement well before the inspection (ideally when booking) with time to read and ask questions. A copy on the website helps but is not enough.",
+    "! Offer + acceptance + consideration + mutual assent. Send the contract early, get the client to sign."
+  ],
+  cards: [
+    ["Four elements of a contract", "Offer, acceptance, consideration, mutual assent."],
+    ["Counteroffer", "An attempt to accept that changes the terms; it is not acceptance."],
+    ["Consideration", "Something of value exchanged: money, property or a promise."],
+    ["Can a buyer's agent sign the inspection agreement?", "Only if the buyer authorized the agent to act for them; best practice is the client signs."],
+    ["Adhesion contract", "A contract presented with no real chance to read, negotiate or refuse; may be unenforceable."],
+    ["When to give the client the agreement", "Well before the inspection, ideally when it is booked."],
+    ["Separate agreements for ancillary services?", "Yes; each service gets its own agreement."]
+  ],
+  qs: [
+    ["A client says 'I accept, but only for $250 instead of $350.' This is:", ["A counteroffer", "Acceptance", "Consideration", "Mutual assent"], "Changed terms make a counteroffer."],
+    ["What makes an inspection agreement likely to be an adhesion contract?", ["It is handed to the client at the house just before the inspection", "It is emailed a week early", "It is signed by both parties", "It names the SOP"], "No reasonable time to review or decline."],
+    ["Which is NOT one of the four contract elements?", ["A notary seal", "Offer", "Acceptance", "Consideration"], "Notarization is not required."],
+    ["The inspector also tests for radon. What is best practice?", ["Use a separate agreement for the radon test", "Add one line to the home inspection report", "No agreement needed", "Use a verbal agreement"], "Each service needs its own agreement."]
+  ] },
+
+{ t: "Agreement contents: required and optional clauses", p: "403–407",
+  goal: "Know what must be in an inspection agreement and what optional clauses do.",
+  teach: [
+    "# Required contents",
+    "- Full legal company name (and inspector license number where required).",
+    "- Names of all clients (all buyers).",
+    "- Full property address.",
+    "- Inspection date (some jurisdictions require time too).",
+    "- The fee, listed per service when there are several.",
+    "- The inspection objective or purpose.",
+    "- One SOP under which the inspection is done.",
+    "- A comprehensive list of important exclusions and limitations.",
+    "- Signatures of all parties named.",
+    "# Optional clauses (some may be limited by state law)",
+    "- Client responsibilities: for example, attend the inspection, read the full report, get evaluations before closing.",
+    "- Disclosure of findings: the report is confidential to the client unless the client allows otherwise (and except imminent threats or as law requires).",
+    "- Report redistribution: limits use by third parties and later buyers.",
+    "- Recovery of legal fees: normally each side pays its own; a clause can change that.",
+    "- Right to observe claims: the client must let the inspector see the problem before repairs, except emergencies.",
+    "- Time limit on filing claims: must be reasonable; one year is common; law may set it.",
+    "- Scope expansion: commenting on out-of-scope items does not expand the scope.",
+    "- Alternative dispute resolution: mediation (a neutral helps the parties agree; not binding unless they agree) or arbitration (an arbitrator decides; usually binding). Arbitration limits or removes the right to sue. Make the clause conspicuous (larger font, a box) and have the client initial it. ADR costs less than court but is not free.",
+    "- Limitation of remedies (liability): often limits damages to the fee. May be hard to enforce or not allowed; needs a local attorney's review.",
+    "- Disclaimer of warranties: a home inspection is not a warranty or guarantee. Third-party limited warranties exist.",
+    "! Required: company, clients, address, date, fee, purpose, SOP, exclusions, signatures."
+  ],
+  cards: [
+    ["Required agreement contents", "Company legal name, all client names, address, date, fee, purpose, the SOP, exclusions and limitations, signatures."],
+    ["Right to observe clause", "The client must let the inspector see the alleged problem before it is repaired, except emergencies."],
+    ["Common time limit for filing claims", "One year (must be reasonable; may be set by law)."],
+    ["Mediation vs arbitration", "Mediation: a neutral helps parties agree, not binding. Arbitration: arbitrator decides, usually binding."],
+    ["How to make an ADR clause enforceable", "Make it conspicuous (larger type or a box) and have the client initial it."],
+    ["Limitation of remedies clause", "Limits the inspector's liability, often to the fee; enforceability varies; get a local attorney's review."],
+    ["Disclaimer of warranties", "States the inspection is not a warranty or guarantee of the house."]
+  ],
+  qs: [
+    ["A client finds a leak and has it repaired before calling the inspector. Which clause addresses this?", ["Right to observe claims", "Disclaimer of warranties", "Scope expansion", "Recovery of legal fees"], "The inspector must get a chance to see it first."],
+    ["Which process uses a neutral person who decides the dispute, usually in a binding way?", ["Arbitration", "Mediation", "Discovery", "Small claims"], "Mediation does not impose a decision."],
+    ["Which item is required in an inspection agreement?", ["The SOP under which the inspection is performed", "The listing agent's phone number", "The purchase price", "A home warranty"], "One SOP must be named."],
+    ["Which is the most reasonable time limit on filing claims?", ["One year", "One week", "Ten days", "Twenty years"], "Must be reasonable."]
+  ] },
+
+{ t: "Insurance for home inspectors", p: "407–409",
+  goal: "Know what bonds, E&O, general liability and other policies cover.",
+  teach: [
+    "- Bond: a third party promises to pay a judgment against the inspector, up to the bond amount, if the inspector does not pay. The inspector must repay the bonding company. It protects the client, not the inspector.",
+    "# Errors and omissions (E&O)",
+    "- Pays for damages from mistakes in professional services (missed defects), up to the policy limit, minus the deductible.",
+    "- Also pays to defend claims, even ones with no merit.",
+    "- Claims made policy: more common and usually cheaper. Covers claims made (filed) while the policy is in force. A claim filed after the policy ends is not covered unless you buy tail coverage (an extended reporting period). Prior acts coverage handles earlier inspections.",
+    "- Occurrence policy: covers incidents that occurred during the policy period, whenever the claim is filed.",
+    "- May not cover ancillary services (radon, mold, pools) without an endorsement.",
+    "- Some jurisdictions require E&O for licensing.",
+    "# General liability (GL)",
+    "- Pays for bodily injury and property damage caused by the inspector's activities (breaking a window, a ladder falling on a car, injuring someone). May cover libel and slander. Also pays defense.",
+    "# Other insurance",
+    "- Workers' compensation: for employees' work injuries; required for most employers; owners may be exempt. Rules vary by state.",
+    "- Homeowner's insurance may give little or no coverage for business tools and equipment.",
+    "- Personal vehicle insurance may not cover business use; tell your insurer.",
+    "! E&O = mistakes in the inspection. GL = damage or injury you cause. Bond protects the client."
+  ],
+  cards: [
+    ["Bond", "A third party's promise to pay a judgment the inspector does not pay; the inspector must repay it."],
+    ["E&O insurance", "Covers damages from errors and omissions in professional services, plus defense costs."],
+    ["General liability insurance", "Covers bodily injury and property damage caused by the inspector's activities."],
+    ["Claims made policy", "Covers claims filed while the policy is in force; more common and cheaper."],
+    ["Occurrence policy", "Covers incidents that occurred during the policy period, whenever the claim is filed."],
+    ["Tail coverage", "Extended reporting period that covers claims filed after a claims made policy ends."],
+    ["Does E&O automatically cover radon or mold testing?", "Not always; may need an endorsement."]
+  ],
+  qs: [
+    ["An inspector's ladder falls and dents the seller's car. Which insurance applies?", ["General liability", "E&O", "Workers' compensation", "A bond"], "Property damage from activities."],
+    ["An inspector missed a roof leak and the client sues. Which insurance applies?", ["Errors and omissions", "General liability", "Homeowner's", "Vehicle"], "A professional mistake."],
+    ["An inspector retires and cancels a claims made E&O policy. A claim is filed six months later. Without tail coverage it is:", ["Not covered", "Covered", "Covered at half", "Paid by the state"], "Claims made covers claims filed during the policy."],
+    ["Who does a bond mainly protect?", ["The client", "The inspector", "The real estate agent", "The insurer"], "The inspector must repay the bonding company."]
+  ] },
+
+{ t: "Ethics, conflicts of interest and the business side", p: "409–421",
+  goal: "Recognize conflicts of interest and ethical reporting; know basic business facts.",
+  teach: [
+    "- Ethics are the rules or standards governing conduct. Inspectors must be honest and be seen as honest.",
+    "# Conflicts of interest",
+    "- Do not inspect a property in which you have, or may have, a financial interest.",
+    "- Do not inspect contingent on the sale closing (fee paid only at closing on condition of the sale) or with a stake in the outcome.",
+    "- Pay to play: paying referral sources (agents, brokers) for referrals or to be on a preferred list. Nominal gifts are usually acceptable; payments to influence referrals are not and may be illegal (RESPA).",
+    "- Paid to play: accepting compensation from vendors (contractors, warranty or service companies) for referring clients. Disclose or avoid.",
+    "- Repairing inspected property: many codes of ethics bar repairing items you inspected, usually for 12 months. Check your SOP and law.",
+    "# Ethical reporting",
+    "- Report only within your expertise; refer to specialists otherwise.",
+    "- Just the facts: do not understate defects to please agents, and do not overstate (defensive, alarming reporting) to reduce your own risk.",
+    "- The client owns the decision to share the report. Do not share results with agents or sellers without the client's permission (except imminent threats or as law requires).",
+    "- Advertising must be truthful about services and qualifications.",
+    "# The business side (mostly not on the exam outline)",
+    "- Ownership: sole proprietorship (simplest, owner fully liable), partnership, LLC (liability protection, flexible taxes), corporation.",
+    "- Licensing: about two-thirds of states license inspectors; reciprocity eases but rarely removes requirements. Renewal and continuing education are required.",
+    "- Also: business license, EIN, business name registration, home office rules.",
+    "- Accounting: assets, liabilities, equity, revenue, expenses; balance sheet, income statement, cash flow; cash vs accrual; fixed vs variable costs.",
+    "- Marketing: sell benefits, not just features.",
+    "! No financial interest, no paying for referrals, no repairing what you inspected, the report belongs to the client."
+  ],
+  cards: [
+    ["Financial interest in the property", "An inspector should not inspect a property in which they have or may have a financial interest."],
+    ["Contingent fee", "A fee depending on the sale closing; creates a conflict of interest; avoid."],
+    ["Pay to play", "Paying referral sources (like agents) for referrals or preferred lists."],
+    ["Paid to play", "Accepting payment from vendors for referring clients to them."],
+    ["Repairing inspected property", "Many codes of ethics bar it, often for 12 months after the inspection."],
+    ["Understating vs overstating defects", "Understating pleases agents; overstating is defensive reporting. Both are unethical; report just the facts."],
+    ["Who decides who receives the report?", "The client."]
+  ],
+  qs: [
+    ["An agent offers the inspector a spot on a preferred list for a monthly fee. This is:", ["Pay to play, a conflict of interest", "Normal marketing", "Required by law", "Paid to play"], "Paying a referral source."],
+    ["The inspector offers to fix the defective deck found during the inspection. What is the ethical concern?", ["Repairing inspected property creates a conflict of interest", "None", "Only licensing", "Only insurance"], "Many codes bar it."],
+    ["The seller's agent calls asking the inspector for a copy of the client's report. Ethically, the inspector should:", ["Provide it only with the client's permission", "Send it right away", "Refuse forever", "Charge the agent"], "The client controls distribution."],
+    ["Writing alarming comments for every minor item to reduce liability is called:", ["Defensive reporting (overstatement)", "Understatement", "Standard of care", "Mutual assent"], "Report just the facts."]
+  ] }
+]);

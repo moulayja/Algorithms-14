@@ -9,22 +9,8 @@
   --body: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
   --r: 18px;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0B1A16; --surface: #12241F; --ink: #E9EFEC; --muted: #A3B5AE; --line: #24392F; --soft: #1C2A22;
-    --accent: #7FC3AA; --accent-2: #1E5A4B; --accent-ink: #08201A; --accent-soft: #173A30;
-    --gold: #D9A953; --gold-light: #E4BC72; --gold-soft: #2E2716; --deep: #06140F;
-    --good: #5FC795; --good-soft: #163325; --bad: #F18D81; --bad-soft: #3B1F1C;
-    --warn: #E6B65D; --warn-soft: #392D13; color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #0B1A16; --surface: #12241F; --ink: #E9EFEC; --muted: #A3B5AE; --line: #24392F; --soft: #1C2A22;
-  --accent: #7FC3AA; --accent-2: #1E5A4B; --accent-ink: #08201A; --accent-soft: #173A30;
-  --gold: #D9A953; --gold-light: #E4BC72; --gold-soft: #2E2716; --deep: #06140F;
-  --good: #5FC795; --good-soft: #163325; --bad: #F18D81; --bad-soft: #3B1F1C;
-  --warn: #E6B65D; --warn-soft: #392D13; color-scheme: dark;
-}
+/* Always light: white background on every device, even when the device is set to dark mode. */
+:root { color-scheme: light; }
 * { box-sizing: border-box; }
 body { background: var(--bg); color: var(--ink); font: 16px/1.55 var(--body); }
 #app { max-width: 46rem; margin: 0 auto; padding-block: 18px 104px;

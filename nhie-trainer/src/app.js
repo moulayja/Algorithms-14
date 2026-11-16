@@ -226,9 +226,10 @@
   PAGES.study = function () {
     if (sub && sub.sec != null) return lessonPage();
     if (sub) return topicPage();
-    var html = '<div class="stack"><h1>Study</h1>';
+    var html = '<div class="stack"><h1>Study</h1><p class="muted" style="margin:0">' + TOPICS.length + " chapters · " + ALL_LESSONS.length + ' lessons from both books. Scroll down for Volume 2, or jump:</p><div class="row">' +
+      [1, 2].map(function (v) { var n = TOPICS.filter(function (t) { return t.vol === v; }); return '<button class="grow" data-act="vol" data-arg="' + v + '">Volume ' + v + ' · <span class="num">' + n.length + " chapters</span></button>"; }).join("") + "</div>";
     [1, 2].forEach(function (v) {
-      html += '<section class="card"><div class="eyebrow">' + VOLS[v] + '</div><div class="list">';
+      html += '<section class="card" id="vol' + v + '"><div class="eyebrow">' + VOLS[v] + " · " + TOPICS.filter(function (t) { return t.vol === v; }).length + ' chapters</div><div class="list">';
       TOPICS.filter(function (t) { return t.vol === v; }).forEach(function (t) {
         var st = topicStats(t), nread = t.ls.filter(passed).length;
         html += '<button class="item" data-act="topic" data-arg="' + t.id + '"><b>' + t.title + '</b><span class="pill num">' + st.mastery + '%</span>' +
@@ -236,7 +237,7 @@
       });
       html += "</div></section>";
     });
-    return html + '<p class="small muted">Lessons follow the two NHIE volumes page by page. Chapters marked not built yet still have practice questions.</p></div>';
+    return html + '<p class="small muted">Lessons follow the two NHIE volumes page by page.</p></div>';
   };
   function topicPage() {
     var t = TOPIC[sub.t], st = topicStats(t), cards = cardsFor(t.id);
@@ -423,6 +424,7 @@
   // ---------- actions ----------
   var ACT = {
     tab: function (a) { go(a); },
+    vol: function (a) { var el = document.getElementById("vol" + a); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); },
     topic: function (a) { go("study", { t: a }); },
     lesson: function (a) { var x = a.split("|"); go("study", { t: x[0], sec: +x[1] }); },
     lessonGo: function () { var L = TOPIC[sub.t].ls[sub.sec]; startCards(L.cards, "Lesson recall", L); },

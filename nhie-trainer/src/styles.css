@@ -108,8 +108,25 @@ details > summary { cursor: pointer; font-weight: 600; font-family: var(--displa
 
 nav.tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 5; background: var(--surface); border-top: 1px solid var(--line);
   padding: 6px max(8px, env(safe-area-inset-right, 0px)) calc(6px + env(safe-area-inset-bottom, 0px)) max(8px, env(safe-area-inset-left, 0px)); }
-nav.tabs > div { max-width: 46rem; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
-nav.tabs button { border: 0; background: none; color: var(--muted); font-size: .8rem; padding: 8px 2px; min-height: 48px; border-radius: 8px; }
+nav.tabs > div { max-width: 46rem; margin: 0 auto; display: grid; grid-template-columns: repeat(6, 1fr); gap: 2px; }
+nav.tabs button { border: 0; background: none; color: var(--muted); font-size: .76rem; padding: 8px 2px; min-height: 48px; border-radius: 8px; }
 nav.tabs button[aria-current="page"] { color: var(--accent); background: var(--accent-soft); }
 @media (prefers-reduced-motion: no-preference) { .tape > i { transition: width .4s ease; } }
 .opt:disabled { opacity: 1; cursor: default; }
+
+/* Teacher chat */
+.chat { display: flex; flex-direction: column; gap: 12px; }
+.msg { border-radius: 14px; padding: 10px 14px; max-width: 100%; }
+.msg.me { align-self: flex-end; max-width: 85%; background: var(--accent); color: var(--accent-ink); border-bottom-right-radius: 4px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.msg.bot { align-self: stretch; background: var(--surface); border: 1px solid var(--line); border-bottom-left-radius: 4px; }
+.msg.bot .lesson { max-width: none; overflow-wrap: anywhere; }
+.msg.bot .lesson > :first-child { margin-top: 0; } .msg.bot .lesson > :last-child { margin-bottom: 0; }
+.pic { margin: 10px 0; background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 6px; }
+.pic svg { display: block; width: 100%; height: auto; }
+.pic.drawing { color: #586874; font-size: .9rem; padding: 28px; text-align: center; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+button.chip { font-weight: 500; font-size: .88rem; padding: 7px 12px; min-height: 38px; border-radius: 99px; background: var(--surface); color: var(--accent); border-color: var(--line); text-align: left; }
+.composer { display: flex; gap: 8px; align-items: flex-end; position: sticky; bottom: 76px; background: var(--bg); padding-block: 6px; }
+.composer textarea { flex: 1; font: inherit; resize: vertical; min-height: 48px; max-height: 40vh; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+.composer textarea:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+.composer button { min-height: 48px; }

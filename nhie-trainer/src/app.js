@@ -174,9 +174,9 @@
   }
 
   // ---------- navigation ----------
-  var TABS = [["today", "Today"], ["study", "Study"], ["practice", "Practice"], ["exam", "Exam"], ["progress", "Progress"]];
+  var TABS = [["today", "Today"], ["study", "Study"], ["practice", "Practice"], ["exam", "Exam"], ["progress", "Progress"], ["teacher", "Teacher"]];
   var tab = "today", sub = null, session = null, timer = 0, confirmKey = "";
-  function go(t, s) { tab = t; sub = s || null; session = null; clearInterval(timer); confirmKey = ""; if (location.hash !== "#" + t) location.hash = t; render(); window.scrollTo(0, 0); }
+  function go(t, s) { T.back = null; tab = t; sub = s || null; session = null; clearInterval(timer); confirmKey = ""; if (location.hash !== "#" + t) location.hash = t; render(); window.scrollTo(0, 0); }
   window.addEventListener("hashchange", function () {
     var h = location.hash.slice(1);
     if (h !== tab && TABS.some(function (x) { return x[0] === h; })) go(h);
@@ -270,6 +270,9 @@
       '<p class="muted">' + esc(L.goal) + "</p></header>" +
       '<div class="card row"><span class="pill num">Book pages ' + L.p + '</span><span class="small muted grow">Read these pages in the book first or after. This lesson is the same material in plain words.</span></div>' +
       '<article class="card lesson">' + html + "</article>" +
+      (AI.sample || AI.tts ? '<div class="card stack"><b>Did not get it?</b><div class="chips">' +
+        (AI.sample ? '<button class="chip" data-act="tLesson" data-arg="' + t.id + "|" + L.i + '|simple">Explain it simpler</button><button class="chip" data-act="tLesson" data-arg="' + t.id + "|" + L.i + '|draw">Draw me a picture</button><button class="chip" data-act="tLesson" data-arg="' + t.id + "|" + L.i + '|ask">Ask the teacher</button>' : "") +
+        (AI.tts ? '<button class="chip" data-act="tLessonSpeak">' + (T.speaking === "lesson" ? "■ Stop reading" : "🔊 Read it to me") + "</button>" : "") + "</div></div>" : "") +
       '<div class="card stack"><b>Next: prove you remember it</b><span class="small muted num">' + L.cards.length + " recall cards, then " + L.qs.length + " check questions. Score 80% to pass the lesson.</span>" +
       '<button class="primary" data-act="lessonGo">I have read it. Test me</button></div></div>';
   }
@@ -351,7 +354,7 @@
     return '<div class="stack"><div class="row"><span class="eyebrow grow">' + esc(s.title) + " · " + TOPIC[q.t].title + '</span><button class="quiet" data-act="tab" data-arg="practice">End</button></div>' +
       tape(pct(s.i - 1 + (done ? 1 : 0), s.i + s.queue.length)) +
       '<section class="card stack"><p class="qtext">' + esc(q.q) + "</p>" + optButtons(q, s.opts, s.picked, done, -1) + "</section>" +
-      (done ? '<div class="why ' + (ok ? "ok" : "no") + '"><b>' + (ok ? "Correct." : "Not quite. The answer is: " + esc(q.a[0]) + ".") + "</b><p>" + esc(q.e) + '</p></div><button class="primary" data-act="next">' + (s.queue.length ? "Next question" : "See results") + "</button>" : "") + "</div>";
+      (done ? '<div class="why ' + (ok ? "ok" : "no") + '"><b>' + (ok ? "Correct." : "Not quite. The answer is: " + esc(q.a[0]) + ".") + "</b><p>" + esc(q.e) + '</p></div><div class="row"><button class="primary" data-act="next">' + (s.queue.length ? "Next question" : "See results") + "</button>" + (!ok && AI.sample ? '<button data-act="tWhy">Ask the teacher why</button>' : "") + "</div>" : "") + "</div>";
   };
 
   function startCards(pool, title, lesson, doneKey) {
@@ -451,6 +454,7 @@
     resetNo: function () { confirmKey = ""; render(); },
     resetYes: function () { S.meta = { exam: S.meta.exam, streak: [0, 0], read: {}, exams: [], done: {} }; S.q = {}; S.c = {}; confirmKey = ""; dirty("meta"); dirty("questions"); dirty("cards"); render(); }
   };
+  for (var k in TACT) ACT[k] = TACT[k];
   document.addEventListener("click", function (e) {
     var el = e.target.closest("[data-act]"); if (!el || el.disabled) return;
     var f = ACT[el.getAttribute("data-act")]; if (f) f(el.getAttribute("data-arg") || "");
@@ -466,4 +470,5 @@
   if (TABS.some(function (x) { return x[0] === h; })) tab = h;
   render();
   cloudInit();
+  aiInit();
 })();

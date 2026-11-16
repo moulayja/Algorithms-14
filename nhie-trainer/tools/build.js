@@ -20,7 +20,7 @@ ${read("src/styles.css")}</style>
 ${read("src/core.js")}
 ${questions}
 ${lessons}
-${read("src/app.js")}</script>
+${read("src/app.js").replace("  // ---------- actions ----------", read("src/teacher.js") + "\n  // ---------- actions ----------")}</script>
 `;
 fs.mkdirSync(path.join(root, "dist"), { recursive: true });
 fs.writeFileSync(path.join(root, "dist/nhie-trainer.html"), html);

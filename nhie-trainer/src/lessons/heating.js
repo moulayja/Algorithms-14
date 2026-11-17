@@ -425,5 +425,51 @@ NHIE.lessons("heating", [
     ["Steam radiators bang loudly when the system starts. A likely cause is:", ["Water trapped by improper pipe or radiator slope", "Too much insulation", "A new thermostat", "Dry steam"], "Steam hits trapped water."],
     ["What is the purpose of the Hartford loop?", ["To keep a return leak from draining the boiler", "To raise steam pressure", "To vent air from radiators", "To heat domestic water"], "Running a boiler dry can destroy it."],
     ["A new steam boiler is connected to the original old piping right above it. Why may this be reported?", ["Makers often require new near-boiler piping for dry steam", "It is always ideal", "Old pipe is stronger", "It is never reportable"], "Wet steam heats poorly and causes problems."]
+  ] },
+{ t: "Listening to a furnace start: ignition, flames, blowers and humidifiers", p: "164–184 and 208–214",
+  goal: "Know the normal start-up sequence, what flames should look like, and the humidifier rules.",
+  teach: [
+    "# Listen to the ignition sequence",
+    "- Draft hood (natural draft) furnace: a click as the gas valve opens, the burners light, then the blower fan starts.",
+    "- Induced draft furnace (most medium efficiency): the draft inducer fan starts, the ignition device comes on, a click as the gas valve opens, the burners light, then the blower fan starts.",
+    "- A pressure switch stops the sequence if the draft inducer is not creating enough draft.",
+    "- Floor and wall furnaces: a click as the gas valve opens, then the burner lights.",
+    "- Reportable: ignition fails, or the burner lights, shuts down, and tries again over and over.",
+    "- Category IV (high efficiency) furnaces are inspected much like induced draft furnaces. Their heat exchanger is a winding (serpentine) path, which is why a fan must pull the gasses through.",
+    "# Flames",
+    "- Burner flames should be blue and steady. A yellow or orange flame is reportable: it can mean a badly adjusted burner or gas valve, or not enough combustion air.",
+    "- A standing pilot flame should be steady and large enough to touch the thermocouple.",
+    "- Black soot at supply registers can point to a cracked heat exchanger among other causes.",
+    "# Blower (fan)",
+    "- Report a dirty fan (it works less well and wears out sooner) and a fan that is loose, shakes or rattles.",
+    "# Humidifiers",
+    "- Add moisture to forced-air systems; mostly used with gas and oil furnaces. Less needed with heat pumps, whose warm air is not as dry.",
+    "- Install per the maker. The supply plenum is preferred so moisture does not reach the fan and heat exchanger. Never on the furnace cabinet itself, only on a plenum.",
+    "- It should be level, and not in an unconditioned space that can freeze.",
+    "- A bypass duct, if used, should be metal (flexible plastic duct is not acceptable) with a damper closed during air conditioning.",
+    "- A drain line, if present, should go to a proper receptor such as a floor drain.",
+    "- Pads need regular cleaning and replacement, which is often skipped, so many humidifiers do not work right. Consider recommending evaluation of most humidifiers.",
+    "# Supplemental heat",
+    "- Wood and biomass stoves, wall furnaces and room heaters are often extra heat or used for additions. Most distributed electric heaters, like baseboard units, should be on a dedicated circuit.",
+    "! Induced draft start: inducer, igniter, click, flame, blower. Flames blue and steady; yellow or orange is a defect."
+  ],
+  cards: [
+    ["Draft hood furnace ignition sequence", "Click (gas valve opens), burners light, blower starts."],
+    ["Induced draft furnace ignition sequence", "Draft inducer starts, igniter on, click (gas valve), burners light, blower starts."],
+    ["Purpose of the furnace pressure switch", "Stops ignition if the draft inducer is not making enough draft."],
+    ["Reportable ignition problems", "Ignition fails, or the burner lights, shuts off and keeps retrying."],
+    ["Yellow or orange burner flame", "Reportable; may mean poor burner or valve adjustment or too little combustion air."],
+    ["Correct pilot flame", "Steady and large enough to touch the thermocouple."],
+    ["Where a humidifier may be mounted", "On a plenum (supply preferred), never on the furnace cabinet itself."],
+    ["Humidifier bypass duct", "Should be metal with a damper closed during air conditioning; flexible plastic duct is not acceptable."]
+  ],
+  qs: [
+    ["An induced draft furnace lights, shuts off after a few seconds, and keeps retrying. What do you report?", ["Repeated ignition is a reportable defect; recommend an HVAC contractor", "Normal start-up", "Cosmetic", "The thermostat is set too high"], "Failure to ignite or repeated ignition cycles are reportable."],
+    ["Which part should start first in an induced draft furnace?", ["The draft inducer fan", "The blower fan", "The burners", "The humidifier"], "Then the igniter, the gas valve, the burners and the blower."],
+    ["Gas burner flames are lazy and orange. What may this indicate?", ["Poor burner or valve adjustment or not enough combustion air", "A perfect flame", "Too much air conditioning", "A full filter only"], "Flames should be blue and steady."],
+    ["A humidifier is screwed directly onto the furnace cabinet. What do you report?", ["Improper location; humidifiers mount on a plenum, not the cabinet", "Normal", "It should be in the attic", "It needs a bigger pad"], "Moisture can damage the fan and heat exchanger compartments."],
+    ["A humidifier bypass uses flexible plastic duct. Is this acceptable?", ["No; the bypass should be metal", "Yes", "Only in summer", "Only on heat pumps"], "It should also have a damper closed during cooling."],
+    ["A standing pilot flame is small and flickering, not touching the thermocouple. What is the concern?", ["The pilot should be steady and touch the thermocouple; recommend service", "None", "It is too large", "The blower is dirty"], "A weak pilot can cause the safety to shut off the gas."]
   ] }
+
 ]);

@@ -147,5 +147,48 @@ NHIE.lessons("interior", [
     ["Upper cabinets are held up with drywall anchors only. What is reported?", ["Improper fastening; cabinets should be screwed into framing", "Monitor; no action needed", "Cosmetic", "Nothing"], "Loaded cabinets can fall."],
     ["The cabinet drawer next to the range hits the oven handle when opened. Is this reportable?", ["Yes; it is a functional defect", "No", "Only if new", "Only with gas ranges"], "Report items that do not work as intended."],
     ["The buyer asks if the smart lighting system works. What is the inspector's position?", ["Smart home systems are out of scope; disclaim and suggest a specialist", "Test every scene", "Guarantee it", "Ignore the question"], "Normal controls only."]
+  ] },
+{ t: "Trim, floor coverings and cabinet details", p: "328–343 and 355–360",
+  goal: "Name trim and floor coverings correctly and know their common installation problems.",
+  teach: [
+    "# Trim names (so you can say where a defect is)",
+    "- Base (baseboard): along the floor. Shoe or quarter round: covers the gap between base and floor. Chair rail: mid-wall. Crown: where wall meets ceiling. Casing: around windows and doors.",
+    "- Newer trim is often finger-jointed (short pieces glued together). Trim pulling away from a wall, floor or ceiling can point to movement.",
+    "# Floor coverings vs the floor",
+    "- Floor coverings (carpet, tile, wood) are not the structural floor. Cosmetic covering defects may be out of scope, but covering damage caused by foundation or floor problems is in scope.",
+    "# Carpet",
+    "- Wall to wall (rugs cover only part). Usually 12 foot wide rolls. Should go over a pad and be power-stretched; the house should be at normal temperature and humidity when it is installed. Most carpet problems come from poor installation.",
+    "# Laminate and engineered wood",
+    "- Laminate only looks like wood (a picture of wood). Do not call it a wood floor. Most makers do not allow it where moisture comes up from the subfloor. Problems usually come from installation plus moisture: no time to acclimate, subfloor moisture not checked, no vapor retarder or pad.",
+    "- Engineered wood has a real wood top layer; better grades can be sanded and refinished a couple of times.",
+    "- Blind nailing or stapling is common for wood floors but may not suit particleboard subfloors.",
+    "# Linoleum and vinyl",
+    "- The words are used for each other. Vinyl comes from petrochemicals on a fiberglass backing. Sheet goods should be rolled with a proper roller to remove air pockets. Older vinyl and its adhesive may contain asbestos.",
+    "# Tile and stone",
+    "- Install per maker and tile industry rules. Report loose, damaged or cracked tile, edges at different heights and hollow sounds. Cracked grout is often cosmetic.",
+    "- Cracks from foundation movement should not be repaired until the movement's cause is found and fixed.",
+    "# Mirrors and cabinets",
+    "- Mirrors in hazardous locations do not need safety glazing if they have a solid or approved backing.",
+    "- Cabinet front frame: the face frame (some cabinets have none). Where cabinets meet at an inside corner, a filler strip keeps doors and drawers from hitting each other.",
+    "# Smart homes",
+    "- No single accepted definition: network-connected products that control temperature, lighting, security, safety or entertainment, plus a reliable high-speed internet connection. Devices from different makers may not work together.",
+    "! Base, shoe, chair rail, crown, casing. Laminate is not wood. Find the cause before fixing foundation cracks in tile."
+  ],
+  cards: [
+    ["Casing", "Trim around windows and doors."],
+    ["Crown molding", "Trim where the wall meets the ceiling."],
+    ["Shoe or quarter round", "Trim that covers the gap between the base and the floor covering."],
+    ["Laminate vs engineered wood", "Laminate is a picture of wood; engineered wood has a real wood top layer."],
+    ["Common laminate problems", "Installation plus moisture: no acclimation, subfloor moisture not checked, no vapor retarder or pad."],
+    ["Carpet installation basics", "Over a pad, power-stretched, at normal temperature and humidity."],
+    ["Mirror safety glazing exception", "Not needed if the mirror has a solid or approved backing."],
+    ["Cabinet filler strip", "A spacer at inside corners so doors and drawers don't collide."]
+  ],
+  qs: [
+    ["A floor looks like oak but is a printed laminate. How should the report describe it?", ["As laminate floor covering, not wood", "As hardwood", "As engineered wood", "As vinyl"], "Laminates should not be described as wood."],
+    ["Tile in a kitchen has diagonal cracks that line up with a foundation crack below. What is the right advice?", ["Find and fix the foundation movement before repairing the tile", "Replace the tile right away", "Seal the grout", "Nothing, it is cosmetic"], "Repairs will crack again if the cause continues."],
+    ["Drawers at an inside cabinet corner hit each other when opened. What is the likely cause?", ["Missing or too small filler strip", "Wrong countertop", "Loose hinges only", "Cabinets too tall"], "A filler strip spaces the cabinets apart."],
+    ["Which trim runs around a door opening?", ["Casing", "Base", "Crown", "Chair rail"], "Knowing trim names helps describe where defects are."],
+    ["Laminate flooring is swelling and buckling on a basement slab. What is the most likely contributor?", ["Moisture from the subfloor and poor installation", "Too much sunlight", "Heavy furniture only", "The color"], "Most makers do not allow laminate where subfloor moisture is a risk."]
   ] }
 ]);

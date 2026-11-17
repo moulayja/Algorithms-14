@@ -238,5 +238,47 @@ NHIE.lessons("insulation", [
     ["A crawl space of 1,500 sq ft has a sealed Class I ground cover. How much vent area is needed?", ["About 1 square foot", "10 square feet", "15 square feet", "None"], "1:1,500."],
     ["A ridge vent was added but the soffits have no intake vents. What is the concern?", ["Exhaust without intake can pull air from the house", "Perfect balance", "Too much ventilation", "Nothing"], "Ventilation needs low intake and high exhaust."],
     ["Spray foam covers the crawl space walls with no covering. What may be reported?", ["Foam needs an ignition or thermal barrier", "Cosmetic only", "Too much R-value", "Nothing"], "Exposed foam is a fire concern."]
+  ] },
+{ t: "Insulation and ventilation details people miss", p: "279–323",
+  goal: "Pick up the smaller insulation, radiant barrier, dryer duct and window rules.",
+  teach: [
+    "# Installing insulation right",
+    "- Batts should be cut to fit when framing is spaced differently from the batt width, and cut around wires, boxes and pipes.",
+    "- Any compression lowers R-value. Some compression from foot traffic is normal; widespread compression or disturbance is not.",
+    "- Asbestos-containing insulation should be removed only by a qualified abatement contractor. Vermiculite itself usually has no asbestos, but much of it came from a mine that also had asbestos.",
+    "- Old recessed lights that are not air sealed leak house air into the attic. Use air sealed, insulation contact (IC) rated fixtures, or avoid them.",
+    "# Radiant barriers",
+    "- A radiant barrier laid on top of the ceiling joists must be a perforated type that is not a vapor retarder, or moisture can be trapped and cause mold and rot.",
+    "- Some radiant barrier paints may not actually work as radiant barriers.",
+    "# Dryer ducts",
+    "- The transition duct (usually flexible, from dryer to wall) should be metal listed to UL 2158A, as short as possible, not crimped.",
+    "- Duct pieces fit smaller end into larger end in the direction of air flow, so lint does not catch.",
+    "- A duct larger than specified may slow the air too much to carry lint.",
+    "# Vent openings",
+    "- Assume screens cut the gross opening area by at least 25%, and screens with louvers or grilles by at least 50%, when judging net free area.",
+    "# Windows",
+    "- Existing houses do not have to meet current energy rules, but replacement windows and doors may have to.",
+    "- New windows usually take decades to pay back in energy savings, so replacement is a questionable investment on savings alone.",
+    "# Basements",
+    "- A basement should not be insulated and finished until all liquid water entry has been stopped.",
+    "- Signs of moisture in a finished basement: stains and growth near the floor, rusty drywall and trim nails, rust on metal columns, musty smells, a dehumidifier running constantly.",
+    "- Fixing one system (such as attic ventilation) may not solve a moisture problem by itself.",
+    "! Radiant barrier on joists: perforated. Dryer duct: smaller end into larger, in the air flow direction."
+  ],
+  cards: [
+    ["Radiant barrier on top of ceiling joists", "Must be perforated and not a vapor retarder, or it traps moisture."],
+    ["Dryer duct joint direction", "Smaller end into larger end in the direction of air flow."],
+    ["Dryer transition duct", "Metal (UL 2158A), as short as possible, not crimped."],
+    ["Screens and vent area", "Screens cut net area at least 25%; screens with louvers or grilles at least 50%."],
+    ["When to finish a basement", "Only after all liquid water intrusion has been stopped."],
+    ["Signs of a wet finished basement", "Stains near the floor, rusty nails, rusty columns, musty smell, constant dehumidifier."],
+    ["Recessed lights and insulation", "Use air sealed, IC-rated fixtures; old unsealed ones leak air into the attic."]
+  ],
+  qs: [
+    ["A foil radiant barrier with no perforations is laid over attic floor insulation. What is the concern?", ["It can trap moisture and cause mold and rot", "None", "It makes the attic too cold", "It voids the roof warranty"], "On top of joists it must be perforated and not a vapor retarder."],
+    ["Dryer duct sections are joined with the larger end pointing downstream. What is wrong?", ["The joints face against the air flow and catch lint", "Nothing", "The duct is too short", "The duct must be plastic"], "Smaller end should fit into larger end in the direction of flow."],
+    ["Batts were stuffed into narrow joist bays without being cut. What do you report?", ["Insulation not cut to fit and compressed, lowering R-value", "Normal", "Too much insulation", "Cosmetic"], "Compression reduces R-value."],
+    ["A finished basement has rusty nail heads in the drywall near the floor and a musty smell. What do these suggest?", ["Moisture problems in the basement", "Normal aging", "Too much heat", "New construction"], "Recommend evaluation of the water source."],
+    ["Do existing houses have to meet current window energy rules?", ["No, but replacement windows and doors may have to", "Yes, always", "Only in the south", "Only for skylights"], "Existing construction is not required to comply."]
   ] }
 ]);

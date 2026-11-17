@@ -199,3 +199,11 @@ button.sheet-x { width: 44px; height: 44px; padding: 0; display: grid; place-ite
 .sheet .composer { bottom: 0; }
 @media (prefers-reduced-motion: no-preference) { .sheet { animation: sheetUp .22s ease-out; } @keyframes sheetUp { from { transform: translateY(40px); opacity: .4; } } }
 .sheet-head .grow { flex: 1; }
+
+/* focus mode */
+.ctag.big { font-size: .82rem; padding: 7px 12px; min-height: 36px; border: 0; cursor: pointer; }
+.focuscard { border: 2px solid var(--gold); background: var(--gold-soft); }
+.sc { display: inline-block; min-width: 36px; padding: 2px 6px; border-radius: 6px; font-weight: 700; text-align: center; }
+.sc.lo { background: var(--bad-soft); color: var(--bad); } .sc.mid { background: var(--gold-soft); color: var(--gold); } .sc.hi { background: var(--good-soft); color: var(--good); }
+table.scores td, table.scores th { padding: 6px 3px; font-size: .8rem; } table.scores td:first-child { min-width: 8rem; }
+table.scores .sc { min-width: 30px; padding: 2px 4px; }

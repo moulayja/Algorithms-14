@@ -33,8 +33,39 @@
   });
   TOPICS.forEach(function (t) { t.ls = N.lessonBank[t.id] || []; });
   var ALL_LESSONS = [].concat.apply([], TOPICS.map(function (t) { return t.ls; }));
+  // ---------- focus on weak topics, from the student's NHIE score reports ----------
+  var TASKS = [["Site conditions","site"],["Exterior","exterior"],["Roof","roof"],["Structure","structure"],["Electrical","electrical"],["Cooling","cooling"],["Heating","heating"],
+    ["Insulation, moisture, ventilation","insulation"],["Mechanical exhaust","insulation"],["Plumbing and fuel","plumbing"],["Interior","interior"],["Fireplaces and vents","fireplaces"],["Life safety","electrical"],
+    ["Inform the client","reporting"],["Describe limitations","reporting"],["Describe systems","reporting"],["Needs evaluation or action","reporting"],["Pre-inspection agreement","professional"],["Integrity and process","professional"]];
+  var SCORES = window.NHIE_SCORES || [];
+  var FOCUS = (function () {
+    if (!SCORES.length) return null;
+    var w = SCORES.map(function (_, i) { return i + 1; }), wsum = w.reduce(function (a, b) { return a + b; }, 0), last = SCORES[SCORES.length - 1].s;
+    var task = TASKS.map(function (t, i) {
+      var avg = SCORES.reduce(function (a, r, k) { return a + r.s[i] * w[k]; }, 0) / wsum;
+      return { name: t[0], topic: t[1], avg: Math.round(avg), last: last[i], hist: SCORES.map(function (r) { return r.s[i]; }) };
+    });
+    var by = {};
+    task.forEach(function (x) { (by[x.topic] = by[x.topic] || []).push(x); });
+    by.kitchen = by.interior;
+    var tier = {};
+    TOPICS.forEach(function (t) {
+      // Top priority: any of its exam areas under 60% on the last exam or on the weighted average; next: under 70%.
+      var xs = by[t.id] || [], worst = Math.min.apply(null, xs.map(function (x) { return Math.min(x.avg, x.last); }));
+      tier[t.id] = worst < 60 ? 1 : worst < 70 ? 2 : 3;
+      if (t.id === "kitchen") tier[t.id] = Math.max(tier[t.id], 2);   // a small slice of the interior area
+    });
+    return { task: task, tier: tier };
+  })();
+  function focusOn() { return !!FOCUS && S.meta.focus !== false; }
+  function tierOf(t) { return focusOn() ? FOCUS.tier[t.id || t] : 2; }
+  function focusWeight(t) { return { 1: 4, 2: 2, 3: 0.5 }[tierOf(t)]; }
   function passed(L) { return !!S.meta.read[L.topic + "-" + L.i]; }
-  function nextLesson() { for (var i = 0; i < ALL_LESSONS.length; i++) if (!passed(ALL_LESSONS[i])) return ALL_LESSONS[i]; return null; }
+  function nextLesson() {
+    var list = focusOn() ? ALL_LESSONS.slice().sort(function (a, b) { return tierOf(a.topic) - tierOf(b.topic) || ALL_LESSONS.indexOf(a) - ALL_LESSONS.indexOf(b); }) : ALL_LESSONS;
+    for (var i = 0; i < list.length; i++) if (!passed(list[i])) return list[i];
+    return null;
+  }
 
   // ---------- helpers ----------
   var view = document.getElementById("view");
@@ -142,9 +173,19 @@
   function pickSmart(n) {
     var out = shuffle(dueQs(allQs())).sort(function (a, b) { return qRec(a.id)[0] - qRec(b.id)[0]; }).slice(0, Math.ceil(n * 0.6));
     var order = weakestFirst(), i = 0, guard = 0;
-    var fresh = order.map(function (t) { return shuffle(newQs(t.qs)); });
-    while (out.length < n && guard++ < 400) { var q = fresh[i % fresh.length].pop(); if (q) out.push(q); i += 1; }
+    if (focusOn()) { var bag = []; order.forEach(function (t) { for (var k = 0; k < Math.max(1, Math.round(focusWeight(t) * 2)); k++) bag.push(t); }); order = shuffle(bag); }
+    var pools = {}; order.forEach(function (t) { if (!pools[t.id]) pools[t.id] = shuffle(newQs(t.qs)); });
+    var fresh = order.map(function (t) { return pools[t.id]; });
+    while (out.length < n && guard++ < 600) { var q = fresh[i % fresh.length].pop(); if (q) out.push(q); i += 1; }
     if (out.length < n) out = out.concat(shuffle(allQs().filter(function (q) { return out.indexOf(q) < 0; })).slice(0, n - out.length));
+    return shuffle(out);
+  }
+  function pickFocus(n) {
+    // About 70% of the questions from top-priority chapters, the rest from the "next" chapters, spread evenly.
+    var t1 = shuffle(TOPICS.filter(function (t) { return tierOf(t) === 1; })), t2 = shuffle(TOPICS.filter(function (t) { return tierOf(t) === 2; }));
+    var n1 = t2.length ? Math.round(n * 0.7) : n, out = [];
+    function spread(ts, k) { if (!ts.length) return; ts.forEach(function (t, i) { var c = Math.floor(k / ts.length) + (i < k % ts.length ? 1 : 0); if (c) out = out.concat(pickTopic(t, c)); }); }
+    spread(t1, n1); spread(t2, n - n1);
     return shuffle(out);
   }
   function pickTopic(t, n) {
@@ -238,6 +279,16 @@
 
   // ---------- pages ----------
   var PAGES = {};
+  function focusCard() {
+    if (!FOCUS) return "";
+    if (!focusOn()) return '<section class="card row"><span class="grow small muted">Focus mode is off: lessons follow the book order.</span><button data-act="focusToggle">Turn focus on</button></section>';
+    var t1 = TOPICS.filter(function (t) { return tierOf(t) === 1; }), t2 = TOPICS.filter(function (t) { return tierOf(t) === 2; });
+    return '<section class="card stack focuscard"><div class="row"><h2 class="grow">Your focus</h2><button class="quiet small" data-act="focusToggle">Turn off</button></div>' +
+      '<p class="small muted">From your 5 score reports. Lessons and practice come from these chapters first; strong chapters still come back for light review.</p>' +
+      '<div class="stack" style="gap:6px"><b class="small">Top priority</b><div class="chips">' + t1.map(function (t) { return '<button class="ctag big" style="--c:' + t.color + '" data-act="topic" data-arg="' + t.id + '">' + t.title + "</button>"; }).join("") + "</div>" +
+      (t2.length ? '<b class="small" style="margin-top:6px">Next</b><div class="chips">' + t2.map(function (t) { return '<button class="ctag big" style="--c:' + t.color + '" data-act="topic" data-arg="' + t.id + '">' + t.title + "</button>"; }).join("") + "</div>" : "") + "</div>" +
+      '<button class="primary" data-act="focusq">Focus practice: 20 questions</button></section>';
+  }
   PAGES.today = function () {
     var r = readiness(), all = allQs(), due = dueQs(all).length, total = all.length;
     var seenN = all.filter(function (q) { return seen(q.id); }).length;
@@ -257,6 +308,7 @@
       '<div class="tiles"><div class="tile dark"><b class="num">' + (S.meta.exam ? Math.max(0, Math.ceil((new Date(S.meta.exam + "T00:00:00") - new Date()) / 864e5)) : "–") + '</b><span>Days to exam</span>' +
       '<input type="date" id="examdate" data-change="examdate" aria-label="Exam date" value="' + esc(S.meta.exam || "") + '" style="margin-top:8px;min-height:36px;padding:4px 8px;font-size:.8rem;background:transparent;color:#FFFFFF;border-color:rgba(255,255,255,.3);color-scheme:dark"></div>' +
       '<div class="tile"><b class="num">' + sN + "</b><span>Day streak</span></div></div>" +
+      focusCard() +
       '<section class="card"><h2 style="margin-bottom:12px">Today\'s class</h2><div class="plan">' +
       step("review", "Warm-up: questions from earlier lessons", due ? due + " questions are due again today." : "Nothing is due yet.", "review", "", due ? "Start" : "None due") +
       step("cards", "Flashcards from earlier lessons", cdue ? cdue + " cards are due again today." : "Nothing is due yet.", "cardsDue", "", cdue ? "Start" : "None due") +
@@ -283,7 +335,7 @@
       html += '<section class="card volcard' + (volSel === v ? " on" : "") + '" style="--v:' + VOLCOLOR[v] + '" id="vol' + v + '"><div class="volband">' + VOLS[v] + " · " + TOPICS.filter(function (t) { return t.vol === v; }).length + ' chapters</div><div class="list">';
       TOPICS.filter(function (t) { return t.vol === v; }).forEach(function (t) {
         var st = topicStats(t), nread = t.ls.filter(passed).length;
-        html += '<button class="item chap" style="--c:' + t.color + '" data-act="topic" data-arg="' + t.id + '"><span class="cnum num">' + (TOPICS.indexOf(t) + 1) + "</span><b>" + t.title + '</b><span class="pill num">' + st.mastery + '%</span>' +
+        html += '<button class="item chap" style="--c:' + t.color + '" data-act="topic" data-arg="' + t.id + '"><span class="cnum num">' + (TOPICS.indexOf(t) + 1) + "</span><b>" + t.title + (focusOn() && tierOf(t) === 1 ? ' <span class="pill warn">Focus</span>' : "") + '</b><span class="pill num">' + st.mastery + '%</span>' +
           '<span class="small muted num" style="grid-column:2/-1">' + (t.ls.length ? nread + " of " + t.ls.length + " lessons passed · " : "Lessons not built yet · ") + st.seen + " of " + st.n + " questions tried</span>" + tape(st.mastery) + "</button>";
       });
       html += "</div></section>";
@@ -336,6 +388,7 @@
     var all = allQs(), due = dueQs(all).length, missed = all.filter(function (q) { return seen(q.id) && qRec(q.id)[0] === 0; }).length;
     var cards = cardsFor(), cdue = cards.filter(function (c) { return S.c[c.id] && S.c[c.id][1] <= today(); }).length;
     var html = '<div class="stack"><h1>Practice</h1><section class="card"><div class="list">' +
+      (focusOn() ? '<button class="item" data-act="focusq"><span><b>Focus session</b><br><span class="small muted">20 questions only from your weak chapters.</span></span><span class="pill warn">Focus</span></button>' : "") +
       '<button class="item" data-act="smart" data-arg="20"><span><b>Smart session</b><br><span class="small muted">20 questions: what is due, then new ones from your weakest subjects.</span></span><span class="pill num">' + due + " due</span></button>" +
       '<button class="item" data-act="missed"' + (missed ? "" : " disabled") + '><span><b>My mistakes</b><br><span class="small muted">Only questions you last answered wrong.</span></span><span class="pill ' + (missed ? "bad" : "good") + ' num">' + missed + "</span></button>" +
       (cards.length ? '<button class="item" data-act="cards" data-arg=""><span><b>Flashcards</b><br><span class="small muted">Cards from the lessons you have passed, 20 at a time.</span></span><span class="pill num">' + cdue + " due</span></button>" : "") +
@@ -357,6 +410,15 @@
       (rows ? '<section class="card"><h2 style="margin-bottom:6px">Past attempts</h2><div class="scroll"><table><tr><th>Date</th><th class="r">Questions</th><th class="r">Score</th><th class="r">Time used</th></tr>' + rows + "</table></div></section>" : "") + "</div>";
   };
 
+  function scoreHistory() {
+    if (!FOCUS) return "";
+    var head = SCORES.map(function (r) { var d = new Date(r.date + "T00:00:00"); return '<th class="r">' + d.toLocaleDateString(undefined, { month: "short", year: "2-digit" }) + "</th>"; }).join("");
+    var rows = FOCUS.task.map(function (x) {
+      return '<tr><td><span class="cdot" style="--c:' + TOPIC[x.topic].color + '"></span>' + x.name + "</td>" + x.hist.map(function (v) { return '<td class="r"><span class="sc ' + (v < 60 ? "lo" : v < 75 ? "mid" : "hi") + '">' + v + "</span></td>"; }).join("") + "</tr>";
+    }).join("");
+    return '<section class="card stack"><h2>Your NHIE score reports</h2><p class="small muted">Percent correct by exam area. Red is below 60, gold 60 to 74. The board notes these area scores rest on few questions each, so they guide focus but do not predict the next exam.</p>' +
+      '<div class="scroll"><table class="scores"><tr><th>Area</th>' + head + "</tr>" + rows + '<tr><td><b>Scaled score</b> (500 passes)</td>' + SCORES.map(function (r) { return '<td class="r"><b>' + r.scaled + "</b></td>"; }).join("") + "</tr></table></div></section>";
+  }
   PAGES.progress = function () {
     var rows = TOPICS.map(function (t) {
       var s = topicStats(t), acc = s.right + s.wrong ? pct(s.right, s.right + s.wrong) + "%" : "–";
@@ -365,6 +427,7 @@
     var cards = cardsFor(), known = cards.filter(function (c) { return S.c[c.id] && S.c[c.id][0] >= 2; }).length;
     return '<div class="stack"><h1>Progress</h1><section class="card stack"><div class="row"><div class="grow"><div class="eyebrow">Exam readiness</div><div class="big">' + readiness() + "%</div></div>" +
       '<div class="small muted num" style="text-align:right">' + ALL_LESSONS.filter(passed).length + " of " + ALL_LESSONS.length + " lessons passed<br>" + known + " of " + cards.length + " flashcards known</div>" + "</div>" + tape(readiness()) + "</section>" +
+      scoreHistory() +
       '<section class="card"><div class="scroll"><table><tr><th>Subject</th><th class="r">Tried</th><th class="r">Correct</th><th class="r">Mastery</th></tr>' + rows + "</table></div></section>" +
       '<section class="card stack"><p class="small muted" id="sync">' + syncLabel() + "</p>" +
       (confirmKey === "reset" ? '<div class="row"><b>Erase all progress?</b><button class="danger" data-act="resetYes">Yes, erase</button><button data-act="resetNo">Keep it</button></div>'
@@ -496,6 +559,8 @@
     lessonQuiz: function () { var L = session.lesson; startQuiz(shuffle(L.qs), "Lesson check"); session.lesson = L; },
     review: function () { var d = shuffle(dueQs(allQs())).slice(0, 20); if (d.length) startQuiz(d, "Warm-up", "review"); },
     cardsDue: function () { var d = cardsFor().filter(function (c) { return S.c[c.id] && S.c[c.id][1] <= today(); }); if (d.length) startCards(d, "Warm-up cards", null, "cards"); },
+    focusq: function () { startQuiz(pickFocus(20), "Focus session", "review"); },
+    focusToggle: function () { S.meta.focus = !focusOn(); dirty("meta"); render(); },
     smart: function (a) { startQuiz(pickSmart(+a || 20), "Smart session", "review"); },
     missed: function () { startQuiz(shuffle(allQs().filter(function (q) { return seen(q.id) && qRec(q.id)[0] === 0; })).slice(0, 25), "My mistakes"); },
     practiceTopic: function (a) { startQuiz(pickTopic(TOPIC[a], 15), "Subject practice", "topicq"); },

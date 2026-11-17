@@ -8,6 +8,8 @@ const qdir = path.join(root, "src/questions");
 const questions = fs.readdirSync(qdir).filter((f) => f.endsWith(".js")).sort().map((f) => read("src/questions/" + f)).join("\n");
 const ldir = path.join(root, "src/lessons");
 const lessons = fs.readdirSync(ldir).filter((f) => f.endsWith(".js")).sort().map((f) => read("src/lessons/" + f)).join("\n");
+const privFile = path.join(root, "src/private/scores.js");
+const scores = fs.existsSync(privFile) ? fs.readFileSync(privFile, "utf8") : "";
 const html = `<meta charset="utf-8">
 <title>NHIE School</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -17,6 +19,7 @@ ${read("src/styles.css")}</style>
 <main id="app"><div id="view"></div></main>
 <nav class="tabs" aria-label="Sections"><div id="tabs"></div></nav>
 <script>
+${scores}
 ${read("src/core.js")}
 ${questions}
 ${lessons}

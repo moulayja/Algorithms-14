@@ -236,5 +236,43 @@ NHIE.lessons("fireplaces", [
     ["Single-wall stove pipe passes through the ceiling into the attic. What is reported?", ["Not allowed; a listed chimney and thimble are required", "Acceptable as installed", "It needs paint", "Too much clearance"], "Single-wall pipe may not pass through ceilings."],
     ["A fireplace insert vents into a large masonry flue with no visible liner at the top. What should be recommended?", ["Evaluation; many makers require a stainless liner to the top", "Nothing", "A bigger flue", "Closing the damper"], "Oversized flues draft poorly and build creosote."],
     ["A spark arrestor screen has 1 inch openings. Is it effective?", ["No; it should block 1/2 inch spheres", "Yes", "It should be solid", "It should have 2 inch openings"], "Embers pass through large openings."]
+  ] },
+{ t: "Fireplace and chimney details people miss", p: "369–404",
+  goal: "Pick up the smaller fireplace and chimney rules, especially for factory-built units.",
+  teach: [
+    "# Masonry fireplace design",
+    "- There is debate about throat and smoke chamber design. A masonry fireplace that does not match approved designs is not automatically deficient; recommend a specialist evaluate it.",
+    "- Steel firebox kits inside masonry are sometimes called by brand names; describe them, don't rely on a brand.",
+    "# Opening the damper",
+    "- Be careful: debris and dead animals often fall when a damper is opened. The damper should be intact and open and close fairly easily.",
+    "# Factory-built fireplaces and chimneys",
+    "- Parts from one maker may not be mixed with parts from another unless both makers approve, and parts may not be altered or used in ways the maker does not allow.",
+    "- Combustion air kits and ducts must be the maker's components, installed per the maker.",
+    "- Refractory panels with cracks are usually not an immediate concern, but report them: they suggest the panels are near the end of their life.",
+    "- A framed chase around a metal chimney should be strapped or secured so it will not blow off in high winds.",
+    "# Flues and liners",
+    "- You don't calculate flue size, but know that a flue that is too large may not let the stack effect develop, and a chimney on an outside wall runs cooler and may draft poorly.",
+    "- A liner not intended for solid or liquid fuel should carry a permanent label listing the fuels and appliances allowed.",
+    "# Caps and crickets",
+    "- Every chimney should ideally have a rain cap and a spark arrestor, but most areas don't require them, so their absence is not a defect (spark arrestors are required in some wildfire-prone areas).",
+    "- A cricket should be covered with roofing and flashed like the chimney (base flashing and counterflashing for brick).",
+    "# Wood stoves",
+    "- The stove and its vent should be intact and undamaged. The door and gasket should be intact, and the door should open, close and latch securely.",
+    "! Factory-built: never mix makers' parts. Cracked refractory panels: report as nearing end of life."
+  ],
+  cards: [
+    ["Mixing factory-built fireplace parts", "Not allowed unless both makers approve; parts may not be altered."],
+    ["Cracked refractory panels in a factory-built fireplace", "Usually not urgent, but report them as nearing end of life."],
+    ["Framed chase on a metal chimney", "Should be strapped or secured so wind cannot blow it off."],
+    ["Masonry fireplace not built to an approved design", "Not automatically deficient; recommend specialist evaluation."],
+    ["Rain cap and spark arrestor", "Recommended, but not required in most areas, so absence is not a defect."],
+    ["Flue too large", "May keep the stack effect from developing, causing poor draft."],
+    ["Wood stove door check", "Door and gasket intact; opens, closes and latches securely."]
+  ],
+  qs: [
+    ["A factory-built fireplace has a chimney section from a different manufacturer. What do you report?", ["Mixed components are not allowed unless both makers approve; recommend a specialist", "Normal", "Cosmetic", "Only the color differs"], "Listed systems are tested only with their own parts."],
+    ["Hairline cracks appear in the refractory panels of a factory-built fireplace. How should they be reported?", ["Report them; they suggest the panels are nearing end of life", "Ignore them", "As an immediate fire hazard requiring shutdown", "As a structural defect"], "Usually not urgent, but worth reporting."],
+    ["A chimney has no rain cap in an area that does not require one. Is it a defect?", ["No; recommended but not required", "Yes, always", "Only if it is brick", "Only if it is metal"], "Spark arrestors may be required in wildfire areas."],
+    ["Why can a chimney on an outside wall draft poorly?", ["It runs cooler, so the stack effect may not fully develop", "It is too hot", "Outside walls have no wind", "It always drafts better"], "Warm flue gasses rise better."]
   ] }
 ]);

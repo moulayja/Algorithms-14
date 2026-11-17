@@ -102,5 +102,43 @@ NHIE.lessons("kitchen", [
     ["A range hood duct ends loose in the attic. What is reported?", ["The duct must end outdoors; grease and moisture in the attic", "Nothing", "It needs a filter", "It needs more cfm"], "Exhaust must leave the building."],
     ["A new 900 cfm range hood was installed in a tight house with a gas water heater. What should be considered?", ["Makeup air is required over 400 cfm; backdrafting risk", "Nothing", "It needs a smaller duct", "It needs a GFCI"], "Large hoods depressurize the house."],
     ["How should an inspector test a built-in microwave?", ["Heat a cup of water briefly", "Run it empty for one minute", "Measure radiation", "Remove the cover"], "Running empty can damage it."]
+  ] },
+{ t: "Kitchen appliance details people miss", p: "404–424",
+  goal: "Cover the smaller kitchen rules for scope, backsplashes, disposers, dishwashers and refrigerators.",
+  teach: [
+    "# Scope",
+    "- If some or all appliances are not inspected, exclude them specifically in both the agreement and the report.",
+    "- Do not connect a dishwasher to power, and don't move the occupant's dishes out of it.",
+    "- If you cannot confirm a trash compactor compacts, disclaim it and recommend evaluation.",
+    "# Cooking",
+    "- The wall behind and beside a range or cooktop (the backsplash) should be noncombustible.",
+    "- A wall oven needs a cabinet cutout that matches its specifications, so replacing one can be more than a swap.",
+    "- A hood should vent outdoors. A recirculating hood is allowed if the kitchen has an operable window or the house has mechanical ventilation. Hoods over 400 cfm need makeup air.",
+    "# Disposers",
+    "- The mounting ring should be tight to the sink drain, with plumber's putty between the hardware and the sink.",
+    "- The power cable should end at the disposer in a strain relief clamp.",
+    "- The disposer outlet arm should turn down and connect with a directional fitting (such as a diverter tee), not a plain tee that can send waste into the other sink.",
+    "# Dishwashers",
+    "- The drain hose should be at least 3/4 inch and free of splits, holes and blockages. The door should move freely without hitting the cabinets or countertop.",
+    "# Refrigerators",
+    "- Refrigerators and freezers should not be on a GFCI protected circuit (a nuisance trip can spoil food).",
+    "- Both controls set to the coldest setting may mean the compressor is running longer than normal.",
+    "! Exclude what you don't inspect in writing. Backsplash noncombustible. Hood over 400 cfm needs makeup air."
+  ],
+  cards: [
+    ["Range or cooktop backsplash", "Should be noncombustible."],
+    ["Recirculating hood allowed when", "The kitchen has an operable window or the house has mechanical ventilation."],
+    ["Hood over 400 cfm", "Needs a source of makeup air."],
+    ["Disposer mounting", "Tight ring with plumber's putty; cable in a strain relief clamp."],
+    ["Dishwasher drain hose", "At least 3/4 inch, no splits, holes or blockages."],
+    ["Refrigerator on a GFCI circuit?", "Should not be; a nuisance trip can spoil food."],
+    ["Appliances you do not inspect", "Exclude them specifically in the agreement and the report."]
+  ],
+  qs: [
+    ["A dishwasher is unplugged under the counter. What should the inspector do?", ["Not connect it; report it was not operated", "Plug it in and run it", "Remove it", "Report it as failed"], "Inspectors should not connect appliances to power."],
+    ["A 600 cfm range hood has no makeup air. What do you report?", ["Hoods over 400 cfm should have makeup air", "Normal", "The hood is too small", "Cosmetic"], "Large hoods can depressurize the house and backdraft appliances."],
+    ["The refrigerator is on a GFCI protected receptacle. What is the concern?", ["A nuisance trip could shut it off unnoticed and spoil food", "None", "It will use more power", "It voids the warranty"], "Refrigerators should not be on GFCI circuits."],
+    ["The wall behind a gas range is finished with wood paneling. What do you report?", ["The backsplash should be noncombustible", "Nothing", "Paint it", "It needs a GFCI"], "Combustible material near burners is a fire risk."],
+    ["The inspection excluded the refrigerator by agreement. Where should this be stated?", ["In both the inspection agreement and the report", "Only verbally", "Nowhere", "Only in the invoice"], "Written exclusions limit misunderstandings."]
   ] }
 ]);

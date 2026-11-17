@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CPI | Cleveland Property Inspectors</title>
+  <meta name="description" content="Cleveland Property Inspectors (CPI) provides thorough, licensed home and property inspections across Greater Cleveland. Same-day reports, radon, sewer scope, and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f2a44'/%3E%3Cpath d='M12 32 32 15l20 17v19H12z' fill='none' stroke='%23f2a33a' stroke-width='5' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="top">
+  <div class="container nav">
+    <a href="#top" class="brand" aria-label="Cleveland Property Inspectors home">
+      <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+        <rect width="48" height="48" rx="11" fill="var(--navy)"/>
+        <path d="M9 24 24 11l15 13v14H9z" fill="none" stroke="var(--accent)" stroke-width="3.5" stroke-linejoin="round"/>
+        <circle cx="22" cy="28" r="5" fill="none" stroke="#fff" stroke-width="2.6"/>
+        <path d="m25.8 31.8 4.2 4.2" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-text">
+        <strong>CPI</strong>
+        <small>Cleveland Property Inspectors</small>
+      </span>
+    </a>
+
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="nav-menu" class="nav-menu">
+      <a href="#services">Services</a>
+      <a href="#process">How It Works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#areas">Service Area</a>
+      <a href="#faq">FAQ</a>
+      <a href="tel:+12165550123" class="nav-phone">(216) 555-0123</a>
+      <a href="#book" class="btn btn-accent btn-sm">Book Inspection</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Serving Greater Cleveland &amp; Northeast Ohio</p>
+      <h1>Know exactly what you're buying <span>before you sign.</span></h1>
+      <p class="lead">
+        Thorough, unbiased property inspections from licensed Ohio inspectors. Clear,
+        photo-rich reports delivered within 24 hours, so you can negotiate with confidence.
+      </p>
+      <div class="hero-ctas">
+        <a href="#book" class="btn btn-accent">Schedule an Inspection</a>
+        <a href="#services" class="btn btn-ghost">View Services</a>
+      </div>
+      <ul class="hero-badges">
+        <li><svg viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></svg>Ohio Licensed Inspectors</li>
+        <li><svg viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></svg>Reports in 24 hours</li>
+        <li><svg viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></svg>Evening &amp; weekend slots</li>
+      </ul>
+    </div>
+
+    <aside class="hero-card" aria-label="Quick quote">
+      <h2>Get a fast quote</h2>
+      <p>Tell us a little about the property and we'll get back to you within one business hour.</p>
+      <form class="quick-quote" data-mailto-form>
+        <label>Property type
+          <select name="Property type">
+            <option>Single-family home</option>
+            <option>Condo / Townhome</option>
+            <option>Multi-family (2–4 units)</option>
+            <option>Commercial property</option>
+          </select>
+        </label>
+        <label>Approx. square footage
+          <input type="number" name="Square footage" placeholder="e.g. 1800" min="0">
+        </label>
+        <label>ZIP code
+          <input type="text" name="ZIP" placeholder="441xx" inputmode="numeric" maxlength="5">
+        </label>
+        <label>Phone or email
+          <input type="text" name="Contact" placeholder="How should we reach you?" required>
+        </label>
+        <button type="submit" class="btn btn-accent btn-block">Request Quote</button>
+      </form>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ TRUST STRIP ============ -->
+<section class="trust">
+  <div class="container trust-grid">
+    <div><strong>Licensed</strong><span>Ohio Dept. of Commerce</span></div>
+    <div><strong>Insured</strong><span>E&amp;O and General Liability</span></div>
+    <div><strong>24 hr</strong><span>Report turnaround</span></div>
+    <div><strong>7 days</strong><span>A week scheduling</span></div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Our Services</p>
+      <h2>Inspections built for Cleveland's housing stock</h2>
+      <p>From century-old colonials in Cleveland Heights to new builds in Avon, we know what to look for in Northeast Ohio homes: aging sewer laterals, basement water, lake-effect roof wear, and more.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M3 11 12 3l9 8v10H3z"/><path d="M9 21v-6h6v6"/></svg></div>
+        <h3>Buyer's Home Inspection</h3>
+        <p>A full top-to-bottom evaluation of structure, roof, electrical, plumbing, HVAC, and more, aligned with Ohio Standards of Practice.</p>
+      </article>
+      <article class="card">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></div>
+        <h3>Pre-Listing Inspection</h3>
+        <p>Sellers: find and fix issues before buyers do. Price with confidence and reduce surprises at the negotiating table.</p>
+      </article>
+      <article class="card">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="4"/></svg></div>
+        <h3>Radon Testing</h3>
+        <p>Northeast Ohio has elevated radon levels. Our 48-hour continuous monitoring gives you accurate, certified results.</p>
+      </article>
+      <article class="card">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M3 17h6a3 3 0 0 0 3-3V7"/><path d="M12 7h9"/><circle cx="5" cy="17" r="2"/></svg></div>
+        <h3>Sewer Scope</h3>
+        <p>Camera inspection of the main sewer line. Essential for older Cleveland homes with clay or cast-iron laterals and tree-root intrusion.</p>
+      </article>
+      <article class="card">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 3c4 4 6 7 6 10a6 6 0 0 1-12 0c0-3 2-6 6-10z"/></svg></div>
+        <h3>Mold &amp; Air Quality</h3>
+        <p>Visual assessment plus air sampling with independent lab analysis when moisture or musty odors are present.</p>
+      </article>
+      <article class="card">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 4v16M6 8l6-4 6 4M6 16l6 4 6-4"/></svg></div>
+        <h3>Termite / WDI</h3>
+        <p>Wood-destroying insect inspection with the standard report often required by lenders for FHA and VA loans.</p>
+      </article>
+      <article class="card">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M4 21V9l8-6 8 6v12"/><path d="M4 21h16M9 21v-5h6v5M9 11h.01M15 11h.01"/></svg></div>
+        <h3>New Construction</h3>
+        <p>Pre-drywall and final walkthrough inspections, plus 11-month warranty inspections before your builder warranty expires.</p>
+      </article>
+      <article class="card">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M3 21V5h8v16M11 9h10v12M6 9h2M6 13h2M6 17h2M15 13h2M15 17h2"/></svg></div>
+        <h3>Commercial &amp; Multi-Family</h3>
+        <p>Property condition assessments for investors, landlords, and small commercial buyers across Cuyahoga County.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT WE INSPECT ============ -->
+<section class="section section-alt">
+  <div class="container split">
+    <div>
+      <p class="eyebrow">What's Included</p>
+      <h2>Over 400 points checked on every home inspection</h2>
+      <p>Every standard inspection covers the major systems and components of the home. You'll receive a digital report with photos, plain-English explanations, and a summary of the items that matter most.</p>
+      <a href="#book" class="btn btn-primary">Book Your Inspection</a>
+    </div>
+    <ul class="checklist">
+      <li>Roof, gutters &amp; chimneys</li>
+      <li>Foundation &amp; basement</li>
+      <li>Structural components</li>
+      <li>Electrical panel &amp; wiring</li>
+      <li>Plumbing &amp; water heater</li>
+      <li>Furnace, boiler &amp; A/C</li>
+      <li>Attic &amp; insulation</li>
+      <li>Windows, doors &amp; siding</li>
+      <li>Kitchen appliances</li>
+      <li>Grading &amp; drainage</li>
+      <li>Garage &amp; driveway</li>
+      <li>Thermal imaging scan</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="section" id="process">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">How It Works</p>
+      <h2>Simple from booking to report</h2>
+    </div>
+    <ol class="steps">
+      <li>
+        <span class="step-num">1</span>
+        <h3>Book online or call</h3>
+        <p>Pick a time that works, including evenings and weekends. We'll coordinate access with your agent.</p>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <h3>We inspect</h3>
+        <p>A typical home takes 2–3 hours. You're welcome to attend and ask questions along the way.</p>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <h3>Get your report</h3>
+        <p>A detailed, photo-rich digital report lands in your inbox within 24 hours, often the same day.</p>
+      </li>
+      <li>
+        <span class="step-num">4</span>
+        <h3>Ask us anything</h3>
+        <p>Questions after the inspection? Call us anytime. Our support doesn't end when the report is sent.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="section section-alt" id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Transparent Pricing</p>
+      <h2>Straightforward rates, no hidden fees</h2>
+      <p>Pricing is based on square footage and property age. Bundle add-ons and save.</p>
+    </div>
+
+    <div class="pricing">
+      <article class="price-card">
+        <h3>Condo / Townhome</h3>
+        <p class="price"><span>from</span> $325</p>
+        <ul>
+          <li>Interior systems &amp; components</li>
+          <li>Thermal imaging scan</li>
+          <li>24-hour digital report</li>
+        </ul>
+        <a href="#book" class="btn btn-ghost-dark btn-block">Book Now</a>
+      </article>
+
+      <article class="price-card featured">
+        <p class="tag">Most Popular</p>
+        <h3>Single-Family Home</h3>
+        <p class="price"><span>from</span> $425</p>
+        <ul>
+          <li>Full 400+ point inspection</li>
+          <li>Roof, attic &amp; foundation</li>
+          <li>Thermal imaging scan</li>
+          <li>24-hour digital report</li>
+          <li>Post-inspection phone support</li>
+        </ul>
+        <a href="#book" class="btn btn-accent btn-block">Book Now</a>
+      </article>
+
+      <article class="price-card">
+        <h3>Multi-Family (2–4 units)</h3>
+        <p class="price"><span>from</span> $575</p>
+        <ul>
+          <li>Every unit &amp; common area</li>
+          <li>Separate utility systems</li>
+          <li>Investor-focused summary</li>
+        </ul>
+        <a href="#book" class="btn btn-ghost-dark btn-block">Book Now</a>
+      </article>
+    </div>
+
+    <div class="addons">
+      <h3>Popular add-ons</h3>
+      <dl>
+        <div><dt>Radon test</dt><dd>+$150</dd></div>
+        <div><dt>Sewer scope</dt><dd>+$175</dd></div>
+        <div><dt>Termite / WDI</dt><dd>+$95</dd></div>
+        <div><dt>Mold air sampling</dt><dd>+$250</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICE AREAS ============ -->
+<section class="section" id="areas">
+  <div class="container split">
+    <div>
+      <p class="eyebrow">Service Area</p>
+      <h2>Proudly local to Northeast Ohio</h2>
+      <p>We inspect homes throughout Cuyahoga, Lake, Lorain, Medina, Summit, and Geauga counties. Don't see your town? Give us a call. We likely cover it.</p>
+    </div>
+    <ul class="areas">
+      <li>Cleveland</li><li>Lakewood</li><li>Parma</li><li>Cleveland Heights</li>
+      <li>Shaker Heights</li><li>Euclid</li><li>Westlake</li><li>Strongsville</li>
+      <li>North Olmsted</li><li>Rocky River</li><li>Beachwood</li><li>Solon</li>
+      <li>Mentor</li><li>Brunswick</li><li>Avon</li><li>Medina</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section section-alt" id="faq">
+  <div class="container narrow">
+    <div class="section-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>Common questions</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>How long does a home inspection take?</summary>
+        <p>Most single-family homes take 2–3 hours depending on size, age, and condition. Larger or older homes may take longer.</p>
+      </details>
+      <details>
+        <summary>Do I need to be present for the inspection?</summary>
+        <p>It's not required, but we encourage it. Joining for the last 30 minutes lets us walk you through our findings in person.</p>
+      </details>
+      <details>
+        <summary>When will I receive my report?</summary>
+        <p>Reports are delivered digitally within 24 hours, and often the same evening. You can easily share it with your agent or attorney.</p>
+      </details>
+      <details>
+        <summary>Should I get a radon test in Cleveland?</summary>
+        <p>Yes, we strongly recommend it. Many Northeast Ohio counties have elevated radon levels, and the only way to know is to test.</p>
+      </details>
+      <details>
+        <summary>Why is a sewer scope important for older homes?</summary>
+        <p>Many Cleveland-area homes were built before 1960 with clay or cast-iron sewer lines that can crack, collapse, or fill with roots. Repairs can cost thousands, and a standard inspection can't see inside the line.</p>
+      </details>
+      <details>
+        <summary>What forms of payment do you accept?</summary>
+        <p>We accept all major credit cards, checks, and digital payments. Payment is due at or before the time of inspection.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOKING ============ -->
+<section class="section book" id="book">
+  <div class="container book-grid">
+    <div class="book-copy">
+      <p class="eyebrow">Book an Inspection</p>
+      <h2>Ready to schedule?</h2>
+      <p>Fill out the form and we'll confirm your appointment, usually within one business hour. Prefer to talk? Call or text us anytime.</p>
+      <ul class="contact-list">
+        <li>
+          <svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+          <a href="tel:+12165550123">(216) 555-0123</a>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24"><path d="M3 5h18v14H3z"/><path d="m3 6 9 7 9-7"/></svg>
+          <a href="mailto:info@cpi-inspections.com">info@cpi-inspections.com</a>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <span>Mon–Sat 7am–7pm · Sun by appointment</span>
+        </li>
+      </ul>
+    </div>
+
+    <form class="book-form" data-mailto-form>
+      <div class="row">
+        <label>Full name
+          <input type="text" name="Name" required autocomplete="name">
+        </label>
+        <label>Phone
+          <input type="tel" name="Phone" required autocomplete="tel">
+        </label>
+      </div>
+      <label>Email
+        <input type="email" name="Email" required autocomplete="email">
+      </label>
+      <label>Property address
+        <input type="text" name="Property address" required autocomplete="street-address">
+      </label>
+      <div class="row">
+        <label>Inspection type
+          <select name="Inspection type">
+            <option>Buyer's Home Inspection</option>
+            <option>Pre-Listing Inspection</option>
+            <option>New Construction</option>
+            <option>Commercial / Multi-Family</option>
+            <option>Radon Test Only</option>
+            <option>Sewer Scope Only</option>
+          </select>
+        </label>
+        <label>Preferred date
+          <input type="date" name="Preferred date">
+        </label>
+      </div>
+      <fieldset>
+        <legend>Add-ons</legend>
+        <label class="check"><input type="checkbox" name="Add-on" value="Radon test"> Radon test</label>
+        <label class="check"><input type="checkbox" name="Add-on" value="Sewer scope"> Sewer scope</label>
+        <label class="check"><input type="checkbox" name="Add-on" value="Termite / WDI"> Termite / WDI</label>
+        <label class="check"><input type="checkbox" name="Add-on" value="Mold sampling"> Mold sampling</label>
+      </fieldset>
+      <label>Anything else we should know?
+        <textarea name="Notes" rows="3" placeholder="Agent name, closing date, access instructions..."></textarea>
+      </label>
+      <button type="submit" class="btn btn-accent btn-block">Request Appointment</button>
+      <p class="form-note" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-brand"><strong>CPI</strong> Cleveland Property Inspectors</p>
+      <p>Licensed Ohio Home Inspector · License #OHI.0000000</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#areas">Service Area</a>
+      <a href="#faq">FAQ</a>
+      <a href="#book">Book</a>
+    </nav>
+    <p class="copyright">© <span id="year">2026</span> Cleveland Property Inspectors. All rights reserved.</p>
+  </div>
+</footer>
+
+<a href="#book" class="mobile-cta btn btn-accent">Book Inspection</a>
+
+<script src="script.js"></script>
+</body>
+</html>

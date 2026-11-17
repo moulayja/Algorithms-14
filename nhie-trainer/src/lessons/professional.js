@@ -222,5 +222,48 @@ NHIE.lessons("professional", [
     ["The inspector offers to fix the defective deck found during the inspection. What is the ethical concern?", ["Repairing inspected property creates a conflict of interest", "None", "Only licensing", "Only insurance"], "Many codes bar it."],
     ["The seller's agent calls asking the inspector for a copy of the client's report. Ethically, the inspector should:", ["Provide it only with the client's permission", "Send it right away", "Refuse forever", "Charge the agent"], "The client controls distribution."],
     ["Writing alarming comments for every minor item to reduce liability is called:", ["Defensive reporting (overstatement)", "Understatement", "Standard of care", "Mutual assent"], "Report just the facts."]
+  ] },
+{ t: "Legal and insurance details people miss", p: "395–411",
+  goal: "Know the finer points of damages, diligence, contracts, insurance and ethics.",
+  teach: [
+    "# Claims and damages",
+    "- You must defend meritless claims as well as real ones, and the cost can be about the same.",
+    "- Actual (compensatory) damages usually cover the cost to repair or replace the item that was reported wrong, not upgrades or improvements.",
+    "- Part of an E&O deductible not spent on a claim should be refunded, but don't count on it.",
+    "- Be careful about writing that a system has no defects; that statement can be used against you.",
+    "# Diligence and the standard of care",
+    "- Diligence: the attention and care a situation requires. Due diligence: what a reasonable person would do to meet a legal duty.",
+    "- The standard of care is usually the SOP named in the contract, though there can be exceptions.",
+    "- Procedures most SOPs call technically exhaustive, such as using a combustible gas detector, are not usually required.",
+    "# Contracts",
+    "- Get a signed contract before every inspection; email and electronic signatures make this practical.",
+    "- An inspector operating as a corporation or LLC should sign as the company's representative, with a title after the name.",
+    "- If the contract includes a release (for example, to share the report), the client should be able to strike it.",
+    "# Insurance",
+    "- Some builders require general liability insurance before they allow construction inspections.",
+    "- Workers' compensation covers an employee only when injured or killed on the job.",
+    "# Ethics",
+    "- Don't inspect any property where you could earn compensation based on its sale.",
+    "- Don't advertise qualifications you don't have or memberships you don't hold.",
+    "# Business form",
+    "- LLC and corporation: the owner's personal assets may be protected from claims against the company. LLCs are easier and cheaper to form.",
+    "- Know the licensing rules where you live and where you work. Many inspection businesses take five years to become viable.",
+    "! Damages = repair or replace, not upgrades. Sign as the company. No pay tied to the sale."
+  ],
+  cards: [
+    ["Actual (compensatory) damages", "Usually the cost to repair or replace the misreported item, not upgrades."],
+    ["Diligence vs due diligence", "Diligence: the care a situation needs. Due diligence: what a reasonable person does to meet a legal duty."],
+    ["Standard of care for a home inspection", "Usually the SOP named in the contract."],
+    ["How an LLC owner signs a contract", "As the company's representative, with a title after the name."],
+    ["Workers' compensation coverage", "Only for injuries or deaths that happen on the job."],
+    ["Why avoid saying 'no defects'", "Such statements can be used against the inspector later."],
+    ["Benefit of an LLC or corporation", "The owner's personal assets may be protected from claims against the company."]
+  ],
+  qs: [
+    ["A client wins a claim over a missed roof leak. What do actual damages usually cover?", ["Repairing or replacing the misreported item, not upgrades", "A brand new upgraded roof", "The whole house price", "Punitive damages always"], "Damages restore, they don't improve."],
+    ["What is usually the standard of care for a home inspection?", ["The SOP named in the inspection contract", "Whatever the buyer expects", "The building code", "The agent's checklist"], "There can be exceptions."],
+    ["An inspector runs an LLC. How should the contract be signed?", ["As the company's representative, with a title after the name", "With a personal signature only", "By the client only", "No signature is needed"], "This helps keep personal assets separate."],
+    ["Is using a combustible gas detector usually required by SOPs?", ["No; most SOPs consider it technically exhaustive", "Yes, always", "Only on new homes", "Only in winter"], "Optional tools are not required."],
+    ["An inspector would get a bonus if the house sells. What is the problem?", ["A conflict of interest; don't inspect where pay depends on the sale", "None", "It is required", "Only a tax issue"], "Ethics codes bar compensation tied to the sale."]
   ] }
 ]);

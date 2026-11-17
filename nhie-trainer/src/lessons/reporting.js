@@ -213,5 +213,49 @@ NHIE.lessons("reporting", [
     ["A three-light tester shows 'hot/neutral reversed'. How should it be reported?", ["The receptacle tested as incorrectly wired; recommend an electrician", "Hot and neutral are definitely swapped at the panel", "Nothing", "The house has no ground"], "Testers can be wrong."],
     ["Which item should appear in every report?", ["The SOP used for the inspection", "The seller's mortgage balance", "The listing price", "The agent's commission"], "Plus names, address, date and times."],
     ["Why should an IR camera not be used to scan every wall routinely?", ["It can create an expectation of finding hidden defects beyond the scope", "It is illegal", "It shows only colors", "It needs water"], "Use it to confirm suspected issues or as a separate service."]
+  ] },
+{ t: "Reporting details people miss: emergencies, descriptions, limits, the visit", p: "363–393",
+  goal: "Know how to document emergencies, describe systems properly, word limitations, and run the visit.",
+  teach: [
+    "# Emergencies",
+    "- For an imminent danger, call (or make sure someone calls) the right emergency service, and notify the owner or occupant.",
+    "- Document everything: who you called and spoke to, phone numbers, times, what was said, and every action you and others took to prevent or limit damage.",
+    "# Describing systems",
+    "- Concealed parts (structure behind finishes, buried pipes): you may say what they probably are, but report that they were concealed and recommend inquiry if the client wants more.",
+    "- The water service pipe and building sewer are almost always buried, so describing them is not required.",
+    "- Hot water equipment by type: storage tank, demand (tankless), or tankless coil.",
+    "- Shutoff valve locations should be specific (for example, 'the foyer coat closet'). If a shutoff was not found, say so and recommend asking where it is.",
+    "- Most cooling systems are split systems: air-source condenser outside, evaporator coil inside.",
+    "- Insulation by type (loose-fill fiberglass or cellulose, spray foam, sheet, batts) and vapor retarder by type (kraft paper, foil, polyethylene).",
+    "- Say whether a chimney was converted for gas appliances only or can still take a wood fire.",
+    "- Say which attic areas were not reachable or were viewed from a distance.",
+    "# Limitation statements",
+    "- For every system not inspected, give the reason and recommend the client have it inspected before closing. That extra warning is not required, but inspectors have been held responsible for uninspected items anyway.",
+    "- Define terms that have a special meaning in your report. Report conditions that fairly represent the average during the inspection.",
+    "- Walking the roof or putting a ladder on a lower roof is not required; do it only if safe.",
+    "- The report should define its proper use and restrict distribution to parties outside the transaction.",
+    "- Even a defect the client doesn't care about matters: the next buyer may, and the client may have to pay to fix it then.",
+    "# Running the visit (not on the exam outline, but useful)",
+    "- Pre-inspection conference with the client and agent. Invite the client along, but set limits (no roof, no attic, no crawl space).",
+    "- Start the dishwasher early; a full cycle can take over an hour.",
+    "- Note floors that are uneven or sloping, especially near chimney and stair openings.",
+    "- Strongly encourage the client to attend, at least the wrap-up.",
+    "! Emergency: call, notify, document names, numbers, times. Every limitation: reason + recommend inspection before closing."
+  ],
+  cards: [
+    ["What to document in an emergency", "Who was called and spoken to, phone numbers, times, what was said, and all actions taken."],
+    ["Concealed components in the report", "You may suggest the likely type, but state they were concealed and recommend inquiry."],
+    ["Water heater description types", "Storage tank, demand (tankless), or tankless coil."],
+    ["Shutoff valve not found", "Report it and recommend asking the owner where it is."],
+    ["Limitation statement best practice", "Give the reason and recommend inspection of the item before closing."],
+    ["Chimney description", "Say if it was converted for gas only or can still accept a wood fire."],
+    ["Is walking the roof required?", "No; only if safe and prudent. Report the method used."]
+  ],
+  qs: [
+    ["During an inspection you smell a strong gas leak. Besides calling the gas utility or emergency service, what else should you do?", ["Notify the owner or occupant and document calls, names, times and actions", "Nothing else", "Fix the leak", "Finish the inspection first"], "Careful documentation protects everyone."],
+    ["The main water shutoff valve could not be found. What should the report say?", ["It was not located; recommend asking the owner where it is", "There is no shutoff", "Install a new one", "Nothing"], "Never guess at a location."],
+    ["The crawl space was blocked by stored items. Best practice for the limitation statement?", ["State why it was not inspected and recommend inspection before closing", "Leave it out", "Say it was fine", "Charge extra"], "The extra recommendation reduces later disputes."],
+    ["How should a tankless water heater be described?", ["As a demand (tankless) water heater", "As a storage tank heater", "As a boiler", "It need not be described"], "Describe hot water equipment by its specific type."],
+    ["A fireplace chimney now has a gas insert vent liner only. What should be reported?", ["That the chimney was converted for gas use and is not for wood fires", "Nothing", "That it is ready for wood", "That the chimney is unsafe"], "Clients need to know whether they can burn wood."]
   ] }
 ]);

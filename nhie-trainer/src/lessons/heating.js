@@ -461,7 +461,7 @@ NHIE.lessons("heating", [
     ["Yellow or orange burner flame", "Reportable; may mean poor burner or valve adjustment or too little combustion air."],
     ["Correct pilot flame", "Steady and large enough to touch the thermocouple."],
     ["Where a humidifier may be mounted", "On a plenum (supply preferred), never on the furnace cabinet itself."],
-    ["Humidifier bypass duct", "Should be metal with a damper closed during air conditioning; flexible plastic duct is not acceptable."]
+    ["Humidifier bypass: material and damper", "Metal duct (never flexible plastic) with a damper that is closed during air conditioning."]
   ],
   qs: [
     ["An induced draft furnace lights, shuts off after a few seconds, and keeps retrying. What do you report?", ["Repeated ignition is a reportable defect; recommend an HVAC contractor", "Normal start-up", "Cosmetic", "The thermostat is set too high"], "Failure to ignite or repeated ignition cycles are reportable."],

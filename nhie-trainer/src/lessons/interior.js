@@ -178,7 +178,7 @@ NHIE.lessons("interior", [
     ["Casing", "Trim around windows and doors."],
     ["Crown molding", "Trim where the wall meets the ceiling."],
     ["Shoe or quarter round", "Trim that covers the gap between the base and the floor covering."],
-    ["Laminate vs engineered wood", "Laminate is a picture of wood; engineered wood has a real wood top layer."],
+    ["Can laminate be called a wood floor?", "No. Laminate is a picture of wood; engineered wood has a real wood top layer."],
     ["Common laminate problems", "Installation plus moisture: no acclimation, subfloor moisture not checked, no vapor retarder or pad."],
     ["Carpet installation basics", "Over a pad, power-stretched, at normal temperature and humidity."],
     ["Mirror safety glazing exception", "Not needed if the mirror has a solid or approved backing."],

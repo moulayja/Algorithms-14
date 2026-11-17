@@ -268,7 +268,7 @@ NHIE.lessons("insulation", [
   cards: [
     ["Radiant barrier on top of ceiling joists", "Must be perforated and not a vapor retarder, or it traps moisture."],
     ["Dryer duct joint direction", "Smaller end into larger end in the direction of air flow."],
-    ["Dryer transition duct", "Metal (UL 2158A), as short as possible, not crimped."],
+    ["Dryer transition duct: three rules", "Metal listed to UL 2158A, cut as short as possible, never crimped."],
     ["Screens and vent area", "Screens cut net area at least 25%; screens with louvers or grilles at least 50%."],
     ["When to finish a basement", "Only after all liquid water intrusion has been stopped."],
     ["Signs of a wet finished basement", "Stains near the floor, rusty nails, rusty columns, musty smell, constant dehumidifier."],

@@ -544,5 +544,56 @@ NHIE.lessons("plumbing", [
     ["An oil fill pipe sticks up from the lawn but the house has gas heat. What should be reported?", ["Possible abandoned buried oil tank; recommend evaluation", "Nothing", "A gas leak", "A sprinkler head"], "Buried tanks can leak and be costly to remove."],
     ["An indoor oil tank sits 2 feet from the oil burner. What is reported?", ["Too close; at least 5 feet is required", "Nothing", "It needs a gauge only", "It must be outdoors"], "Keep fuel away from flame."],
     ["Why are underground oil tanks not recommended?", ["They can leak without being detected", "They are too heavy", "They freeze", "They cost less"], "Leaks contaminate soil and water."]
+  ] },
+{ t: "Water softeners, water treatment and other details people miss", p: "243–247, 282–285, 300–360",
+  goal: "Know how to handle water treatment equipment and pick up smaller plumbing rules.",
+  teach: [
+    "# Water treatment: out of scope",
+    "- People treat water for hardness, taste, sediment and harmful contaminants. No one system fixes everything; a water analysis should come first.",
+    "- Water treatment systems and water quality are out of scope. Disclaim them and recommend a qualified technician. A quick look for obvious problems is fine.",
+    "# Hard water and softeners",
+    "- Hard water carries dissolved calcium and magnesium. Soap works poorly, and minerals build up in pipes and in the bottom of water heaters, which cuts heating and speeds rust.",
+    "- A softener's resin beads trade calcium and magnesium for sodium. A backwash with salt water from the brine tank cleans the beads, triggered by water use (better) or by a timer.",
+    "- Quick checks: a bypass valve that is set to bypass may mean a problem. The backwash tube should drain through an air gap to a sink, washer standpipe or floor drain; never tied straight to a drain without a check valve, and never to a vent pipe. The brine tank should be fairly clean and the salt not caked solid.",
+    "- A softener's plastic parts can break the bonding path in metal water pipes. A jumper wire or clamps should connect the metal pipes on both sides.",
+    "# Water supply details",
+    "- Every dwelling unit should have a full-open main water valve near where the service pipe enters.",
+    "- Polypropylene (PP) pipe has been used in Europe for decades and is newer in North America.",
+    "# Water heater details",
+    "- NM cable to a water heater should be in conduit unless the local rules allow it exposed.",
+    "- In seismic areas, water heaters should be strapped or anchored.",
+    "# Drain and vent details",
+    "- Lead drain pipe is a low exposure risk, but report its presence.",
+    "- A vent longer than 40 feet should be one pipe size larger for its whole length.",
+    "- In the very coldest areas the vent through the roof must be at least 3 inches across, starting at least 1 foot below the roof inside the attic, to resist frost closing it.",
+    "- Vent pipes should not hold up antennas, flags or other objects.",
+    "# Sewage and septic",
+    "- Disclaim whether the house is on public sewer or a private system and recommend the client find out. Do not inspect private sewage systems; recommend a qualified contractor.",
+    "- A drain field may last about 20 to 30 years, but never estimate the remaining life of any system.",
+    "- A sewage ejector is not a sump pump. A sump pit should be accessible with a removable, sealed cover. Make sure the pump has power before running it.",
+    "# Fuel gas details",
+    "- Copper tubing should not carry gas that contains a lot of hydrogen sulfide; it corrodes the copper.",
+    "- A test tee should be installed upstream of certain gas pressure regulators, though enforcement varies.",
+    "- A propane tank or cylinder should be marked as a propane container.",
+    "! Softener backwash: air gap, never into a vent. Jumper across the softener on metal pipes."
+  ],
+  cards: [
+    ["Are water treatment systems in scope?", "No. Disclaim them and water quality; recommend a qualified technician."],
+    ["How a water softener works", "Resin beads swap calcium and magnesium for sodium; salt water from the brine tank backwashes the beads."],
+    ["Softener backwash drain", "Through an air gap to a receptor; never direct to a drain without a check valve, never to a vent."],
+    ["Softener and bonding", "Plastic parts can break bonding in metal pipes; install a jumper wire across the unit."],
+    ["Main water valve requirement", "Each dwelling unit needs a full-open main valve near where the service pipe enters."],
+    ["Vent longer than 40 feet", "Increase it one pipe size for the whole length."],
+    ["Lead drain pipe", "Low exposure risk, but report that it is present."],
+    ["Septic drain field life", "About 20 to 30 years, but never estimate remaining life."]
+  ],
+  qs: [
+    ["A water softener's backwash hose is connected straight into a vent pipe. What do you report?", ["Improper; it should discharge through an air gap and never into a vent", "Normal", "Cosmetic", "The salt is caked"], "Vents must never receive water discharges."],
+    ["A softener interrupts copper water pipes with no jumper wire. Why does this matter?", ["It can break the electrical bonding path of the metal pipes", "It lowers water pressure", "It causes hard water", "It is not a concern"], "A jumper should bridge the unit."],
+    ["The client asks whether the well water is safe to drink. What should the report say?", ["Water quality is out of scope; recommend testing by a qualified lab or technician", "The water is safe", "The water is unsafe", "Add a softener"], "Water treatment and quality are disclaimed."],
+    ["A vent pipe through the roof supports a TV antenna. What do you report?", ["Vents should not be used to support objects", "Normal", "Antennas improve venting", "Nothing, antennas are out of scope"], "The load can crack or loosen the vent and its flashing."],
+    ["The seller says the septic drain field is 'about 15 years old with plenty of life left'. What should the inspector do?", ["Disclaim the private system and recommend a qualified septic contractor; do not estimate life", "Agree in the report", "Write 15 years remaining", "Test the drain field"], "Inspecting private sewage systems is not recommended."],
+    ["Which is required near where the water service enters a dwelling unit?", ["A full-open main water valve", "A pressure tank", "A water softener", "A floor drain"], "So the whole house can be shut off quickly."]
   ] }
+
 ]);

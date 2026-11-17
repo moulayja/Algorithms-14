@@ -397,5 +397,44 @@ NHIE.lessons("cooling", [
     ["A return inlet is 4 feet from a draft-hood water heater in the same room. What is the concern?", ["Backdrafting of combustion gases", "Low humidity", "Short cycling", "Noise"], "Keep returns at least 10 feet from fuel-burning appliances."],
     ["The owner fitted a MERV 13 filter to a 20-year-old system and the coil now ices. What is the likely link?", ["The dense filter restricts airflow", "The filter adds refrigerant", "MERV 13 filters cool the air", "There is no link"], "Older systems are often not designed for high MERV filters."],
     ["A client asks if the ducts should be cleaned every year. What does the EPA say?", ["Not routinely; only when there is visible fungal growth, heavy dirt or vermin", "Yes, every year", "Yes, every month", "Never under any condition"], "There is no evidence that routine cleaning improves health."]
+  ] },
+{ t: "Cooling details people miss: package units, mini-splits, odd ducts", p: "115–123 and 136–139",
+  goal: "Cover the smaller cooling rules: package and window units, mini-splits, current draw, cavity and buried ducts.",
+  teach: [
+    "# Package units",
+    "- A package unit holds the whole system in one cabinet (with gas heat it is called a gas pack). It can sit on the ground or on the roof.",
+    "- The ducts where they enter the unit need a shroud: corrosion resistant, intact and watertight, also where it meets the wall or roof.",
+    "- Roof units usually sit on rust-resistant angle iron that should be secured to the roof. Ground units need a firm base like a condenser.",
+    "# Window and through-wall units",
+    "- Window units are not permanently installed and are out of scope. Report that they are present.",
+    "# Mini-split systems",
+    "- Air conditioner or heat pump; an outdoor condenser serves one or more indoor heads with no ductwork.",
+    "- Units run by remote control may need to be at least 3 feet from electronic noise (TVs, computers, wireless routers).",
+    "- Installation details are maker specific; consider telling the client the inspection does not confirm installation per the maker's instructions.",
+    "- Operate it, listen for unusual noises and feel that the air is cooler or warmer.",
+    "# Current draw",
+    "- Clamping an ammeter on the compressor and comparing with the label's Rated Load Amps (RLA) is considered technically exhaustive by most standards, so it is out of scope.",
+    "- A reading near RLA, or one that swings widely, may point to a problem, but be cautious about reporting a defect from current draw alone.",
+    "# Ducts in odd places",
+    "- Stud and joist cavities used as return plenums were once allowed but no longer are, because they are hard to seal. Where they exist: never as a supply, only from one floor level, and fireblocked from other concealed spaces.",
+    "- Ducts buried underground or in concrete (mostly older slab houses) may be steel, clay, plastic or concrete that can contain asbestos. They should slope to a drain point but rarely do. Consider removing some registers to look for water and deterioration, and suggest a camera inspection.",
+    "! Package unit: watertight shroud, secured supports. Current draw vs RLA is out of scope; don't report from it alone."
+  ],
+  cards: [
+    ["Package unit shroud", "Protects the ducts at the unit; must be corrosion resistant, intact and watertight."],
+    ["Roof-mounted package unit support", "Rust-resistant angle iron secured to the roof."],
+    ["Window air conditioners", "Not permanently installed; out of scope; report their presence."],
+    ["Mini-split remote-control units", "May need to be at least 3 feet from electronic noise sources like TVs and routers."],
+    ["Current draw vs RLA", "Technically exhaustive and out of scope for most standards; don't report a defect on current draw alone."],
+    ["Stud or joist cavity returns", "No longer allowed new; where present, never supply, one floor only, and fireblocked."],
+    ["Buried or slab ducts", "Often hold water and deteriorate; look in registers and suggest a camera inspection."]
+  ],
+  qs: [
+    ["A rooftop package unit sits on rusted, unsecured angle iron. What do you report?", ["Supports should be rust-resistant and secured to the roof", "Normal for roofs", "Cosmetic only", "The unit is too small"], "Loose supports can let the unit shift and leak."],
+    ["An inspector measures compressor current near the RLA rating. How should this be treated?", ["With caution; current draw alone is not a reliable basis to report a defect", "As proof the compressor failed", "As proof the unit is perfect", "It must always be reported as unsafe"], "Current draw depends on load and voltage."],
+    ["A joist cavity carries supply air to rooms. What do you report?", ["Framing cavities may not be used for supply air", "Normal", "Only a problem in attics", "Cosmetic"], "Cavities were allowed only as returns, and no longer are."],
+    ["Registers in an older slab house show water standing in the ducts. What do you recommend?", ["Evaluation, possibly by camera, for water and duct deterioration", "Nothing", "Remove the slab", "Add more registers"], "Buried ducts often collect condensation and deteriorate."],
+    ["The house has only window air conditioners. What does the report say?", ["They are present; they are not permanently installed and were not inspected", "The cooling system failed", "Nothing", "Replace them with central air"], "Window units are out of scope."]
   ] }
+
 ]);

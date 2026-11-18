@@ -202,6 +202,7 @@
   function ask(text, show) {
     text = String(text || "").trim();
     if (!text || T.busy || !AI.sample) return;
+    var box = document.getElementById("tin"); if (box) box.value = "";   // clear the typing area once the question is sent
     T.turns.push({ role: "user", content: text, show: show || null });
     T.busy = true; T.err = ""; T.ctl = new AbortController();
     if (T.sheet) renderSheet(); else if (tab !== "teacher" || session) openSheet(); else render();

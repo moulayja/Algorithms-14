@@ -1,0 +1,100 @@
+{
+  "_note": "Tools (functions) the voice agent can call during a call. Each one will be served by our small backend. Format follows the common OpenAI-style function schema that Vapi and Retell both accept.",
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "notify_owner_emergency",
+        "description": "Immediately alert the owner by phone call and text about an emergency (tree on house/car, blocked road, power lines, imminent fall). Call this as soon as the address and callback number are known.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "caller_name": { "type": "string" },
+            "callback_number": { "type": "string", "description": "Caller's phone number, digits only if possible" },
+            "address": { "type": "string" },
+            "situation": { "type": "string", "description": "Short description, e.g. 'Large oak fell on roof, no injuries, no power lines'" },
+            "power_lines_involved": { "type": "boolean" },
+            "anyone_hurt": { "type": "boolean" }
+          },
+          "required": ["callback_number", "address", "situation", "power_lines_involved"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "send_photo_upload_link",
+        "description": "Text the caller a link where they can upload photos of the tree(s).",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "callback_number": { "type": "string" },
+            "caller_name": { "type": "string" }
+          },
+          "required": ["callback_number"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "check_estimate_availability",
+        "description": "Get the next available free estimate time slots from the owner's calendar.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "preferred_day": { "type": "string", "description": "Optional, e.g. 'Thursday', 'tomorrow', 'next week'" },
+            "preferred_time_of_day": { "type": "string", "enum": ["morning", "afternoon", "any"] }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "book_estimate",
+        "description": "Book a free on-site estimate in a slot the caller chose from check_estimate_availability.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "slot_id": { "type": "string" },
+            "caller_name": { "type": "string" },
+            "callback_number": { "type": "string" },
+            "address": { "type": "string" },
+            "job_summary": { "type": "string" }
+          },
+          "required": ["slot_id", "caller_name", "callback_number", "address", "job_summary"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "save_lead",
+        "description": "Save the caller's details and job info, and text the owner a summary. Call this at the end of EVERY real customer call, booked or not.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "caller_name": { "type": "string" },
+            "callback_number": { "type": "string" },
+            "address": { "type": "string" },
+            "service": {
+              "type": "string",
+              "enum": ["removal", "trimming", "stump_grinding", "storm_emergency", "land_clearing", "firewood", "other"]
+            },
+            "tree_count": { "type": "integer" },
+            "approx_height_ft": { "type": "integer" },
+            "near_structures": { "type": "string", "description": "e.g. 'house', 'garage', 'fence', 'power lines', 'none'" },
+            "access_notes": { "type": "string" },
+            "urgency": { "type": "string", "enum": ["emergency", "this_week", "within_month", "flexible"] },
+            "estimate_booked": { "type": "boolean" },
+            "photos_requested": { "type": "boolean" },
+            "in_service_area": { "type": "boolean" },
+            "notes": { "type": "string" }
+          },
+          "required": ["callback_number", "service", "urgency", "estimate_booked"]
+        }
+      }
+    }
+  ]
+}

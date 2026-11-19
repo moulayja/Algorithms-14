@@ -1,0 +1,55 @@
+{
+  "_note": "Fictional demo business used to test the AI receptionist. Replace with a real customer's details later.",
+  "company_name": "Oak Ridge Tree Service",
+  "owner_name": "Mike",
+  "phone_display": "(555) 010-4477",
+  "timezone": "America/New_York",
+  "service_area": {
+    "description": "Within about 30 miles of Springfield",
+    "towns": ["Springfield", "Riverside", "Fairview", "Greenville", "Lakewood", "Milton"],
+    "outside_area_policy": "Take their details anyway and tell them the owner will call back to confirm whether we can cover their location."
+  },
+  "hours": {
+    "office": "Monday to Saturday, 7am to 6pm",
+    "estimates": "Monday to Saturday, 8am to 5pm",
+    "emergency": "24/7 for trees on houses, cars, or blocking driveways and roads"
+  },
+  "services": [
+    { "name": "Tree removal", "notes": "Any size. Includes cleanup and haul-away unless the customer wants to keep the wood." },
+    { "name": "Tree trimming and pruning", "notes": "Deadwood removal, shaping, clearing branches off roofs." },
+    { "name": "Stump grinding", "notes": "Can be added to a removal or booked on its own." },
+    { "name": "Storm damage and emergency removal", "notes": "24/7. Highest priority." },
+    { "name": "Lot and land clearing", "notes": "Larger jobs; always needs a site visit." },
+    { "name": "Firewood", "notes": "Seasoned firewood for sale, delivered locally." }
+  ],
+  "not_offered": [
+    "Work directly on or touching power lines (that is the utility company's job)",
+    "Landscaping, lawn mowing, or planting"
+  ],
+  "pricing": {
+    "share_ranges": true,
+    "policy": "Every job is quoted after seeing the tree (photos or a free on-site estimate). Only give the rough ranges below, always say the final price depends on the tree, and never promise an exact price.",
+    "ranges": {
+      "small_tree_removal_under_30ft": "$300 to $700",
+      "medium_tree_removal_30_to_60ft": "$700 to $1,500",
+      "large_tree_removal_over_60ft": "$1,500 and up",
+      "trimming": "usually $250 to $1,000 depending on size and number of trees",
+      "stump_grinding": "usually $100 to $400 per stump"
+    },
+    "estimates_are_free": true
+  },
+  "faq": [
+    { "q": "Are you insured?", "a": "Yes, fully licensed and insured, with liability and workers' comp. We can send a certificate of insurance on request." },
+    { "q": "Do you clean up afterwards?", "a": "Yes, cleanup and haul-away are included in every job." },
+    { "q": "Can I keep the wood?", "a": "Absolutely, just let the crew know and they'll cut it to firewood length and leave it." },
+    { "q": "Do I need to be home for the estimate?", "a": "Not necessarily, as long as the crew can get to the tree. We'll text when we're on the way." },
+    { "q": "How soon can you do the job?", "a": "Estimates are usually within 1 to 3 days. The work itself is typically scheduled within 1 to 2 weeks, faster for urgent jobs." },
+    { "q": "Do you take credit cards?", "a": "Yes, we accept cards, checks, and cash. Payment is due when the job is finished." },
+    { "q": "Do I need a permit?", "a": "Some towns require one for large trees. The owner will check and let you know during the estimate." }
+  ],
+  "lead_routing": {
+    "normal_leads": "Text summary to the owner and book an estimate on the calendar.",
+    "emergencies": "Notify the owner immediately by call and text, any hour.",
+    "owner_mobile_for_alerts": "SET_IN_ENVIRONMENT_NOT_HERE"
+  }
+}

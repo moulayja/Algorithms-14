@@ -1,0 +1,26 @@
+{
+  "name": "text-helper",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Fix or write text messages and emails in natural English or French.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test --experimental-strip-types lib/*.test.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.11.0",
+    "diff": "^9.0.0",
+    "next": "^16.4.6",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^5.9.3"
+  }
+}

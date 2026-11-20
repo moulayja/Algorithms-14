@@ -206,32 +206,85 @@ button.link {
   border-color: var(--accent);
 }
 
-.changes {
-  line-height: 1.6;
+.row-links {
+  display: flex;
+  gap: 14px;
+}
+
+button.link.muted {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.actions + .actions {
+  margin-top: 10px;
+}
+
+.good {
   margin: 0;
+  font-weight: 600;
+  color: var(--ins-text);
+}
+
+.issues {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+}
+
+.issues li {
+  border-top: 1px solid var(--border);
+  padding: 12px 0;
+}
+
+.issues li:last-child {
+  padding-bottom: 0;
+}
+
+.snippet {
+  margin: 0 0 4px;
+  line-height: 1.5;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
 
-ins {
-  background: var(--ins-bg);
-  color: var(--ins-text);
-  text-decoration: none;
+mark {
+  background: var(--del-bg);
+  color: var(--del-text);
+  text-decoration: underline wavy;
+  text-underline-offset: 3px;
   border-radius: 4px;
   padding: 0 2px;
 }
 
-del {
-  background: var(--del-bg);
-  color: var(--del-text);
-  border-radius: 4px;
-  padding: 0 2px;
+.message {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.chip {
+  border: none;
+  background: var(--ins-bg);
+  color: var(--ins-text);
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  min-height: 38px;
 }
 
 .hint {
   color: var(--muted);
   font-size: 0.85rem;
-  margin: 6px 0 0;
+  margin: 10px 0 0;
 }
 
 .error {

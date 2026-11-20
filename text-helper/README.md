@@ -1,72 +1,50 @@
 # Text Helper
 
-Fix or write text messages and emails in natural English or French, without the AI sound.
+A simple app for your text messages: paste your text, check the grammar, translate it to French or English, copy, and send.
 
-- **Check my text**: you write your reply, it fixes typos, grammar, and awkward phrasing, and shows what changed.
-- **Write reply for me**: paste the message you got, and optionally add notes ("say yes, 3pm"), and it writes the reply.
-- Tone: Auto / Casual / Friendly / Pro. Language: Auto / English / Français.
+- **Check grammar**: finds spelling, grammar, and punctuation mistakes in English or French. Tap a suggestion to fix one, or **Fix all**.
+- **Translate to French / Translate to English**: free machine translation. **Edit & check it** puts the translation back in the box so you can grammar-check it too.
+- **Paste** and **Copy** buttons, so you never have to select text by hand.
 
-Stack: Next.js + TypeScript, deployed on Vercel, using the Claude API on the server so your key never reaches the phone.
+No API key or account needed. It uses two free public services:
 
-## 1. Get an Anthropic API key
+- [LanguageTool](https://languagetool.org) for grammar (about 20 checks per minute).
+- [MyMemory](https://mymemory.translated.net) for translation (about 5,000 characters per day for free).
 
-1. Go to console.anthropic.com and sign up.
-2. Add a few dollars of credit (Billing). Each check costs a fraction of a cent.
-3. Create an API key (API Keys > Create Key) and keep it somewhere safe.
+Your text is sent to these services to be checked or translated, so don't paste passwords or anything very private.
 
-## 2. Put it online with Vercel (free)
+## Put it online with Vercel (free)
 
-1. Go to vercel.com and sign in with GitHub.
-2. **Add New > Project**, pick the `Algorithms-14` repository.
+1. Go to vercel.com and sign in with your GitHub account.
+2. Click **Add New → Project** and pick the `Algorithms-14` repository.
 3. Set **Root Directory** to `text-helper`.
-4. Under **Environment Variables**, add:
-   - `ANTHROPIC_API_KEY`: your key from step 1
-   - `APP_PASSWORD`: any long password you choose. It stops strangers from using your credits.
-5. Click **Deploy**. You get a link like `https://text-helper-xxxx.vercel.app`.
+4. Click **Deploy**. You get a link like `https://text-helper-xxxx.vercel.app`.
 
-## 3. Install it on your iPhone
+Optional: add an environment variable `MYMEMORY_EMAIL` with your email address to raise the free translation limit to about 50,000 characters per day.
+
+## Install it on your iPhone
 
 1. Open your Vercel link in **Safari**.
 2. Tap the **Share** button, then **Add to Home Screen**.
-3. Open Text Helper from your home screen, tap **Settings**, and enter your `APP_PASSWORD` once.
 
-Daily use: copy the message you got, open Text Helper, tap **Paste**, write your reply or notes, tap **Check my text** or **Write reply for me**, tap **Copy**, and paste it in Messages, WhatsApp, or Mail.
+Daily use: copy your text, open Text Helper, tap **Paste**, tap **Check grammar** (or a Translate button), tap **Copy**, and paste it in Messages.
 
-## 4. Optional: "Fix my text" from the Share menu
+Tip: also add the French keyboard (Settings → General → Keyboard → Keyboards → Add New Keyboard → French) so autocorrect helps while you type.
 
-This lets you select text in any app, tap **Share > Fix my text**, and get the corrected version copied.
-
-In the **Shortcuts** app, create a new shortcut named **Fix my text** with these actions:
-
-1. **Receive** *Text* input from *Share Sheet* (turn on "Show in Share Sheet" in the shortcut's settings).
-2. **Get Contents of URL**
-   - URL: `https://YOUR-LINK.vercel.app/api/fix`
-   - Method: `POST`
-   - Headers: `x-app-password` = your APP_PASSWORD
-   - Request Body: `JSON`, with fields `mode` = `check`, `draft` = *Shortcut Input*
-3. **Get Dictionary Value** for key `text` in *Contents of URL*.
-4. **Copy to Clipboard**.
-5. **Show Notification**: "Fixed and copied ✓".
-
-Tip: "Hey Siri, fix my text" runs it too.
-
-## Run it on a computer (for development)
+## For development
 
 ```bash
 cd text-helper
 npm install
-cp .env.example .env.local   # then fill in the two values
-npm run dev                  # open http://localhost:3000
-npm test                     # unit tests
-npm run build                # production build check
+npm run dev        # open http://localhost:3000
+npm test           # unit tests
+npm run typecheck
+npm run build
 ```
 
-## API
+API routes (both take and return JSON):
 
-`POST /api/fix` with header `x-app-password` and a JSON body:
+- `POST /api/check` with `{ "text": "...", "language": "auto" | "en" | "fr" }` returns `{ "issues": [...], "detected": "..." }`.
+- `POST /api/translate` with `{ "text": "...", "to": "fr" | "en" }` returns `{ "text": "..." }`.
 
-```json
-{ "mode": "check", "draft": "ok see you tomorow", "received": "", "tone": "auto", "language": "auto" }
-```
-
-`mode` is `check` or `reply`, `tone` is `auto | casual | friendly | professional`, `language` is `auto | en | fr`. Returns `{ "text": "..." }` or `{ "error": "..." }`.
+Errors come back as `{ "error": "..." }`.

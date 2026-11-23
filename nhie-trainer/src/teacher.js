@@ -158,7 +158,10 @@
     if (!session && tab === "study" && sub && sub.t) return { t: sub.t, l: sub.sec != null ? sub.sec : null };
     return null;
   }
-  function teacherChrome() { fabEl.hidden = !(AI.sample && AI.off !== "denied" && !T.sheet && tab !== "teacher" && subjectHere()); }
+  function teacherChrome() {
+    fabEl.hidden = !(AI.sample && AI.off !== "denied" && !T.sheet && tab !== "teacher" && subjectHere());
+    document.body.classList.toggle("fab-on", !fabEl.hidden);   // extra room at the bottom so the button never covers page controls
+  }
   function renderSheet() {
     sheetEl.hidden = !T.sheet;
     if (!T.sheet) { sheetEl.innerHTML = ""; return; }

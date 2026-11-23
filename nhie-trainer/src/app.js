@@ -423,7 +423,7 @@
       return "<tr><td>" + esc(e.d) + '</td><td class="r">' + e.n + '</td><td class="r"><span class="pill ' + (e.p >= 80 ? "good" : e.p >= 70 ? "warn" : "bad") + '">' + e.p + '%</span></td><td class="r">' + clock(e.s) + "</td></tr>";
     }).join("");
     return '<div class="stack"><h1>Exam simulator</h1><section class="card stack"><p>Timed like the real exam: 72 seconds per question, no feedback until you finish. Questions are mixed in the exam\'s proportions: 63% building systems, 25% analysis and reporting, 12% professional responsibilities.</p>' +
-      '<div class="row">' + [25, 50, 100].map(function (n) { return '<button class="' + (n === 50 ? "primary" : "") + '" data-act="exam" data-arg="' + n + '">' + n + " questions · " + clock(n * SECONDS_PER_QUESTION) + "</button>"; }).join("") + "</div>" +
+      '<div class="row">' + [25, 50, 100, 200].map(function (n) { return '<button class="' + (n === 50 ? "primary" : "") + '" data-act="exam" data-arg="' + n + '">' + n + " questions · " + clock(n * SECONDS_PER_QUESTION) + (n === 200 ? " (full exam)" : "") + "</button>"; }).join("") + "</div>" +
       '<p class="small muted">The real NHIE has 200 questions (175 scored) in 4 hours and is graded on a 200 to 800 scale with 500 to pass. Nobody outside the exam board can convert a practice percentage into that scale, so treat 80% here as your target.</p></section>' +
       (rows ? '<section class="card"><h2 style="margin-bottom:6px">Past attempts</h2><div class="scroll"><table><tr><th>Date</th><th class="r">Questions</th><th class="r">Score</th><th class="r">Time used</th></tr>' + rows + "</table></div></section>" : "") + "</div>";
   };

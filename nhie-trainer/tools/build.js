@@ -5,7 +5,7 @@ const fs = require("fs"), path = require("path");
 const root = path.join(__dirname, "..");
 const read = (f) => fs.readFileSync(path.join(root, f), "utf8");
 const qdir = path.join(root, "src/questions");
-const questions = fs.readdirSync(qdir).filter((f) => f.endsWith(".js")).sort().map((f) => read("src/questions/" + f)).join("\n");
+const questions = fs.existsSync(qdir) ? fs.readdirSync(qdir).filter((f) => f.endsWith(".js")).sort().map((f) => read("src/questions/" + f)).join("\n") : "";
 const ldir = path.join(root, "src/lessons");
 const lessons = fs.readdirSync(ldir).filter((f) => f.endsWith(".js")).sort().map((f) => read("src/lessons/" + f)).join("\n");
 const privFile = path.join(root, "src/private/scores.js");

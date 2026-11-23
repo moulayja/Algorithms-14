@@ -8,7 +8,7 @@ check quiz (80%). Passed lessons feed a spaced daily warm-up. A practice bank
 and a timed exam simulator cover every chapter.
 
 - `src/lessons/*.js` – lessons, one file per chapter, in book order.
-- `src/questions/*.js` – extra practice questions per chapter.
+- `src/extra/*.js` – extra questions for each lesson, so every lesson fact is tested. All questions come from Volumes 1 and 2.
 - `src/app.js`, `src/styles.css`, `src/core.js` – the app.
 - `tools/build.js` – bundles everything into `dist/nhie-trainer.html`.
 

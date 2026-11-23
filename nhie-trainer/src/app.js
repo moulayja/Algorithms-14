@@ -38,7 +38,6 @@
     ["Insulation, moisture, ventilation","insulation"],["Mechanical exhaust","insulation"],["Plumbing and fuel","plumbing"],["Interior","interior"],["Fireplaces and vents","fireplaces"],["Life safety","electrical"],
     ["Inform the client","reporting"],["Describe limitations","reporting"],["Describe systems","reporting"],["Needs evaluation or action","reporting"],["Pre-inspection agreement","professional"],["Integrity and process","professional"]];
   var SCORES = window.NHIE_SCORES || [];
-  if (!S.meta.exam && window.NHIE_EXAM_DATE) S.meta.exam = window.NHIE_EXAM_DATE;
   var FOCUS = (function () {
     if (!SCORES.length) return null;
     var w = SCORES.map(function (_, i) { return i + 1; }), wsum = w.reduce(function (a, b) { return a + b; }, 0), last = SCORES[SCORES.length - 1].s;
@@ -84,6 +83,7 @@
   var LS = "nhie-trainer-v1";
   try { var raw = JSON.parse(localStorage.getItem(LS) || "null"); if (raw && raw.meta) S = raw; } catch (e) {}
   S.u = S.u || {}; S.meta.read = S.meta.read || {}; S.meta.exams = S.meta.exams || []; S.meta.done = S.meta.done || {};
+  if (!S.meta.exam && window.NHIE_EXAM_DATE) S.meta.exam = window.NHIE_EXAM_DATE;   // exam date from the private file, until the student sets one
 
   var col = null, syncState = "checking", dirtySet = {}, flushing = false, flushTimer = 0;
   function dirty(part) {

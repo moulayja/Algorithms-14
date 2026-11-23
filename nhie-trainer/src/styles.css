@@ -207,3 +207,4 @@ button.sheet-x { width: 44px; height: 44px; padding: 0; display: grid; place-ite
 .sc.lo { background: var(--bad-soft); color: var(--bad); } .sc.mid { background: var(--gold-soft); color: var(--gold); } .sc.hi { background: var(--good-soft); color: var(--good); }
 table.scores td, table.scores th { padding: 6px 3px; font-size: .8rem; } table.scores td:first-child { min-width: 8rem; }
 table.scores .sc { min-width: 30px; padding: 2px 4px; }
+.fullcard { border: 2px solid var(--accent); }

@@ -188,6 +188,18 @@
     spread(t1, n1); spread(t2, n - n1);
     return shuffle(out);
   }
+  // ---------- full subject check: every book question in a subject, until each is answered right ----------
+  function bookQs(t) { return t.qs.filter(function (q) { return q.l != null; }); }
+  function fullDone() { return S.meta.full || (S.meta.full = {}); }
+  function fullStats(t) { var qs = bookQs(t), d = fullDone(); var done = qs.filter(function (q) { return d[q.id]; }).length; return { done: done, n: qs.length, pct: pct(done, qs.length) }; }
+  function startFull(id, restart) {
+    var t = TOPIC[id], d = fullDone();
+    if (restart) { bookQs(t).forEach(function (q) { delete d[q.id]; }); dirty("meta"); }
+    var left = shuffle(bookQs(t).filter(function (q) { return !d[q.id]; }));
+    if (!left.length) return;
+    startQuiz(left.slice(0, 25), "Full check · " + t.title);
+    session.full = id;
+  }
   function pickTopic(t, n) {
     var due = shuffle(dueQs(t.qs)), fresh = shuffle(newQs(t.qs));
     var out = due.concat(fresh).slice(0, n);
@@ -348,8 +360,12 @@
       '<header class="hero stack" style="gap:8px;--c:' + t.color + '">' + ring(st.mastery, true) + '<span class="eyebrow" style="position:relative">' + VOLS[t.vol] + "</span><h1>" + t.title + "</h1></header>" +
       '<section class="card stack"><div class="row"><div class="grow"><div class="eyebrow">Mastery</div><div class="big">' + st.mastery + '%</div></div><div class="small muted num" style="text-align:right">' +
       st.seen + " of " + st.n + " questions tried<br>" + (st.right + st.wrong ? pct(st.right, st.right + st.wrong) + "% answered correctly" : "No answers yet") + "</div></div>" + tape(st.mastery, st.mastery >= 80 ? "good" : "") +
-      '<div class="row"><button class="primary" data-act="practiceTopic" data-arg="' + t.id + '">Practice 15 questions</button>' +
+      '<div class="row"><button data-act="practiceTopic" data-arg="' + t.id + '">Practice 15 random</button>' +
       (cards.length ? '<button data-act="cards" data-arg="' + t.id + '">Flashcards (' + cards.length + ")</button>" : "") + "</div></section>";
+    var fs1 = fullStats(t);
+    html += '<section class="card stack fullcard"><div class="row"><h2 class="grow">Full subject check</h2><span class="pill num">' + fs1.done + " / " + fs1.n + "</span></div>" +
+      '<p class="small muted">Every question from this chapter of the books, 25 at a time, in shuffled order. Missed questions come back until you get each one right. At 100% you have been tested on the whole chapter.</p>' + tape(fs1.pct, fs1.pct === 100 ? "good" : "") +
+      '<div class="row">' + (fs1.done < fs1.n ? '<button class="primary" data-act="full" data-arg="' + t.id + '">' + (fs1.done ? "Continue" : "Start") + " full check</button>" : "") + (fs1.done ? '<button class="quiet" data-act="fullRestart" data-arg="' + t.id + '">Start over</button>' : "") + "</div></section>";
     if (t.ls.length) {
       html += '<section class="card"><h2 style="margin-bottom:6px">Lessons</h2><div class="list">';
       t.ls.forEach(function (L) {
@@ -392,10 +408,11 @@
       '<button class="item" data-act="smart" data-arg="20"><span><b>Smart session</b><br><span class="small muted">20 questions: what is due, then new ones from your weakest subjects.</span></span><span class="pill num">' + due + " due</span></button>" +
       '<button class="item" data-act="missed"' + (missed ? "" : " disabled") + '><span><b>My mistakes</b><br><span class="small muted">Only questions you last answered wrong.</span></span><span class="pill ' + (missed ? "bad" : "good") + ' num">' + missed + "</span></button>" +
       (cards.length ? '<button class="item" data-act="cards" data-arg=""><span><b>Flashcards</b><br><span class="small muted">Cards from the lessons you have passed, 20 at a time.</span></span><span class="pill num">' + cdue + " due</span></button>" : "") +
-      '</div></section><section class="card"><h2 style="margin-bottom:6px">One subject</h2><div class="list">';
+      '</div></section><section class="card"><h2 style="margin-bottom:6px">Full subject check, by chapter</h2><div class="list">';
     TOPICS.forEach(function (t) {
       var st = topicStats(t);
-      html += '<button class="item" data-act="practiceTopic" data-arg="' + t.id + '"><span>' + t.title + '</span><span class="small muted num">' + st.seen + "/" + st.n + " · " + st.mastery + "%</span></button>";
+      var fsx = fullStats(t);
+      html += '<button class="item" data-act="topic" data-arg="' + t.id + '"><span>' + t.title + '<br><span class="small muted num">Full check ' + fsx.done + " of " + fsx.n + '</span></span><span class="pill num' + (fsx.pct === 100 ? " good" : "") + '">' + fsx.pct + "%</span></button>";
     });
     return html + "</div></section></div>";
   };
@@ -464,6 +481,12 @@
           '<p class="muted">' + (ok ? "Its cards and questions now come back in your daily warm-up: tomorrow, then after 3 days, a week, and longer." : "You need 80%. Read the lesson once more, slowly, then try again. The questions you missed will also come back tomorrow.") + "</p>" +
           '<div class="row">' + (ok ? (nx ? '<button data-act="lesson" data-arg="' + nx.topic + "|" + nx.i + '">Next lesson</button>' : "") + '<button class="primary" data-act="tab" data-arg="today">Done for today</button>'
             : '<button class="primary" data-act="lesson" data-arg="' + L.topic + "|" + L.i + '">Read it again</button><button data-act="tab" data-arg="today">Later</button>') + "</div></section></div>";
+      }
+      if (s.full) {
+        var fs2 = fullStats(TOPIC[s.full]);
+        return '<div class="stack"><h1>' + (fs2.done === fs2.n ? "Subject complete!" : "Batch finished") + '</h1><section class="card stack"><div class="big num">' + fs2.done + " / " + fs2.n + '</div><span class="eyebrow">' + TOPIC[s.full].title + " questions answered right</span>" + tape(fs2.pct, fs2.pct === 100 ? "good" : "") +
+          '<p class="muted">' + (fs2.done === fs2.n ? "You answered every question in this subject correctly. Do it again in a few days to make it stick." : "Questions you missed stay in the list and come back in the next batch until you get them right.") + "</p>" +
+          '<div class="row">' + (fs2.done < fs2.n ? '<button class="primary" data-act="full" data-arg="' + s.full + '">Next ' + Math.min(25, fs2.n - fs2.done) + " questions</button>" : '<button class="primary" data-act="fullRestart" data-arg="' + s.full + '">Start over</button>') + '<button data-act="close">Done</button></div></section></div>';
       }
       return '<div class="stack"><h1>Session finished</h1><section class="card stack"><div class="big">' + s.right + " / " + s.n + "</div>" + tape(p, p >= 80 ? "good" : "") +
         '<p class="muted">' + (s.wrong.length ? "The questions you missed come back tomorrow. Read the lesson for: " + Object.keys(by).map(function (k) { return TOPIC[k].title; }).join(", ") + "." : "All correct on the first try. These questions will come back after a longer gap.") + "</p>" +
@@ -556,7 +579,9 @@
     topic: function (a) { go("study", { t: a }); },
     lesson: function (a) { var x = a.split("|"); go("study", { t: x[0], sec: +x[1] }); },
     lessonGo: function () { var L = TOPIC[sub.t].ls[sub.sec]; startCards(L.cards, "Lesson recall", L); },
-    lessonQuiz: function () { var L = session.lesson; startQuiz(shuffle(L.qs), "Lesson check"); session.lesson = L; },
+    lessonQuiz: function () { var L = session.lesson; startQuiz(shuffle(L.qs).slice(0, 8), "Lesson check"); session.lesson = L; },
+    full: function (a) { startFull(a, false); },
+    fullRestart: function (a) { startFull(a, true); },
     review: function () { var d = shuffle(dueQs(allQs())).slice(0, 20); if (d.length) startQuiz(d, "Warm-up", "review"); },
     cardsDue: function () { var d = cardsFor().filter(function (c) { return S.c[c.id] && S.c[c.id][1] <= today(); }); if (d.length) startCards(d, "Warm-up cards", null, "cards"); },
     focusq: function () { startQuiz(pickFocus(20), "Focus session", "review"); },
@@ -570,7 +595,7 @@
       if (s.kind === "exam") { s.ans[s.i] = s.ans[s.i] === +a ? -1 : +a; return render(); }
       if (s.picked >= 0) return;
       s.picked = +a; var ok = s.opts[s.picked] === 0, q = s.cur;
-      if (!s.retried[q.id]) { qMark(q.id, ok); if (ok) s.right++; else { s.wrong.push(q); s.retried[q.id] = 1; s.queue.splice(Math.min(4, s.queue.length), 0, q); } }
+      if (!s.retried[q.id]) { qMark(q.id, ok); if (ok) { s.right++; if (s.full) { fullDone()[q.id] = 1; dirty("meta"); } } else { s.wrong.push(q); s.retried[q.id] = 1; s.queue.splice(Math.min(4, s.queue.length), 0, q); } }
       render();
     },
     next: function () { nextQ(); },
@@ -584,7 +609,7 @@
     finishYes: function () { finishExam(); },
     reset: function () { confirmKey = "reset"; render(); },
     resetNo: function () { confirmKey = ""; render(); },
-    resetYes: function () { S.meta = { exam: S.meta.exam, streak: [0, 0], read: {}, exams: [], done: {} }; S.q = {}; S.c = {}; confirmKey = ""; dirty("meta"); dirty("questions"); dirty("cards"); render(); }
+    resetYes: function () { S.meta = { exam: S.meta.exam, streak: [0, 0], read: {}, exams: [], done: {}, full: {} }; S.q = {}; S.c = {}; confirmKey = ""; dirty("meta"); dirty("questions"); dirty("cards"); render(); }
   };
   for (var k in TACT) ACT[k] = TACT[k];
   document.addEventListener("click", function (e) {

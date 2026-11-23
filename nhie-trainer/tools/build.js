@@ -10,6 +10,8 @@ const ldir = path.join(root, "src/lessons");
 const lessons = fs.readdirSync(ldir).filter((f) => f.endsWith(".js")).sort().map((f) => read("src/lessons/" + f)).join("\n");
 const privFile = path.join(root, "src/private/scores.js");
 const scores = fs.existsSync(privFile) ? fs.readFileSync(privFile, "utf8") : "";
+const xdir = path.join(root, "src/extra");
+const extra = fs.existsSync(xdir) ? fs.readdirSync(xdir).filter((f) => f.endsWith(".js")).sort().map((f) => read("src/extra/" + f)).join("\n") : "";
 const html = `<meta charset="utf-8">
 <title>NHIE School</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -23,6 +25,7 @@ ${scores}
 ${read("src/core.js")}
 ${questions}
 ${lessons}
+${extra}
 ${read("src/app.js").replace("  // ---------- actions ----------", read("src/teacher.js") + "\n  // ---------- actions ----------")}</script>
 `;
 fs.mkdirSync(path.join(root, "dist"), { recursive: true });

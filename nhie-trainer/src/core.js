@@ -8,6 +8,11 @@
     questions: function (topic, rows) {
       this.bank[topic] = (this.bank[topic] || []).concat(rows.map(function (r) { return question(topic, r, null); }));
     },
+    // More questions for an existing lesson, written so every fact in the lesson is tested at least once.
+    extra: function (topic, li, rows) {
+      var L = this.lessonBank[topic][li], qs = rows.map(function (r) { return question(topic, r, li); });
+      L.qs = L.qs.concat(qs); this.bank[topic] = (this.bank[topic] || []).concat(qs);
+    },
     lessons: function (topic, list) {
       var qs = [];
       this.lessonBank[topic] = list.map(function (L, i) {

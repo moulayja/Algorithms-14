@@ -80,9 +80,12 @@
   // q: question id -> [box, due day, times right, times wrong]; c: card id -> [box, due day]
   var S = { meta: { exam: "", streak: [0, 0], read: {}, exams: [], done: {} }, q: {}, c: {}, u: {} };
   var PARTS = { meta: "meta", questions: "q", cards: "c" };
+  // Saved progress keeps only the fields the app uses.
+  function tidyMeta() { var keep = { done: 1, exam: 1, exams: 1, focus: 1, full: 1, read: 1, streak: 1 }, gone = false; for (var k in S.meta) if (!keep[k]) { delete S.meta[k]; gone = true; } return gone; }
   var LS = "nhie-trainer-v1";
   try { var raw = JSON.parse(localStorage.getItem(LS) || "null"); if (raw && raw.meta) S = raw; } catch (e) {}
   S.u = S.u || {}; S.meta.read = S.meta.read || {}; S.meta.exams = S.meta.exams || []; S.meta.done = S.meta.done || {};
+  tidyMeta();
   if (!S.meta.exam && window.NHIE_EXAM_DATE) S.meta.exam = window.NHIE_EXAM_DATE;   // exam date from the private file, until the student sets one
 
   var col = null, syncState = "checking", dirtySet = {}, flushing = false, flushTimer = 0;
@@ -123,6 +126,7 @@
             else if (mine && (!d || d.u < mine)) dirtySet[n] = 1;
           });
           S.meta.read = S.meta.read || {}; S.meta.exams = S.meta.exams || []; S.meta.done = S.meta.done || {}; S.meta.streak = S.meta.streak || [0, 0];
+          if (tidyMeta()) dirty("meta");
           setSync("account");
           if (changed) { try { localStorage.setItem(LS, JSON.stringify(S)); } catch (e) {} if (!session) render(); }
           flush();
